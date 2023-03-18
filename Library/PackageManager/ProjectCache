@@ -20,7 +20,7 @@ m_EmbeddedPackageManifests:
 m_LocalPackages:
   m_LocalFileStatus: []
 m_ProjectPath: D:/UnityGames/Diplom/Packages
-m_EditorVersion: 2021.3.20f1 (577897200b8b)
+m_EditorVersion: 2021.3.21f1 (1b156197d683)
 m_ResolvedPackages:
 - packageId: com.unity.collab-proxy@2.0.1
   testable: 0
@@ -843,8 +843,10 @@ m_ResolvedPackages:
     - 1.7.1
     - 1.7.2
     - 1.7.3
+    - 1.7.4
     - 1.8.0
     - 1.8.1
+    - 1.8.2
     compatible:
     - 1.6.4
     - 1.7.0-pre.1
@@ -853,8 +855,10 @@ m_ResolvedPackages:
     - 1.7.1
     - 1.7.2
     - 1.7.3
+    - 1.7.4
     - 1.8.0
     - 1.8.1
+    - 1.8.2
     verified: 1.6.4
   dependencies:
   - name: com.unity.modules.director

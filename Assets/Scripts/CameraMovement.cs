@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    [SerializeField] private GameObject _player;
+    [SerializeField] private Transform _player;
     [SerializeField] private float _mouseSensitivity;
+
 
     private void Start()
     {

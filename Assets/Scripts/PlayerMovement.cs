@@ -6,10 +6,9 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float _speed;
 
-
     private void Update()
     {
-       GetInput();
+        GetInput();
     }
 
     private void GetInput()
