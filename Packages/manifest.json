@@ -7,6 +7,7 @@
     "com.unity.ide.vscode": "1.2.5",
     "com.unity.inputsystem": "1.5.0",
     "com.unity.ml-agents": "file:../ml-agents-release_20/com.unity.ml-agents",
+    "com.unity.ml-agents.extensions": "file:../ml-agents-release_20/com.unity.ml-agents.extensions",
     "com.unity.test-framework": "1.1.31",
     "com.unity.textmeshpro": "3.0.6",
     "com.unity.timeline": "1.6.4",

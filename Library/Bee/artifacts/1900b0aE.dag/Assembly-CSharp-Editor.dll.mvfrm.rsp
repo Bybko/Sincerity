@@ -10,6 +10,10 @@ Library\Bee\artifacts\mvdfrm\Unity.EditorCoroutines.Editor.ref.dll_34ED10A34098B
 Library\Bee\artifacts\mvdfrm\Unity.InputSystem.ref.dll_FD2EC87C14EBE081.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.ML-Agents.CommunicatorObjects.ref.dll_D7E75170880C5095.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.ML-Agents.Editor.ref.dll_A5EACA7A9EEE192D.mvfrm
+Library\Bee\artifacts\mvdfrm\Unity.ML-Agents.Extensions.Editor.Input.ref.dll_8ECC0A43EA8484B9.mvfrm
+Library\Bee\artifacts\mvdfrm\Unity.ML-Agents.Extensions.Editor.ref.dll_6B9A72C7DAD16AED.mvfrm
+Library\Bee\artifacts\mvdfrm\Unity.ML-Agents.Extensions.Input.ref.dll_D9B6BA40496FF170.mvfrm
+Library\Bee\artifacts\mvdfrm\Unity.ML-Agents.Extensions.ref.dll_EBA5AB7615609904.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.ML-Agents.ref.dll_CCD3793145BE06C4.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.Mathematics.Editor.ref.dll_9A20CFD48BC11F43.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.Mathematics.ref.dll_E8EFDB1B8D5C174E.mvfrm
