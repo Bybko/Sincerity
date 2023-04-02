@@ -442,6 +442,7 @@
 "Assets/ML-Agents/TestScenes/TestCompressedTexture/TestTextureSensor.cs"
 "Assets/ML-Agents/TestScenes/TestCompressedTexture/TestTextureSensorComponent.cs"
 "Assets/Scripts/CameraMovement.cs"
+"Assets/Scripts/EmotionalModel.cs"
 "Assets/Scripts/PlayerMovement.cs"
 -langversion:9.0
 
