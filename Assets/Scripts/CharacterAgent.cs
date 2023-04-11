@@ -8,17 +8,19 @@ using Unity.MLAgents.Sensors;
 public class CharacterAgent : Agent
 {
     [SerializeField] private Transform _targetTransform;
-
+    [SerializeField] private Material _winMaterial;
+    [SerializeField] private Material _loseMaterial;
+    [SerializeField] private MeshRenderer _floorMeshRenderer;
 
     public override void OnEpisodeBegin()
     {
-        transform.position = Vector3.zero;
+        transform.localPosition = Vector3.zero;
     }
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        sensor.AddObservation(transform.position);
-        sensor.AddObservation(_targetTransform.position);
+        sensor.AddObservation(transform.localPosition);
+        sensor.AddObservation(_targetTransform.localPosition);
     }
 
     public override void OnActionReceived(ActionBuffers actions)
@@ -27,7 +29,7 @@ public class CharacterAgent : Agent
         float moveZ = actions.ContinuousActions[1];
 
         float moveSpeed = 5f;
-        transform.position += new Vector3(moveX, 0, moveZ) * Time.deltaTime * moveSpeed; 
+        transform.localPosition += new Vector3(moveX, 0, moveZ) * Time.deltaTime * moveSpeed; 
     }
 
     private void OnTriggerEnter(Collider col)
@@ -35,12 +37,14 @@ public class CharacterAgent : Agent
         if (col.TryGetComponent<Goal>(out Goal goal))
         {
             SetReward(+1f);
+            _floorMeshRenderer.material = _winMaterial;
             EndEpisode();
         }
 
         if (col.TryGetComponent<Wall>(out Wall wall))
         {
             SetReward(-1f);
+            _floorMeshRenderer.material = _loseMaterial;
             EndEpisode();
         }
     }

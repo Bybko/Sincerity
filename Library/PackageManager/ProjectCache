@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638163120574409683
+      ticks: 638164919657542547
     m_Hash: 3095352390
   m_LockFileStatus:
     m_FilePath: D:/UnityGames/Sincerity/Packages/packages-lock.json
@@ -13,7 +13,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638163120574409683
+      ticks: 638164919657542547
     m_Hash: 798097500
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
@@ -24,8 +24,8 @@ m_LocalPackages:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638052442920000000
-    m_Hash: 2515441193
+      ticks: 638164919683447087
+    m_Hash: 3663355726
   - m_FilePath: D:\UnityGames\Sincerity\ml-agents-release_20\com.unity.ml-agents
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
@@ -38,8 +38,8 @@ m_LocalPackages:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638052442920000000
-    m_Hash: 522623889
+      ticks: 638164919674137350
+    m_Hash: 1922573267
   - m_FilePath: D:\UnityGames\Sincerity\ml-agents-release_20\com.unity.ml-agents.extensions
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
@@ -48,7 +48,7 @@ m_LocalPackages:
       ticks: 0
     m_Hash: 0
 m_ProjectPath: D:/UnityGames/Sincerity/Packages
-m_EditorVersion: 2021.3.21f1 (1b156197d683)
+m_EditorVersion: 2021.3.22f1 (b6c551784ba3)
 m_ResolvedPackages:
 - packageId: com.unity.collab-proxy@2.0.1
   testable: 0
