@@ -1,0 +1,29 @@
+{
+    "Character": {
+        "checkpoints": [
+            {
+                "steps": 57575,
+                "file_path": "results\\TestTenserBoard\\Character\\Character-57575.onnx",
+                "reward": null,
+                "creation_time": 1681378527.6759522,
+                "auxillary_file_paths": [
+                    "results\\TestTenserBoard\\Character\\Character-57575.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 57575,
+            "file_path": "results\\TestTenserBoard\\Character.onnx",
+            "reward": null,
+            "creation_time": 1681378527.6759522,
+            "auxillary_file_paths": [
+                "results\\TestTenserBoard\\Character\\Character-57575.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.13.1+cu117"
+    }
+}

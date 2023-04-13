@@ -364,7 +364,7 @@ MonoBehaviour:
     hasUpgradedBrainParametersWithActionSpec: 1
   m_Model: {fileID: 5022602860645237092, guid: be901aa484083ad4b9173b8bba8511cb, type: 3}
   m_InferenceDevice: 0
-  m_BehaviorType: 1
+  m_BehaviorType: 2
   m_BehaviorName: Character
   TeamId: 0
   m_UseChildSensors: 1

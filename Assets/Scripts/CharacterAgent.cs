@@ -14,7 +14,8 @@ public class CharacterAgent : Agent
 
     public override void OnEpisodeBegin()
     {
-        transform.localPosition = Vector3.zero;
+        transform.localPosition = new Vector3(Random.Range(-6f, +6f), 1f, Random.Range(-6f, +1f));
+        _targetTransform.localPosition = new Vector3(Random.Range(-5f, +5f), 1f, Random.Range(+2f, +5f));
     }
 
     public override void CollectObservations(VectorSensor sensor)
