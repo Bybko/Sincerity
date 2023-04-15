@@ -1,0 +1,65 @@
+{
+    "Character": {
+        "checkpoints": [
+            {
+                "steps": 35010,
+                "file_path": "results\\Food1\\Character\\Character-35010.onnx",
+                "reward": 3.0434782608695654,
+                "creation_time": 1681571994.3654072,
+                "auxillary_file_paths": [
+                    "results\\Food1\\Character\\Character-35010.pt"
+                ]
+            },
+            {
+                "steps": 46034,
+                "file_path": "results\\Food1\\Character\\Character-46034.onnx",
+                "reward": 8.571428571428571,
+                "creation_time": 1681572736.7639306,
+                "auxillary_file_paths": [
+                    "results\\Food1\\Character\\Character-46034.pt"
+                ]
+            },
+            {
+                "steps": 52717,
+                "file_path": "results\\Food1\\Character\\Character-52717.onnx",
+                "reward": 7.8431372549019605,
+                "creation_time": 1681574899.5795987,
+                "auxillary_file_paths": [
+                    "results\\Food1\\Character\\Character-52717.pt"
+                ]
+            },
+            {
+                "steps": 68775,
+                "file_path": "results\\Food1\\Character\\Character-68775.onnx",
+                "reward": 7.361111111111111,
+                "creation_time": 1681575069.597535,
+                "auxillary_file_paths": [
+                    "results\\Food1\\Character\\Character-68775.pt"
+                ]
+            },
+            {
+                "steps": 80554,
+                "file_path": "results\\Food1\\Character\\Character-80554.onnx",
+                "reward": 11.851851851851851,
+                "creation_time": 1681580056.3044841,
+                "auxillary_file_paths": [
+                    "results\\Food1\\Character\\Character-80554.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 80554,
+            "file_path": "results\\Food1\\Character.onnx",
+            "reward": 11.851851851851851,
+            "creation_time": 1681580056.3044841,
+            "auxillary_file_paths": [
+                "results\\Food1\\Character\\Character-80554.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.13.1+cu117"
+    }
+}

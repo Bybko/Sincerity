@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private float _satiety;
+    [SerializeField] private float _damage;
+    [SerializeField] private float _damageChance;
 
-    // Update is called once per frame
-    void Update()
+
+    public float Eating()
     {
-        
+        float result = _satiety;
+        float randomValue = Random.Range(0f, 1f);
+
+        if (randomValue <= _damageChance)
+        {
+            result -= _damage;
+        }
+
+        return result;
     }
 }

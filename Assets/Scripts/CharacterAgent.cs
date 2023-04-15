@@ -7,21 +7,22 @@ using Unity.MLAgents.Sensors;
 
 public class CharacterAgent : Agent
 {
-    [SerializeField] private Transform _targetTransform;
-    [SerializeField] private Material _winMaterial;
-    [SerializeField] private Material _loseMaterial;
-    [SerializeField] private MeshRenderer _floorMeshRenderer;
+    [SerializeField] private EmotionalModel _emotionalModel;
+
+
+    private void Start()
+    {
+        _emotionalModel.HungerDiedEvent += Kill;
+    }
 
     public override void OnEpisodeBegin()
     {
-        transform.localPosition = new Vector3(Random.Range(-6f, +6f), 1f, Random.Range(-6f, +1f));
-        _targetTransform.localPosition = new Vector3(Random.Range(-5f, +5f), 1f, Random.Range(+2f, +5f));
+        transform.localPosition = new Vector3(0f, 1f, 0f);
     }
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        sensor.AddObservation(transform.localPosition);
-        sensor.AddObservation(_targetTransform.localPosition);
+        sensor.AddObservation(transform.position);
     }
 
     public override void OnActionReceived(ActionBuffers actions)
@@ -29,7 +30,7 @@ public class CharacterAgent : Agent
         float moveX = actions.ContinuousActions[0];
         float moveZ = actions.ContinuousActions[1];
 
-        float moveSpeed = 5f;
+        float moveSpeed = 15f;
         transform.localPosition += new Vector3(moveX, 0, moveZ) * Time.deltaTime * moveSpeed; 
     }
 
@@ -37,17 +38,24 @@ public class CharacterAgent : Agent
     {
         if (col.TryGetComponent<Goal>(out Goal goal))
         {
-            SetReward(+1f);
-            _floorMeshRenderer.material = _winMaterial;
+            float reward = goal.Eating();
+            SetReward(reward);
+            _emotionalModel.UpdateHapinnes(reward);
             EndEpisode();
         }
 
         if (col.TryGetComponent<Wall>(out Wall wall))
         {
-            SetReward(-1f);
-            _floorMeshRenderer.material = _loseMaterial;
+            SetReward(-30f);
             EndEpisode();
         }
+    }
+
+    private void Kill()
+    {
+        _emotionalModel.ResetHP();
+        SetReward(-40f);
+        EndEpisode();
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)
