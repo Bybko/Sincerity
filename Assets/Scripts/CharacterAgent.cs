@@ -10,14 +10,9 @@ public class CharacterAgent : Agent
     [SerializeField] private EmotionalModel _emotionalModel;
 
 
-    private void Start()
-    {
-        _emotionalModel.HungerDiedEvent += Kill;
-    }
-
     public override void OnEpisodeBegin()
     {
-        transform.localPosition = new Vector3(0f, 1f, 0f);
+        transform.localPosition = new Vector3(Random.Range(-5.5f, 5.5f), 1f, Random.Range(-6f, -2f));
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -49,13 +44,6 @@ public class CharacterAgent : Agent
             SetReward(-30f);
             EndEpisode();
         }
-    }
-
-    private void Kill()
-    {
-        _emotionalModel.ResetHP();
-        SetReward(-40f);
-        EndEpisode();
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)

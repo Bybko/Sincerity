@@ -5,32 +5,11 @@ using UnityEngine;
 
 public class EmotionalModel : MonoBehaviour
 {
-    public Action HungerDiedEvent;
-
-    [SerializeField] private float _hp;
-
-    private float _hapinnes;
+    private float _hapinnes = 0f;
 
 
-    private void Update()
+    public void UpdateHapinnes(float changeValue)
     {
-        _hp -= 0.02f;
-
-        if (_hp <= 0)
-        {
-            HungerDiedEvent?.Invoke();
-        }
-    }
-
-    public float UpdateHapinnes(float changeValue)
-    {
-        _hp += changeValue;
-        _hapinnes = _hp;
-        return _hapinnes;
-    }
-
-    public void ResetHP()
-    {
-        _hp = 100f;
+        _hapinnes += changeValue;
     }
 }
