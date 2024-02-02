@@ -74,10 +74,10 @@
     <Compile Include="Assets\ML-Agents\TestScenes\TestCompressedTexture\TestTextureSensorComponent.cs" />
     <Compile Include="Assets\ML-Agents\Examples\SharedAssets\Scripts\GroundContact.cs" />
     <Compile Include="Assets\ML-Agents\Examples\SharedAssets\Scripts\AdjustTrainingTimescale.cs" />
+    <Compile Include="Assets\Scripts\EmotionalModel\CharacterAgent.cs" />
     <Compile Include="Assets\ML-Agents\Examples\SharedAssets\Scripts\Area.cs" />
     <Compile Include="Assets\ML-Agents\Examples\PushBlock\Scripts\GoalDetectTrigger.cs" />
     <Compile Include="Assets\ML-Agents\Examples\Hallway\Scripts\HallwayAgent.cs" />
-    <Compile Include="Assets\Scripts\CharacterAgent.cs" />
     <Compile Include="Assets\ML-Agents\Examples\GridWorld\Scripts\GridAgent.cs" />
     <Compile Include="Assets\ML-Agents\Examples\Match3\Scripts\Match3ExampleActuator.cs" />
     <Compile Include="Assets\ML-Agents\Examples\Soccer\Scripts\SoccerSettings.cs" />
@@ -95,6 +95,7 @@
     <Compile Include="Assets\ML-Agents\Examples\Match3\Scripts\Match3Agent.cs" />
     <Compile Include="Assets\ML-Agents\Examples\SharedAssets\Scripts\ProjectSettingsOverrides.cs" />
     <Compile Include="Assets\ML-Agents\Examples\SharedAssets\Scripts\OrientationCubeController.cs" />
+    <Compile Include="Assets\Scripts\EmotionalModel\Subconscious.cs" />
     <Compile Include="Assets\ML-Agents\Examples\SharedAssets\Scripts\CollisionCallbacks.cs" />
     <Compile Include="Assets\ML-Agents\Examples\SharedAssets\Scripts\TargetContact.cs" />
     <Compile Include="Assets\ML-Agents\Examples\SharedAssets\Scripts\TargetController.cs" />
@@ -104,6 +105,7 @@
     <Compile Include="Assets\ML-Agents\Examples\Worm\Scripts\WormAgent.cs" />
     <Compile Include="Assets\ML-Agents\Examples\PushBlockWithInput\Scripts\PushBlockActions.cs" />
     <Compile Include="Assets\ML-Agents\Examples\FoodCollector\Scripts\FoodCollectorArea.cs" />
+    <Compile Include="Assets\Scripts\EmotionalModel\AbstractNeed.cs" />
     <Compile Include="Assets\ML-Agents\Examples\Pyramids\Scripts\PyramidSwitch.cs" />
     <Compile Include="Assets\ML-Agents\Examples\SharedAssets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\ML-Agents\Examples\DungeonEscape\Scripts\SimpleNPC.cs" />
@@ -131,7 +133,6 @@
     <Compile Include="Assets\ML-Agents\Examples\Basic\Scripts\BasicActuatorComponent.cs" />
     <Compile Include="Assets\ML-Agents\Examples\FoodCollector\Scripts\FoodLogic.cs" />
     <Compile Include="Assets\ML-Agents\Examples\PushBlockWithInput\Scripts\GoalDetectWithInput.cs" />
-    <Compile Include="Assets\Scripts\EmotionalModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\JsonDotNet\link.xml" />
