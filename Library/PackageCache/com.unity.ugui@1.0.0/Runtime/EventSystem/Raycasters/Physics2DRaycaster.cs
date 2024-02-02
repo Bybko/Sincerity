@@ -90,7 +90,7 @@ namespace UnityEngine.EventSystems
                     {
                         gameObject = m_Hits[b].collider.gameObject,
                         module = this,
-                        distance = Vector3.Distance(eventCamera.transform.position, m_Hits[b].point),
+                        distance = m_Hits[b].distance,
                         worldPosition = m_Hits[b].point,
                         worldNormal = m_Hits[b].normal,
                         screenPosition = eventData.position,
@@ -105,7 +105,8 @@ namespace UnityEngine.EventSystems
                     if (result.sortingGroupID != SortingGroup.invalidSortingGroupID &&
                         SortingGroup.GetSortingGroupByIndex(r2d.sortingGroupID) is SortingGroup sortingGroup)
                     {
-                        result.distance = Vector3.Distance(sortingGroup.transform.position, ray.origin);
+                        // Calculate how far along the ray the sorting group is.
+                        result.distance = Vector3.Dot(ray.direction, sortingGroup.transform.position - ray.origin);
                         result.sortingLayer = sortingGroup.sortingLayerID;
                         result.sortingOrder = sortingGroup.sortingOrder;
                     }
