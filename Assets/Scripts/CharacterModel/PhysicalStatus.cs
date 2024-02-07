@@ -30,7 +30,7 @@ public class PhysicalStatus : MonoBehaviour
 
     public float GetRequestedFoodResources()
     {
-        return _currentFoodResources;
+        return _requestedFoodResources;
     }
 
 
@@ -48,7 +48,5 @@ public class PhysicalStatus : MonoBehaviour
     {
         _currentFoodResources = Mathf.Clamp(_currentFoodResources - _foodEnergySpending, 0f, _requestedFoodResources);
         Debug.Log("Текущая энергия: " + _currentFoodResources);
-
-
     }
 }

@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 563625467}
   - component: {fileID: 563625471}
   - component: {fileID: 563625472}
+  - component: {fileID: 563625473}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -244,7 +245,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67de9d8d44ddb4148bd9f1ce3e69bc3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _charactersNeeds: []
+  _charactersNeeds:
+  - {fileID: 563625473}
 --- !u!114 &563625472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,6 +261,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _foodEnergySpending: 5
   _requestedFoodResources: 100
+--- !u!114 &563625473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 563625466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d2cf87efaf2c8d48bdb1a81d2c3c4b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _physicalStatus: {fileID: 563625472}
 --- !u!1 &681625243
 GameObject:
   m_ObjectHideFlags: 0

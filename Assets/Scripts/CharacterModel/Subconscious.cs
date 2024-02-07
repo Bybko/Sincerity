@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.VersionControl.Message;
 
 public class Subconscious : MonoBehaviour
 {
@@ -36,6 +37,7 @@ public class Subconscious : MonoBehaviour
             need.SatisfactionLevelCalculation();
             _hapinnes += need.NeedResult();
         }
+        //Debug.Log("Счастье: " + _hapinnes);
     }
 
     // Старый метод. Удалить когда будет изменён код Агента.
