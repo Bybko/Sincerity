@@ -27,7 +27,7 @@ public abstract class AbstractNeed : MonoBehaviour
 
 
     //Итоговое значение счастья для персонажа по данной потребности
-    public float NeedResult()
+    public virtual float NeedResult()
     {
         //Формулу скорее всего нужно изменить, чтобы она правильно влияла на персонажа. Может быть усилить влияние выраженности.
         return  _satisfaction * (_severity * 100);

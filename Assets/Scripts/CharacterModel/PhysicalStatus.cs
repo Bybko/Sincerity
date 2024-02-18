@@ -11,7 +11,9 @@ public class PhysicalStatus : MonoBehaviour
     [SerializeField] private float _foodEnergySpending = 5f;
     [SerializeField] private float _requestedFoodResources = 100f;
     private float _currentFoodResources;
-
+    //Не столько привычные хп, сколько именно здоровье. Уровень самочувствия и т.д. То есть если мало хп, то это влияет
+    //на жизнеспособность персонажа и принятие им решений
+    [SerializeField] private float _health = 100f; 
 
     private void Start()
     {
@@ -34,6 +36,11 @@ public class PhysicalStatus : MonoBehaviour
     }
 
 
+    public float GetHealth() 
+    {
+        return _health;
+    }
+
     private IEnumerator DecreaseEnergyOverTime()
     {
         while (true)
@@ -48,5 +55,17 @@ public class PhysicalStatus : MonoBehaviour
     {
         _currentFoodResources = Mathf.Clamp(_currentFoodResources - _foodEnergySpending, 0f, _requestedFoodResources);
         Debug.Log("Текущая энергия: " + _currentFoodResources);
+
+        float hungerDamage = 5f;
+        if (_currentFoodResources < 10f)
+        {
+            _health = Mathf.Clamp(_health - hungerDamage, 0f, 100f);
+        }
+
+        if (_currentFoodResources > 90f)
+        {
+            _health = Mathf.Clamp(_health + hungerDamage, 0f, 100f);
+        }
+        Debug.Log("Текущее здоровье: " + _health);
     }
 }
