@@ -37,10 +37,11 @@ public class Subconscious : MonoBehaviour
             need.SatisfactionLevelCalculation();
             _hapinnes += need.NeedResult();
         }
-        //Debug.Log("Счастье: " + _hapinnes);
+        Debug.Log("Счастье: " + _hapinnes);
     }
 
-    // Старый метод. Удалить когда будет изменён код Агента.
+
+    // удалить сразу после изменения скрипта агента
     public void ChangeHapinnes(float changeValue)
     {
         _hapinnes += changeValue;

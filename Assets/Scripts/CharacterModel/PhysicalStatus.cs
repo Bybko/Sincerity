@@ -54,7 +54,7 @@ public class PhysicalStatus : MonoBehaviour
     private void DecreaseEnergy()
     {
         _currentFoodResources = Mathf.Clamp(_currentFoodResources - _foodEnergySpending, 0f, _requestedFoodResources);
-        Debug.Log("Текущая энергия: " + _currentFoodResources);
+        //Debug.Log("Текущая энергия: " + _currentFoodResources);
 
         float hungerDamage = 5f;
         if (_currentFoodResources < 10f)
@@ -66,6 +66,6 @@ public class PhysicalStatus : MonoBehaviour
         {
             _health = Mathf.Clamp(_health + hungerDamage, 0f, 100f);
         }
-        Debug.Log("Текущее здоровье: " + _health);
+        //Debug.Log("Текущее здоровье: " + _health);
     }
 }
