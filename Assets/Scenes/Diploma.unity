@@ -461,6 +461,7 @@ MonoBehaviour:
   _charactersNeeds:
   - {fileID: 563625473}
   - {fileID: 563625474}
+  _physicalStatus: {fileID: 563625472}
 --- !u!114 &563625472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -550,6 +551,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _memory: {fileID: 647128602}
+  _subconscious: {fileID: 563625471}
 --- !u!114 &647128602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -699,7 +701,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _brain: {fileID: 647128601}
-  _goals:
+  _foreignObjects:
   - {fileID: 2034272699}
   - {fileID: 1174494234}
   - {fileID: 1250543763}
@@ -715,6 +717,7 @@ GameObject:
   - component: {fileID: 1060882209}
   - component: {fileID: 1060882208}
   - component: {fileID: 1060882210}
+  - component: {fileID: 1060882211}
   m_Layer: 0
   m_Name: InstinctBrain
   m_TagString: Untagged
@@ -799,6 +802,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DecisionPeriod: 5
   TakeActionsBetweenDecisions: 1
+--- !u!114 &1060882211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1060882206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88b6042bc9a5d4aa58d931eae49442e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentParameters:
+    maxStep: 0
+  hasUpgradedFromAgentParameters: 1
+  MaxStep: 0
 --- !u!1 &1174494229
 GameObject:
   m_ObjectHideFlags: 0
@@ -918,7 +937,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _foodValue: 1
-  _safetyValue: 0
+  _damageValue: 0
 --- !u!1 &1250543758
 GameObject:
   m_ObjectHideFlags: 0
@@ -1038,7 +1057,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _foodValue: 20
-  _safetyValue: -20
+  _damageValue: -20
 --- !u!1 &1272415400
 GameObject:
   m_ObjectHideFlags: 0
@@ -1603,7 +1622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _foodValue: 70
-  _safetyValue: -50
+  _damageValue: -50
 --- !u!1 &2051816465
 GameObject:
   m_ObjectHideFlags: 0

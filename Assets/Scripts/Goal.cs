@@ -5,7 +5,7 @@ using UnityEngine;
 public class Goal : MonoBehaviour
 {
     [SerializeField] private float _foodValue;
-    [SerializeField] private float _safetyValue;
+    [SerializeField] private float _damageValue;
 
     //Очевидно что потом надо будет поменять, как это принимается. А то не буду же я для всех параметров геттеры писать. Мб ивенты сделать.
     public float GetFoodValue()
@@ -14,8 +14,8 @@ public class Goal : MonoBehaviour
     }
 
 
-    public float GetSafetyValue()
+    public float GetDamageValue()
     {
-        return _safetyValue;
+        return _damageValue;
     }
 }

@@ -7,7 +7,9 @@ using static UnityEditor.VersionControl.Message;
 public class Subconscious : MonoBehaviour
 {
     [SerializeField] private List<AbstractNeed> _charactersNeeds;
+    [SerializeField] private PhysicalStatus _physicalStatus;
     private float _hapinnes = 0f;
+    private Feeling _feelingAboutObject = new Feeling();
 
 
     private void Start()
@@ -27,9 +29,20 @@ public class Subconscious : MonoBehaviour
     }
 
 
-    public void CreateFeelings()
+    public Feeling FeelingFromTheObject(Goal foreignObject)
     {
+        //ѕока только адаптировано дл€ двух потребностей
+        float happinessChange = 0f;
+        foreach (AbstractNeed need in _charactersNeeds)
+        {
+            happinessChange += need.PredictHappinessChange(foreignObject);
+        }
+        //¬озможно стоит задумать над тем, то ли, что задумано € передаю ;)
+        _feelingAboutObject.SetHappinessChange(happinessChange);
+        _feelingAboutObject.SetHealthChange(foreignObject.GetDamageValue());
+        _feelingAboutObject.SetFoodChange(foreignObject.GetFoodValue());
 
+        return _feelingAboutObject;
     }
 
 

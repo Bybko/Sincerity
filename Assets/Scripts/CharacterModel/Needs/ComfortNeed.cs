@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,8 +20,25 @@ public class ComfortNeed : AbstractNeed
         //Debug.Log("Безопасность. Выраженность: " + _severity);
     }
 
+
+    public override float PredictHappinessChange(Goal foreignObject)
+    {
+        float predictableSatisfaction = Mathf.Clamp01( (_physicalStatus.GetHealth() + foreignObject.GetDamageValue() ) 
+            / 100f);
+
+        float predictableSeverity = 1 - predictableSatisfaction;
+        return Math.Abs(NeedResult() - PredictNeedResult(predictableSeverity, _satisfaction));
+    }
+
+
     public override float NeedResult()
     {
         return -1 * _severity;
+    }
+
+
+    protected override float PredictNeedResult(float predictableSeverity, float predictableSatisfaction)
+    {
+        return -1 * predictableSeverity;
     }
 }

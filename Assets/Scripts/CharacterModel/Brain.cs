@@ -5,6 +5,7 @@ using UnityEngine;
 public class Brain : MonoBehaviour
 {
     [SerializeField] private Memory _memory;
+    [SerializeField] private Subconscious _subconscious;
 
     //Пока кринжовая проверка на воспоминание, ибо память реализована элементарно от задуманной.
     //Да и в целом функция пока кринжовая
@@ -19,7 +20,7 @@ public class Brain : MonoBehaviour
             _memory.MemorizeObject(foreignObject);
         }
 
-        //Здесь вызываем подсознание и метод подсчёта всего для нейронок
-        //Потом закидываем полученное в нейронки
+        Feeling feeling = _subconscious.FeelingFromTheObject(foreignObject);
+        //Закидываем полученное в нейронки
     }
 }

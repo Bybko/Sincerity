@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
+//Задуматься о том, какие методы вообще тут нужны абстрактными, какими виртуальными а какие вообще не нужны. Меня волнует в первую очередь то, что связано с предиктом у потребностей
 public abstract class AbstractNeed : MonoBehaviour
 {
     protected float _severity = 0f; //По факту в том числе выполняет роль иерархии
@@ -10,6 +11,9 @@ public abstract class AbstractNeed : MonoBehaviour
 
 
     public abstract void SatisfactionLevelCalculation();
+
+
+    public abstract float PredictHappinessChange(Goal foreignObject);
 
 
     public void Initialize()
@@ -31,5 +35,11 @@ public abstract class AbstractNeed : MonoBehaviour
     {
         //Формулу скорее всего нужно изменить, чтобы она правильно влияла на персонажа. Может быть усилить влияние выраженности.
         return  _satisfaction * (_severity * 100);
+    }
+
+    
+    protected virtual float PredictNeedResult(float predictableSeverity, float predictableSatisfaction)
+    {
+        return predictableSatisfaction * (predictableSeverity * 100);
     }
 }
