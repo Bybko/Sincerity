@@ -27,6 +27,12 @@ public class Subconscious : MonoBehaviour
     }
 
 
+    public void CreateFeelings()
+    {
+
+    }
+
+
     private void UpdateHapinnes()
     {
         //Подумать над рассчётом счастья. Может быть изменить.
@@ -38,12 +44,5 @@ public class Subconscious : MonoBehaviour
             _hapinnes += need.NeedResult();
         }
         Debug.Log("Счастье: " + _hapinnes);
-    }
-
-
-    // удалить сразу после изменения скрипта агента
-    public void ChangeHapinnes(float changeValue)
-    {
-        _hapinnes += changeValue;
     }
 }
