@@ -8,6 +8,7 @@ public class Subconscious : MonoBehaviour
 {
     [SerializeField] private List<AbstractNeed> _charactersNeeds;
     [SerializeField] private PhysicalStatus _physicalStatus;
+
     private float _hapinnes = 0f;
     private Feeling _feelingAboutObject = new Feeling();
 
@@ -31,16 +32,24 @@ public class Subconscious : MonoBehaviour
 
     public Feeling FeelingFromTheObject(Goal foreignObject)
     {
-        //Пока только адаптировано для двух потребностей
+        //Пока только адаптировано для двух потребностей, поэтому как минимум на эмоцию поступает только одна самая выраженная потребность,а не к примеру 4
         float happinessChange = 0f;
+        AbstractNeed mostSeveralNeed = null;
+
         foreach (AbstractNeed need in _charactersNeeds)
         {
             happinessChange += need.PredictHappinessChange(foreignObject);
+            if (mostSeveralNeed != null)
+            {
+                if (mostSeveralNeed.GetSeverity() < need.GetSeverity()) { mostSeveralNeed = need; }
+            }
+            else { mostSeveralNeed = need; }
         }
         //Возможно стоит задумать над тем, то ли, что задумано я передаю ;)
         _feelingAboutObject.SetHappinessChange(happinessChange);
         _feelingAboutObject.SetHealthChange(foreignObject.GetDamageValue());
         _feelingAboutObject.SetFoodChange(foreignObject.GetFoodValue());
+        _feelingAboutObject.SetMostNeedSatisfaction(mostSeveralNeed.PredictSatisfactionChange(foreignObject));
 
         return _feelingAboutObject;
     }

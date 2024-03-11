@@ -21,9 +21,17 @@ public class ComfortNeed : AbstractNeed
     }
 
 
+    public override float PredictSatisfactionChange(Goal foreignObject)
+    {
+        float predictableSatisfaction = Mathf.Clamp01((_physicalStatus.GetHealth() + foreignObject.GetDamageValue())
+            / 100f);
+        return Math.Abs(_satisfaction - predictableSatisfaction);   
+    }
+
+
     public override float PredictHappinessChange(Goal foreignObject)
     {
-        float predictableSatisfaction = Mathf.Clamp01( (_physicalStatus.GetHealth() + foreignObject.GetDamageValue() ) 
+        float predictableSatisfaction = Mathf.Clamp01((_physicalStatus.GetHealth() + foreignObject.GetDamageValue()) 
             / 100f);
 
         float predictableSeverity = 1 - predictableSatisfaction;

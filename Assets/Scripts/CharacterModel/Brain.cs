@@ -6,6 +6,11 @@ public class Brain : MonoBehaviour
 {
     [SerializeField] private Memory _memory;
     [SerializeField] private Subconscious _subconscious;
+    
+    [Header("Agents")]
+    [SerializeField] private InstinctBrainAgent _instincts;
+    [SerializeField] private EmotionalBrainAgent _emotions;
+    [SerializeField] private BrainAgent _brainDecision;
 
     //Пока кринжовая проверка на воспоминание, ибо память реализована элементарно от задуманной.
     //Да и в целом функция пока кринжовая
@@ -21,6 +26,17 @@ public class Brain : MonoBehaviour
         }
 
         Feeling feeling = _subconscious.FeelingFromTheObject(foreignObject);
-        //Закидываем полученное в нейронки
+        _instincts.SetFeeling(feeling);
+        _emotions.SetFeeling(feeling);
+
+        RequestBrainDecision();
+    }
+
+
+    private void RequestBrainDecision()
+    {
+        _instincts.RequestDecision();
+        _emotions.RequestDecision();
+        _brainDecision.RequestDecision();
     }
 }

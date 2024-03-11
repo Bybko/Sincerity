@@ -25,22 +25,6 @@ public class PhysicalStatus : MonoBehaviour
     }
 
 
-    public float GetCurrentFoodResources()
-    {
-        return _currentFoodResources;
-    }
-
-    public float GetRequestedFoodResources()
-    {
-        return _requestedFoodResources;
-    }
-
-
-    public float GetHealth() 
-    {
-        return _health;
-    }
-
     private IEnumerator DecreaseEnergyOverTime()
     {
         while (true)
@@ -68,4 +52,9 @@ public class PhysicalStatus : MonoBehaviour
         }
         //Debug.Log("Текущее здоровье: " + _health);
     }
+
+
+    public float GetCurrentFoodResources() { return _currentFoodResources; }
+    public float GetRequestedFoodResources() { return _requestedFoodResources; }
+    public float GetHealth() { return _health; }
 }

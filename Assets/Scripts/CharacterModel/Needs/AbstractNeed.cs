@@ -11,9 +11,8 @@ public abstract class AbstractNeed : MonoBehaviour
 
 
     public abstract void SatisfactionLevelCalculation();
-
-
     public abstract float PredictHappinessChange(Goal foreignObject);
+    public abstract float PredictSatisfactionChange(Goal foreignObject);
 
 
     public void Initialize()
@@ -42,4 +41,8 @@ public abstract class AbstractNeed : MonoBehaviour
     {
         return predictableSatisfaction * (predictableSeverity * 100);
     }
+
+
+    public float GetSeverity() { return _severity; }
+    public float GetSatisfaction() { return _satisfaction; }
 }

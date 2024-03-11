@@ -1,18 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.MLAgents;
+using Unity.MLAgents.Sensors;
+using Unity.MLAgents.Actuators;
 
-public class BrainAgent : MonoBehaviour
+public class BrainAgent : Agent
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private InstinctBrainAgent _instincts;
+    [SerializeField] private EmotionalBrainAgent _emotions;
+
+    private float _finalDecision = 0f;
+
+
+    public override void CollectObservations(VectorSensor sensor)
     {
-        
+        sensor.AddObservation(_instincts.GetInstinctDecision());
+        sensor.AddObservation(_emotions.GetEmotionalDecision());
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public override void OnActionReceived(ActionBuffers actions)
     {
-        
+        _finalDecision = actions.ContinuousActions[0];
     }
+
+
+    public float GetFinalDecision() { return _finalDecision; }
 }
