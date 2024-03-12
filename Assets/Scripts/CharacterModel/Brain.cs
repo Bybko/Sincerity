@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,6 +15,9 @@ public class Brain : MonoBehaviour
     [SerializeField] private InstinctBrainAgent _instincts;
     [SerializeField] private EmotionalBrainAgent _emotions;
     [SerializeField] private BrainAgent _brainDecision;
+
+    //cringe cringe cringe cringe cringe cringe
+    private float _currentDecision = 0f;
 
     //Пока кринжовая проверка на воспоминание, ибо память реализована элементарно от задуманной.
     //Да и в целом функция пока кринжовая
@@ -32,6 +37,8 @@ public class Brain : MonoBehaviour
         _emotions.SetFeeling(feeling);
 
         RequestBrainDecision();
+
+        MakeGoalDecision(foreignObject);
     }
 
 
@@ -40,5 +47,21 @@ public class Brain : MonoBehaviour
         _instincts.RequestDecision();
         _emotions.RequestDecision();
         _brainDecision.RequestDecision();
+    }
+
+
+    private void MakeGoalDecision(Goal foreignObject)
+    {
+        if (_currentDecision == 0f)
+        {
+            _currentDecision = _brainDecision.GetFinalDecision();
+            _navMesh.SetDestination(foreignObject.transform.position);
+        }
+
+        if (_currentDecision < _brainDecision.GetFinalDecision())
+        {
+            _currentDecision = _brainDecision.GetFinalDecision();
+            _navMesh.SetDestination(foreignObject.transform.position);
+        }
     }
 }
