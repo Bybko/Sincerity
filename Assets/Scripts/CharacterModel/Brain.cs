@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Brain : MonoBehaviour
 {
     [SerializeField] private Memory _memory;
     [SerializeField] private Subconscious _subconscious;
-    
+    [SerializeField] private NavMeshAgent _navMesh;
+
     [Header("Agents")]
     [SerializeField] private InstinctBrainAgent _instincts;
     [SerializeField] private EmotionalBrainAgent _emotions;
