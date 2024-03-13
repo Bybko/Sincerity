@@ -8,7 +8,7 @@ public class Feeling
     private float _foodSatisfactionChange = 0f;
     private float _healthChange = 0f;
     private float _totalHappinessChange = 0f;
-    private float _mostSeveralNeedSatisfaction = 0f;
+    private float _mostSeveralNeedSatisfaction;
 
 
     public float GetHealthChange() {  return _healthChange; }

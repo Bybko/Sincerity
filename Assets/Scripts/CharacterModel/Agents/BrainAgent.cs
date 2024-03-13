@@ -11,13 +11,19 @@ public class BrainAgent : Agent
     //temporary for train episode initialize
     [SerializeField] private Receptors _receptors;
     [SerializeField] private PhysicalStatus _physicalStatus;
+    [SerializeField] private Subconscious _subconscious;
+    [SerializeField] private Transform _playerTransform;
 
     [SerializeField] private InstinctBrainAgent _instincts;
     [SerializeField] private EmotionalBrainAgent _emotions;
 
     private float _finalDecision = 0f;
 
-
+    //Only for a training
+    private void Update()
+    {
+        CheckTrainEpisode();
+    }
 
     public override void CollectObservations(VectorSensor sensor)
     {
@@ -34,34 +40,51 @@ public class BrainAgent : Agent
 
     public override void OnEpisodeBegin()
     {
-        transform.localPosition = Vector3.zero;
+        _playerTransform.localPosition = Vector3.zero;
         _physicalStatus.SetRandomValues();
 
         _receptors.CheckForeignObjects();
     }
 
 
-    public void OnTriggerEnter(Collider other)
+    public void CheckTrainEpisode()
     {
-        if (other.TryGetComponent<Goal>(out Goal goal))
+        //Ну и наверн надо какое-то взаимодействие сделать?)))) 
+        //Хотя это мб не здесь, мб в рецепторах это обрабатывать OnTriggerEnter, чтобы изменения о которых говорилось
+        //в объекте реально произошли
+        if (_physicalStatus.GetHealth() <= 0)
         {
-            //Ну и наверн надо какое-то взаимодействие сделать?)))) 
-            //Хотя это мб не здесь, мб в рецепторах это обрабатывать OnTriggerEnter, чтобы изменения о которых говорилось
-            //в объекте реально произошли
-            SetReward(1);
-            _emotions.SetReward(1);
-            _instincts.SetReward(1);
+            SetReward(-100f);
+            Debug.Log("Ti eblan");
             EndEpisode();
         }
 
-        if (other.TryGetComponent<Wall>(out Wall wall)) 
+        if (_physicalStatus.GetHealth() == 100)
         {
-            SetReward(-10f);
-            _emotions.SetReward(-10f);
-            _instincts.SetReward(-10f);
+            Debug.Log("Zdorovi");
+            SetReward(10f);
+        }
+
+        if (_physicalStatus.GetCurrentFoodResources() == 100)
+        {
+            Debug.Log("Sity");
+            SetReward(5f);
+        }
+
+        if (_subconscious.GetHappines() == 0) 
+        {
+            SetReward(100f);
+            Debug.Log("Ti bog");
             EndEpisode();
         }
+        /*float award = _subconscious.GetHappines(); //maybe happines difference, not current level, think layter
+        Debug.Log("Award: " + award);
+        SetReward(award);
+        _emotions.SetReward(award);
+        _instincts.SetReward(award);
+        EndEpisode();*/
     }
+
 
     public float GetFinalDecision() { return _finalDecision; }
 }

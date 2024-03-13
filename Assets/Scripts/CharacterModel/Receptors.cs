@@ -7,6 +7,7 @@ public class Receptors : MonoBehaviour
 {
     [SerializeField] private Brain _brain;
     [SerializeField] private Subconscious _subconscious;
+    [SerializeField] private BrainAgent _brainAgent; //for training
     // Если я хочу принимать данные с объектов, то хотя бы можно сделать не прям настолько втупую))))
     [SerializeField] private List<Goal> _foreignObjects;
 
@@ -27,6 +28,7 @@ public class Receptors : MonoBehaviour
         if (other.TryGetComponent<Goal>(out Goal goal)) 
         {
             _subconscious.ForeignObjectsInfluence(goal);
+            _brainAgent.CheckTrainEpisode();
         }
     }
 }

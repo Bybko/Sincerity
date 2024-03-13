@@ -37,8 +37,8 @@ public class PhysicalStatus : MonoBehaviour
 
     public void SetRandomValues()
     {
-        _currentFoodResources = Random.Range(0f, 1f);
-        _health = Random.Range(15f, 100f);
+        _currentFoodResources = Random.Range(0f, 50f);
+        _health = Random.Range(15f, 50f);
     }
 
 

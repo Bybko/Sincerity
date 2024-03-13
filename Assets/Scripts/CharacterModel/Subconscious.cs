@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using static UnityEditor.VersionControl.Message;
 
@@ -21,13 +22,13 @@ public class Subconscious : MonoBehaviour
         }
     }
 
-
-    private void Update()
+    //this doesn't need in training
+    /*private void Update()
     {
         //Мб для оптимизации какой-нибудь таймер добавить, чтобы не прям каждый кадр это выполнялось
         //Раз в минуту например, и в том случае, если изменение какое-то внешнее. Чтобы сразу происходило обновление.
         UpdateHapinnes();
-    }
+    }*/
 
 
     public Feeling FeelingFromTheObject(Goal foreignObject)
@@ -62,6 +63,13 @@ public class Subconscious : MonoBehaviour
     }
 
 
+    public float GetHappines()
+    {
+        UpdateHapinnes();
+        return _hapinnes;
+    }
+
+
     private void UpdateHapinnes()
     {
         //Подумать над рассчётом счастья. Может быть изменить.
@@ -72,6 +80,6 @@ public class Subconscious : MonoBehaviour
             need.SatisfactionLevelCalculation();
             _hapinnes += need.NeedResult();
         }
-        Debug.Log("Счастье: " + _hapinnes);
+        //Debug.Log("Счастье: " + _hapinnes);
     }
 }

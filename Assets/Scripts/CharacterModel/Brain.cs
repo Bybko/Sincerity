@@ -16,8 +16,8 @@ public class Brain : MonoBehaviour
     [SerializeField] private EmotionalBrainAgent _emotions;
     [SerializeField] private BrainAgent _brainDecision;
 
-    //cringe cringe cringe cringe cringe cringe
-    private float _currentDecision = 0f;
+    //cringe cringe cringe cringe cringe cringe IT'S ERROR HERE
+    public float _currentDecision = 0f;
 
     //Пока кринжовая проверка на воспоминание, ибо память реализована элементарно от задуманной.
     //Да и в целом функция пока кринжовая
