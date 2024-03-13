@@ -35,6 +35,17 @@ public class PhysicalStatus : MonoBehaviour
     }
 
 
+    public void SetRandomValues()
+    {
+        _currentFoodResources = Random.Range(0f, 1f);
+        _health = Random.Range(15f, 100f);
+    }
+
+
+    public void ChangeFoodResources(float foodValue) { _currentFoodResources += foodValue; }
+    public void ChangeHealth(float hpValue) { _health += hpValue; }
+
+
     private void DecreaseEnergy()
     {
         _currentFoodResources = Mathf.Clamp(_currentFoodResources - _foodEnergySpending, 0f, _requestedFoodResources);

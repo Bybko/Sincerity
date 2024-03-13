@@ -55,6 +55,13 @@ public class Subconscious : MonoBehaviour
     }
 
 
+    public void ForeignObjectsInfluence(Goal foreignObject)
+    {
+        _physicalStatus.ChangeFoodResources(foreignObject.GetFoodValue());
+        _physicalStatus.ChangeHealth(foreignObject.GetDamageValue());
+    }
+
+
     private void UpdateHapinnes()
     {
         //Подумать над рассчётом счастья. Может быть изменить.
