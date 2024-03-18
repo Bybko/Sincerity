@@ -27,6 +27,8 @@ public class BrainAgent : Agent
 
     public override void CollectObservations(VectorSensor sensor)
     {
+        //Debug.Log("Feelings: " + _emotions.GetEmotionalDecision());
+        //Debug.Log("Instincts: " + _instincts.GetInstinctDecision());
         sensor.AddObservation(_instincts.GetInstinctDecision());
         sensor.AddObservation(_emotions.GetEmotionalDecision());
     }
@@ -55,26 +57,34 @@ public class BrainAgent : Agent
         if (_physicalStatus.GetHealth() <= 0)
         {
             SetReward(-100f);
-            Debug.Log("Ti eblan");
+            _emotions.SetReward(-100f);
+            _instincts.SetReward(-100f);
+            //Debug.Log("Ti eblan");
             EndEpisode();
         }
 
         if (_physicalStatus.GetHealth() == 100)
         {
-            Debug.Log("Zdorovi");
+            //Debug.Log("Zdorovi");
             SetReward(10f);
+            _emotions.SetReward(10f);
+            _instincts.SetReward(10f);
         }
 
         if (_physicalStatus.GetCurrentFoodResources() == 100)
         {
-            Debug.Log("Sity");
+            //Debug.Log("Sity");
             SetReward(5f);
+            _emotions.SetReward(5f);
+            _instincts.SetReward(5f);
         }
 
         if (_subconscious.GetHappines() == 0) 
         {
             SetReward(100f);
-            Debug.Log("Ti bog");
+            _emotions.SetReward(100f);
+            _instincts.SetReward(100f);
+            //Debug.Log("Ti bog");
             EndEpisode();
         }
         /*float award = _subconscious.GetHappines(); //maybe happines difference, not current level, think layter

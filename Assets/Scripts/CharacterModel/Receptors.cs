@@ -8,6 +8,8 @@ public class Receptors : MonoBehaviour
     [SerializeField] private Brain _brain;
     [SerializeField] private Subconscious _subconscious;
     [SerializeField] private BrainAgent _brainAgent; //for training
+    [SerializeField] private EmotionalBrainAgent _emotions; //for debugging temporary
+    [SerializeField] private InstinctBrainAgent _instinct; //for debugging temporary
     // Если я хочу принимать данные с объектов, то хотя бы можно сделать не прям настолько втупую))))
     [SerializeField] private List<Goal> _foreignObjects;
 
@@ -16,9 +18,15 @@ public class Receptors : MonoBehaviour
     //взаимодействовать, потом мозг вызовет оценку этого объекта и уже сам мозг после оценки решит, сохранять его или нет.
     public void CheckForeignObjects()
     {
-        for (int i = 0; i < _foreignObjects.Count; i++)
+        int i = 0;
+        foreach (Goal foreignObject in _foreignObjects)
         {
-            _brain.AnalizeForeignObjects(_foreignObjects[i]);
+            Debug.Log("Send object " + i);
+            _brain.AnalizeForeignObjects(foreignObject);
+            Debug.Log("Emotions about object " + i + " are " + _emotions.GetEmotionalDecision());
+            Debug.Log("Instincts about object " + i + " are " + _instinct.GetInstinctDecision());
+            Debug.Log("I would like object " + i + " for " + _brainAgent.GetFinalDecision());
+            i++;
         }
     }
     //Кстати их же надо будет чистить их списка потом, когда они будут выходить за рамки доступного

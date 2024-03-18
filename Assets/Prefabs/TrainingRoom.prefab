@@ -445,7 +445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d338879c2dcf84f89566268b79188c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _foodValue: 0
+  _foodValue: 5
   _damageValue: -20
 --- !u!135 &2295161442006627229
 SphereCollider:
@@ -664,7 +664,10 @@ MonoBehaviour:
   _brain: {fileID: 5338911918182856610}
   _subconscious: {fileID: 7177969452162092215}
   _brainAgent: {fileID: 893654310308634005}
+  _emotions: {fileID: 1584718571757772193}
+  _instinct: {fileID: 1657357988708141422}
   _foreignObjects:
+  - {fileID: 6223791127145721063}
   - {fileID: 3040681206834933534}
   - {fileID: 212959194093082385}
   - {fileID: 2612163295046707918}
@@ -950,8 +953,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d338879c2dcf84f89566268b79188c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _foodValue: 20
-  _damageValue: 20
+  _foodValue: 5
+  _damageValue: 0
 --- !u!135 &7577382443098795295
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1296,8 +1299,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d338879c2dcf84f89566268b79188c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _foodValue: 0
-  _damageValue: -20
+  _foodValue: -10
+  _damageValue: 10
 --- !u!135 &7661131175911993947
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1624,7 +1627,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5316390152587566700
 Transform:
   m_ObjectHideFlags: 0
@@ -1724,7 +1727,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _foodValue: 0
-  _damageValue: -50
+  _damageValue: -100
 --- !u!135 &4424453505105513013
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1842,6 +1845,7 @@ MonoBehaviour:
   _instincts: {fileID: 1657357988708141422}
   _emotions: {fileID: 1584718571757772193}
   _brainDecision: {fileID: 893654310308634005}
+  _currentDecision: 0
 --- !u!114 &5160046408094879190
 MonoBehaviour:
   m_ObjectHideFlags: 0

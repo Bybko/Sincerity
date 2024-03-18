@@ -11,7 +11,6 @@ public class Subconscious : MonoBehaviour
     [SerializeField] private PhysicalStatus _physicalStatus;
 
     private float _hapinnes = 0f;
-    private Feeling _feelingAboutObject = new Feeling();
 
 
     private void Start()
@@ -33,6 +32,7 @@ public class Subconscious : MonoBehaviour
 
     public Feeling FeelingFromTheObject(Goal foreignObject)
     {
+        Feeling _feelingAboutObject = new Feeling();
         //Пока только адаптировано для двух потребностей, поэтому как минимум на эмоцию поступает только одна самая выраженная потребность,а не к примеру 4
         float happinessChange = 0f;
         AbstractNeed mostSeveralNeed = null;
