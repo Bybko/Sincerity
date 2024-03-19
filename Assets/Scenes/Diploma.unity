@@ -1348,6 +1348,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bbd8f3ab62a93b4d9440e9bc4862ec4, type: 3}
+--- !u!114 &1845462930 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5338911918182856610, guid: 1bbd8f3ab62a93b4d9440e9bc4862ec4, type: 3}
+  m_PrefabInstance: {fileID: 4256053394114935785}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcb1710f7dcab2a4496dfaaa8d5fbc06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1914642865
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1579,10 +1590,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 893654310308634005, guid: 1bbd8f3ab62a93b4d9440e9bc4862ec4, type: 3}
+      propertyPath: _brain
+      value: 
+      objectReference: {fileID: 1845462930}
+    - target: {fileID: 1584718571757772193, guid: 1bbd8f3ab62a93b4d9440e9bc4862ec4, type: 3}
+      propertyPath: _brain
+      value: 
+      objectReference: {fileID: 1845462930}
+    - target: {fileID: 1657357988708141422, guid: 1bbd8f3ab62a93b4d9440e9bc4862ec4, type: 3}
+      propertyPath: _brain
+      value: 
+      objectReference: {fileID: 1845462930}
+    - target: {fileID: 5160046408094879190, guid: 1bbd8f3ab62a93b4d9440e9bc4862ec4, type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 5022602860645237092, guid: fddea19c734e0cd4a9fc95784c642eef, type: 3}
+    - target: {fileID: 5160046408094879190, guid: 1bbd8f3ab62a93b4d9440e9bc4862ec4, type: 3}
+      propertyPath: m_BehaviorType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7240923624950705389, guid: 1bbd8f3ab62a93b4d9440e9bc4862ec4, type: 3}
       propertyPath: m_Name
       value: TrainingRoom
       objectReference: {fileID: 0}
+    - target: {fileID: 7452315665819734971, guid: 1bbd8f3ab62a93b4d9440e9bc4862ec4, type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 5022602860645237092, guid: e24e59b25d1dddf4abb61662ca85e2bd, type: 3}
+    - target: {fileID: 8121884051781673563, guid: 1bbd8f3ab62a93b4d9440e9bc4862ec4, type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 5022602860645237092, guid: 2567375d417f4c04b8eaead10450ab7e, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

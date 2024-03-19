@@ -14,6 +14,7 @@ public class BrainAgent : Agent
     [SerializeField] private Subconscious _subconscious;
     [SerializeField] private Transform _playerTransform;
 
+    [SerializeField] private Brain _brain;
     [SerializeField] private InstinctBrainAgent _instincts;
     [SerializeField] private EmotionalBrainAgent _emotions;
 
@@ -37,6 +38,7 @@ public class BrainAgent : Agent
     public override void OnActionReceived(ActionBuffers actions)
     {
         _finalDecision = actions.ContinuousActions[0];
+        _brain.IsFinalDecisionReady(true);
     }
 
 
@@ -45,7 +47,7 @@ public class BrainAgent : Agent
         _playerTransform.localPosition = Vector3.zero;
         _physicalStatus.SetRandomValues();
 
-        _receptors.CheckForeignObjects();
+        StartCoroutine(_receptors.CheckForeignObjects());
     }
 
 
@@ -59,13 +61,13 @@ public class BrainAgent : Agent
             SetReward(-100f);
             _emotions.SetReward(-100f);
             _instincts.SetReward(-100f);
-            //Debug.Log("Ti eblan");
+            Debug.Log("Ti eblan");
             EndEpisode();
         }
 
         if (_physicalStatus.GetHealth() == 100)
         {
-            //Debug.Log("Zdorovi");
+            Debug.Log("Zdorovi");
             SetReward(10f);
             _emotions.SetReward(10f);
             _instincts.SetReward(10f);
@@ -73,7 +75,7 @@ public class BrainAgent : Agent
 
         if (_physicalStatus.GetCurrentFoodResources() == 100)
         {
-            //Debug.Log("Sity");
+            Debug.Log("Sity");
             SetReward(5f);
             _emotions.SetReward(5f);
             _instincts.SetReward(5f);
@@ -84,7 +86,7 @@ public class BrainAgent : Agent
             SetReward(100f);
             _emotions.SetReward(100f);
             _instincts.SetReward(100f);
-            //Debug.Log("Ti bog");
+            Debug.Log("Ti bog");
             EndEpisode();
         }
         /*float award = _subconscious.GetHappines(); //maybe happines difference, not current level, think layter

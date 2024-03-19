@@ -16,8 +16,11 @@ public class Brain : MonoBehaviour
     [SerializeField] private EmotionalBrainAgent _emotions;
     [SerializeField] private BrainAgent _brainDecision;
 
+    private bool _isEmotionalDecisionReady = false;
+    private bool _isInstinctDecisionReady = false;
+    private bool _isFinalDecisionReady = false;
     //cringe cringe cringe cringe cringe cringe
-    public float _currentDecision = 0f;
+    private float _currentDecision = 0f;
     private Transform _bestGoal;
 
 
@@ -28,7 +31,7 @@ public class Brain : MonoBehaviour
 
     //Пока кринжовая проверка на воспоминание, ибо память реализована элементарно от задуманной.
     //Да и в целом функция пока кринжовая
-    public void AnalizeForeignObjects(Goal foreignObject)
+    public IEnumerator AnalizeForeignObjects(Goal foreignObject)
     {
         if (_memory.TryingToRemember(foreignObject))
         {
@@ -39,26 +42,40 @@ public class Brain : MonoBehaviour
             _memory.MemorizeObject(foreignObject);
         }
 
-        Feeling feeling = _subconscious.FeelingFromTheObject(foreignObject);
+        Feeling feeling = _subconscious.FeelingFromTheObject(foreignObject); //потом заменить это и сразу в функции передавать метод
         _instincts.SetFeeling(feeling);
         _emotions.SetFeeling(feeling);
-        Debug.Log("Feelings were setted");
-
-        Debug.Log("Calling brain request...");
-        RequestBrainDecision();
-        Debug.Log("Instincts: " + _instincts.GetInstinctDecision());
-        Debug.Log("Feelings: " + _emotions.GetEmotionalDecision());
-        Debug.Log(_brainDecision.GetFinalDecision());
+        //Debug.Log("Food Change: " + feeling.GetFoodChange());
+        //Debug.Log("Health Change: " + feeling.GetHealthChange());
+        Debug.Log("Need Change: " + feeling.GetMostNeedSatisfaction());
+        Debug.Log("Total Change: " + feeling.GetTotalHappinessChange()); 
+        yield return StartCoroutine(RequestBrainDecision());
+        //Debug.Log("Instincts: " + _instincts.GetInstinctDecision());
+        //Debug.Log("Feelings: " + _emotions.GetEmotionalDecision());
+        //Debug.Log(_brainDecision.GetFinalDecision());
         MakeGoalDecision(foreignObject);
-        Debug.Log("Request is over");
+        //Debug.Log("Request is over");
     }
 
 
-    private void RequestBrainDecision()
+    private IEnumerator RequestBrainDecision()
     {
+        Debug.Log("Before Request" + _emotions.GetEmotionalDecision());
         _instincts.RequestDecision();
         _emotions.RequestDecision();
+        
+        yield return new WaitUntil(() => _isEmotionalDecisionReady && _isInstinctDecisionReady);
+        
+        //reset for next decision
+        IsEmotionalDecisionReady(false);
+        IsInstinctsDecisionReady(false);
+        
+        Debug.Log("After Request" + _emotions.GetEmotionalDecision());
         _brainDecision.RequestDecision();
+
+        yield return new WaitUntil(() => _isFinalDecisionReady);
+
+        IsFinalDecisionReady(false);
     }
 
     //по хорошему это всё говно надо из памяти брать
@@ -76,4 +93,9 @@ public class Brain : MonoBehaviour
             _bestGoal = foreignObject.transform;
         }
     }
+
+
+    public void IsInstinctsDecisionReady(bool newStatus) { _isInstinctDecisionReady = newStatus; }
+    public void IsEmotionalDecisionReady(bool newStatus) { _isEmotionalDecisionReady = newStatus; }
+    public void IsFinalDecisionReady(bool newStatus) { _isFinalDecisionReady = newStatus; }
 }
