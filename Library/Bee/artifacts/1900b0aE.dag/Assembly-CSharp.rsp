@@ -461,7 +461,6 @@
 "Assets/Scripts/CharacterModel/Receptors.cs"
 "Assets/Scripts/CharacterModel/Subconscious.cs"
 "Assets/Scripts/Goal.cs"
-"Assets/Scripts/Wall.cs"
 -langversion:9.0
 
 /deterministic

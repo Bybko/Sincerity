@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 925822271823424955}
   - component: {fileID: 5485679836049485566}
   - component: {fileID: 6786838137175284952}
-  - component: {fileID: 2191203384978165171}
   - component: {fileID: 2542090407153698733}
   m_Layer: 0
   m_Name: Wall (3)
@@ -107,18 +106,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2191203384978165171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 952108114929808607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e10dcf0d97808b44d8f014595baeb075, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &2542090407153698733
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -195,7 +182,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: 546d2e2672d01a84b8760330018b5f6a, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: EmotionalDecision
@@ -220,6 +207,7 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
+  _brain: {fileID: 5338911918182856610}
 --- !u!1 &1830664505463820811
 GameObject:
   m_ObjectHideFlags: 0
@@ -664,8 +652,6 @@ MonoBehaviour:
   _brain: {fileID: 5338911918182856610}
   _subconscious: {fileID: 7177969452162092215}
   _brainAgent: {fileID: 893654310308634005}
-  _emotions: {fileID: 1584718571757772193}
-  _instinct: {fileID: 1657357988708141422}
   _foreignObjects:
   - {fileID: 6223791127145721063}
   - {fileID: 3040681206834933534}
@@ -705,7 +691,6 @@ GameObject:
   - component: {fileID: 6969419703007461797}
   - component: {fileID: 1729823696659310086}
   - component: {fileID: 1271730482230272218}
-  - component: {fileID: 3405227905119142148}
   - component: {fileID: 5663755736161846060}
   m_Layer: 0
   m_Name: Wall (1)
@@ -800,18 +785,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3405227905119142148
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3016918647333931312}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e10dcf0d97808b44d8f014595baeb075, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &5663755736161846060
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1051,7 +1024,6 @@ GameObject:
   - component: {fileID: 3927690443419982078}
   - component: {fileID: 1584289038752753478}
   - component: {fileID: 1869796668941846657}
-  - component: {fileID: 2288528260977796605}
   - component: {fileID: 696532397803077106}
   m_Layer: 0
   m_Name: Wall (2)
@@ -1146,18 +1118,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2288528260977796605
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3280619633001970041}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e10dcf0d97808b44d8f014595baeb075, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &696532397803077106
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1404,7 +1364,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: d39f196a1b868904f9404008037f910e, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: InstinctDecision
@@ -1429,6 +1389,7 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
+  _brain: {fileID: 5338911918182856610}
 --- !u!1 &7088244833352742067
 GameObject:
   m_ObjectHideFlags: 0
@@ -1441,7 +1402,6 @@ GameObject:
   - component: {fileID: 4801781890664195771}
   - component: {fileID: 6883285734696740661}
   - component: {fileID: 5205673937584273375}
-  - component: {fileID: 7488369521304956640}
   - component: {fileID: 3070549594163217621}
   m_Layer: 0
   m_Name: Wall (4)
@@ -1536,18 +1496,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7488369521304956640
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7088244833352742067}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e10dcf0d97808b44d8f014595baeb075, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &3070549594163217621
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1845,7 +1793,6 @@ MonoBehaviour:
   _instincts: {fileID: 1657357988708141422}
   _emotions: {fileID: 1584718571757772193}
   _brainDecision: {fileID: 893654310308634005}
-  _currentDecision: 0
 --- !u!114 &5160046408094879190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1868,7 +1815,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: f57a50be009760c4ca14e88e99559c26, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: RationalDecision
@@ -1897,6 +1844,7 @@ MonoBehaviour:
   _physicalStatus: {fileID: 1916180577376629856}
   _subconscious: {fileID: 7177969452162092215}
   _playerTransform: {fileID: 7617733329458642920}
+  _brain: {fileID: 5338911918182856610}
   _instincts: {fileID: 1657357988708141422}
   _emotions: {fileID: 1584718571757772193}
 --- !u!114 &7177969452162092215

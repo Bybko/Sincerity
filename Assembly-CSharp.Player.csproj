@@ -121,7 +121,6 @@
     <Compile Include="Assets\ML-Agents\Examples\SharedAssets\Scripts\FlyCamera.cs" />
     <Compile Include="Assets\Scripts\CharacterModel\PhysicalStatus.cs" />
     <Compile Include="Assets\ML-Agents\Examples\SharedAssets\Scripts\JointDriveController.cs" />
-    <Compile Include="Assets\Scripts\Wall.cs" />
     <Compile Include="Assets\ML-Agents\Examples\GridWorld\Scripts\GridSettings.cs" />
     <Compile Include="Assets\ML-Agents\Examples\PushBlock\Scripts\PushBlockEnvController.cs" />
     <Compile Include="Assets\Scripts\CharacterModel\Agents\InstinctBrainAgent.cs" />

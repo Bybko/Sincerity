@@ -1,14 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class Feeling
 {
-    //Пока только адаптировано для двух потребностей
+    //Right now is only adapt for two needs
     private float _foodSatisfactionChange = 0f;
     private float _healthChange = 0f;
     private float _totalHappinessChange = 0f;
-    private float _mostSeveralNeedSatisfaction;
+    private float _mostSeveralNeedSatisfaction = 0f;
 
 
     public float GetHealthChange() {  return _healthChange; }

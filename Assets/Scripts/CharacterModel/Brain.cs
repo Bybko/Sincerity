@@ -1,7 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -19,6 +16,7 @@ public class Brain : MonoBehaviour
     private bool _isEmotionalDecisionReady = false;
     private bool _isInstinctDecisionReady = false;
     private bool _isFinalDecisionReady = false;
+
     //cringe cringe cringe cringe cringe cringe
     private float _currentDecision = 0f;
     private Transform _bestGoal;
@@ -42,25 +40,18 @@ public class Brain : MonoBehaviour
             _memory.MemorizeObject(foreignObject);
         }
 
-        Feeling feeling = _subconscious.FeelingFromTheObject(foreignObject); //потом заменить это и сразу в функции передавать метод
+        Feeling feeling = _subconscious.FeelingFromTheObject(foreignObject);
         _instincts.SetFeeling(feeling);
         _emotions.SetFeeling(feeling);
-        //Debug.Log("Food Change: " + feeling.GetFoodChange());
-        //Debug.Log("Health Change: " + feeling.GetHealthChange());
-        Debug.Log("Need Change: " + feeling.GetMostNeedSatisfaction());
-        Debug.Log("Total Change: " + feeling.GetTotalHappinessChange()); 
+
         yield return StartCoroutine(RequestBrainDecision());
-        //Debug.Log("Instincts: " + _instincts.GetInstinctDecision());
-        //Debug.Log("Feelings: " + _emotions.GetEmotionalDecision());
-        //Debug.Log(_brainDecision.GetFinalDecision());
+
         MakeGoalDecision(foreignObject);
-        //Debug.Log("Request is over");
     }
 
 
     private IEnumerator RequestBrainDecision()
     {
-        Debug.Log("Before Request" + _emotions.GetEmotionalDecision());
         _instincts.RequestDecision();
         _emotions.RequestDecision();
         
@@ -70,7 +61,6 @@ public class Brain : MonoBehaviour
         IsEmotionalDecisionReady(false);
         IsInstinctsDecisionReady(false);
         
-        Debug.Log("After Request" + _emotions.GetEmotionalDecision());
         _brainDecision.RequestDecision();
 
         yield return new WaitUntil(() => _isFinalDecisionReady);
