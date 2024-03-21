@@ -454,13 +454,15 @@
 "Assets/Scripts/CharacterModel/Brain.cs"
 "Assets/Scripts/CharacterModel/Feeling.cs"
 "Assets/Scripts/CharacterModel/Memory.cs"
+"Assets/Scripts/CharacterModel/MemoryObject.cs"
 "Assets/Scripts/CharacterModel/Needs/AbstractNeed.cs"
 "Assets/Scripts/CharacterModel/Needs/ComfortNeed.cs"
 "Assets/Scripts/CharacterModel/Needs/FoodNeed.cs"
 "Assets/Scripts/CharacterModel/PhysicalStatus.cs"
 "Assets/Scripts/CharacterModel/Receptors.cs"
 "Assets/Scripts/CharacterModel/Subconscious.cs"
-"Assets/Scripts/Goal.cs"
+"Assets/Scripts/ForeignObject.cs"
+"Assets/Scripts/Timer.cs"
 -langversion:9.0
 
 /deterministic

@@ -29,7 +29,7 @@ public class Brain : MonoBehaviour
 
     //Пока кринжовая проверка на воспоминание, ибо память реализована элементарно от задуманной.
     //Да и в целом функция пока кринжовая
-    public IEnumerator AnalizeForeignObjects(Goal foreignObject)
+    public IEnumerator AnalizeForeignObjects(ForeignObject foreignObject)
     {
         if (_memory.TryingToRemember(foreignObject))
         {
@@ -69,7 +69,7 @@ public class Brain : MonoBehaviour
     }
 
     //по хорошему это всё говно надо из памяти брать
-    private void MakeGoalDecision(Goal foreignObject)
+    private void MakeGoalDecision(ForeignObject foreignObject)
     {
         if (_currentDecision == 0f)
         {

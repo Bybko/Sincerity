@@ -9,7 +9,7 @@ public class Receptors : MonoBehaviour
     [SerializeField] private Subconscious _subconscious;
     [SerializeField] private BrainAgent _brainAgent; //for training
     // Если я хочу принимать данные с объектов, то хотя бы можно сделать не прям настолько втупую))))
-    [SerializeField] private List<Goal> _foreignObjects;
+    [SerializeField] private List<ForeignObject> _foreignObjects;
 
 
     private void Start()
@@ -21,7 +21,7 @@ public class Receptors : MonoBehaviour
     //взаимодействовать, потом мозг вызовет оценку этого объекта и уже сам мозг после оценки решит, сохранять его или нет.
     public IEnumerator CheckForeignObjects()
     {
-        foreach (Goal foreignObject in _foreignObjects)
+        foreach (ForeignObject foreignObject in _foreignObjects)
         {
             yield return StartCoroutine(_brain.AnalizeForeignObjects(foreignObject));
         }
@@ -30,7 +30,7 @@ public class Receptors : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<Goal>(out Goal goal)) 
+        if (other.TryGetComponent<ForeignObject>(out ForeignObject goal)) 
         {
             _subconscious.ForeignObjectsInfluence(goal);
             _brainAgent.CheckTrainEpisode();

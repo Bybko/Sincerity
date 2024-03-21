@@ -69,6 +69,7 @@
     <Compile Include="Assets\ML-Agents\Examples\SharedAssets\Scripts\DirectionIndicator.cs" />
     <Compile Include="Assets\ML-Agents\Examples\FoodCollector\Scripts\FoodCollectorSettings.cs" />
     <Compile Include="Assets\ML-Agents\Examples\WallJump\Scripts\WallJumpSettings.cs" />
+    <Compile Include="Assets\Scripts\ForeignObject.cs" />
     <Compile Include="Assets\ML-Agents\Examples\Walker\Scripts\WalkerAgent.cs" />
     <Compile Include="Assets\ML-Agents\TestScenes\TestCompressedTexture\TestTextureSensorComponent.cs" />
     <Compile Include="Assets\ML-Agents\Examples\SharedAssets\Scripts\GroundContact.cs" />
@@ -93,11 +94,11 @@
     <Compile Include="Assets\Scripts\CharacterModel\Subconscious.cs" />
     <Compile Include="Assets\ML-Agents\Examples\SharedAssets\Scripts\SensorBase.cs" />
     <Compile Include="Assets\ML-Agents\Examples\PushBlock\Scripts\PushAgentBasic.cs" />
-    <Compile Include="Assets\Scripts\Goal.cs" />
     <Compile Include="Assets\ML-Agents\Examples\Match3\Scripts\Match3Agent.cs" />
     <Compile Include="Assets\ML-Agents\Examples\SharedAssets\Scripts\ProjectSettingsOverrides.cs" />
     <Compile Include="Assets\ML-Agents\Examples\SharedAssets\Scripts\OrientationCubeController.cs" />
     <Compile Include="Assets\ML-Agents\Examples\SharedAssets\Scripts\CollisionCallbacks.cs" />
+    <Compile Include="Assets\Scripts\CharacterModel\MemoryObject.cs" />
     <Compile Include="Assets\ML-Agents\Examples\SharedAssets\Scripts\TargetContact.cs" />
     <Compile Include="Assets\Scripts\CharacterModel\Needs\FoodNeed.cs" />
     <Compile Include="Assets\ML-Agents\Examples\SharedAssets\Scripts\TargetController.cs" />
@@ -115,6 +116,7 @@
     <Compile Include="Assets\Scripts\CharacterModel\Brain.cs" />
     <Compile Include="Assets\ML-Agents\Examples\Match3\Scripts\Match3TileSelector.cs" />
     <Compile Include="Assets\ML-Agents\Examples\Soccer\Scripts\SoccerBallController.cs" />
+    <Compile Include="Assets\Scripts\Timer.cs" />
     <Compile Include="Assets\ML-Agents\Examples\Sorter\Scripts\SorterAgent.cs" />
     <Compile Include="Assets\ML-Agents\Examples\Pyramids\Scripts\PyramidAgent.cs" />
     <Compile Include="Assets\Scripts\CharacterModel\Receptors.cs" />

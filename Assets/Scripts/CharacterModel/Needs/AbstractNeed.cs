@@ -11,8 +11,8 @@ public abstract class AbstractNeed : MonoBehaviour
 
 
     public abstract void SatisfactionLevelCalculation();
-    public abstract float PredictHappinessChange(Goal foreignObject);
-    public abstract float PredictSatisfactionChange(Goal foreignObject);
+    public abstract float PredictHappinessChange(ForeignObject foreignObject);
+    public abstract float PredictSatisfactionChange(ForeignObject foreignObject);
 
 
     public void Initialize()

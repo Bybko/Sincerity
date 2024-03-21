@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Goal : MonoBehaviour
+public class ForeignObject : MonoBehaviour
 {
     [SerializeField] private float _foodValue;
     [SerializeField] private float _damageValue;

@@ -5,15 +5,17 @@ using UnityEngine;
 
 public class Memory : MonoBehaviour
 {
+    private List<MemoryObject> _memoryObjects = new List<MemoryObject>();
+    private List<MemoryObject> _goals = new List<MemoryObject>();
     //Временное пиво элементарное представление
-    private List<Goal> _goals = new List<Goal>();
+    private List<ForeignObject> _goalss = new List<ForeignObject>();
 
     //Временное пиво элементарное представление
-    public bool TryingToRemember(Goal foreignObject)
+    public bool TryingToRemember(ForeignObject foreignObject)
     {
-        for (int i = 0; i < _goals.Count; i++)
+        for (int i = 0; i < _goalss.Count; i++)
         {
-            if (_goals[i] == foreignObject)
+            if (_goalss[i] == foreignObject)
             {
                 return true;
             }
@@ -22,8 +24,13 @@ public class Memory : MonoBehaviour
     }
 
     
-    public void MemorizeObject(Goal foreignObject)
+    public void MemorizeObject(ForeignObject foreignObject)
     {
-        _goals.Add(foreignObject);
+        MemoryObject memoryObject = new MemoryObject();
+        memoryObject.SetForeignObject(foreignObject);
+        _memoryObjects.Add(memoryObject);
     }
+
+
+    public void MemorizeDecision() { /*pass*/ }
 }

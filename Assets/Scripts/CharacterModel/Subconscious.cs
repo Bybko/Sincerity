@@ -29,7 +29,7 @@ public class Subconscious : MonoBehaviour
     }*/
 
 
-    public Feeling FeelingFromTheObject(Goal foreignObject)
+    public Feeling FeelingFromTheObject(ForeignObject foreignObject)
     {
         Feeling _feelingAboutObject = new Feeling();
         //Пока только адаптировано для двух потребностей, поэтому как минимум на эмоцию поступает только одна самая выраженная потребность,а не к примеру 4
@@ -55,7 +55,7 @@ public class Subconscious : MonoBehaviour
     }
 
 
-    public void ForeignObjectsInfluence(Goal foreignObject)
+    public void ForeignObjectsInfluence(ForeignObject foreignObject)
     {
         _physicalStatus.ChangeFoodResources(foreignObject.GetFoodValue());
         _physicalStatus.ChangeHealth(foreignObject.GetDamageValue());

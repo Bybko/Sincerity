@@ -21,7 +21,7 @@ public class FoodNeed : AbstractNeed
     }
 
 
-    public override float PredictSatisfactionChange(Goal foreignObject)
+    public override float PredictSatisfactionChange(ForeignObject foreignObject)
     {
         float predictableSatisfaction = Mathf.Clamp01((_physicalStatus.GetCurrentFoodResources() + 
             foreignObject.GetFoodValue()) / _physicalStatus.GetRequestedFoodResources());
@@ -29,7 +29,7 @@ public class FoodNeed : AbstractNeed
     }
 
 
-    public override float PredictHappinessChange(Goal foreignObject)
+    public override float PredictHappinessChange(ForeignObject foreignObject)
     {
         float predictableSatisfaction = Mathf.Clamp01( (_physicalStatus.GetCurrentFoodResources() + 
             foreignObject.GetFoodValue() ) / _physicalStatus.GetRequestedFoodResources());
