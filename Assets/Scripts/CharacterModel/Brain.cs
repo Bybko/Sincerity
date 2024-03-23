@@ -17,36 +17,33 @@ public class Brain : MonoBehaviour
     private bool _isInstinctDecisionReady = false;
     private bool _isFinalDecisionReady = false;
 
-    //cringe cringe cringe cringe cringe cringe
-    private float _currentDecision = 0f;
-    private Transform _bestGoal;
 
-
-    private void Update()
+    public IEnumerator AnalizeForeignObject(ForeignObject foreignObject)
     {
-        if (_bestGoal != null) { _navMesh.SetDestination(_bestGoal.position); }
-    }
+        MemoryObject rememberedObject = _memory.Remember(foreignObject);
 
-    //Пока кринжовая проверка на воспоминание, ибо память реализована элементарно от задуманной.
-    //Да и в целом функция пока кринжовая
-    public IEnumerator AnalizeForeignObjects(ForeignObject foreignObject)
-    {
-        if (_memory.TryingToRemember(foreignObject))
+        if (rememberedObject != null) 
         {
-            //Debug.Log("I remember it!");
+            _brainDecision.SetInputs(rememberedObject.GetInstinctDecision(), rememberedObject.GetEmotionalDecision());
+            _brainDecision.RequestDecision();
+
+            yield return new WaitUntil(() => _isFinalDecisionReady);
+
+            IsFinalDecisionReady(false);
         }
         else
         {
-            _memory.MemorizeObject(foreignObject);
+            Feeling feeling = _subconscious.FeelingFromTheObject(foreignObject);
+            _instincts.SetFeeling(feeling);
+            _emotions.SetFeeling(feeling);
+
+            yield return StartCoroutine(RequestBrainDecision());
+
+            _memory.MemorizeObject(foreignObject, _instincts.GetInstinctDecision(), 
+                _emotions.GetEmotionalDecision(), _brainDecision.GetFinalDecision());
         }
 
-        Feeling feeling = _subconscious.FeelingFromTheObject(foreignObject);
-        _instincts.SetFeeling(feeling);
-        _emotions.SetFeeling(feeling);
-
-        yield return StartCoroutine(RequestBrainDecision());
-
-        MakeGoalDecision(foreignObject);
+        AnalizeDecision();
     }
 
 
@@ -60,7 +57,8 @@ public class Brain : MonoBehaviour
         //reset for next decision
         IsEmotionalDecisionReady(false);
         IsInstinctsDecisionReady(false);
-        
+
+        _brainDecision.SetInputs(_instincts.GetInstinctDecision(), _emotions.GetEmotionalDecision());
         _brainDecision.RequestDecision();
 
         yield return new WaitUntil(() => _isFinalDecisionReady);
@@ -68,20 +66,13 @@ public class Brain : MonoBehaviour
         IsFinalDecisionReady(false);
     }
 
-    //по хорошему это всё говно надо из памяти брать
-    private void MakeGoalDecision(ForeignObject foreignObject)
-    {
-        if (_currentDecision == 0f)
-        {
-            _currentDecision = _brainDecision.GetFinalDecision();
-            _bestGoal = foreignObject.transform;
-        }
 
-        if (_currentDecision < _brainDecision.GetFinalDecision())
-        {
-            _currentDecision = _brainDecision.GetFinalDecision();
-            _bestGoal = foreignObject.transform;
-        }
+    private void AnalizeDecision()
+    {
+        MemoryObject newGoal = _memory.GetMostWantedObject();
+        _memory.AddNewGoal(newGoal);
+
+        _navMesh.SetDestination(_memory.GetMostWantedGoal().GetObjectTransform().position);
     }
 
 

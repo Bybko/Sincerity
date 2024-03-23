@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class Subconscious : MonoBehaviour
@@ -20,19 +18,15 @@ public class Subconscious : MonoBehaviour
         }
     }
 
-    //this doesn't need in training
-    /*private void Update()
+    private void Update()
     {
-        //Мб для оптимизации какой-нибудь таймер добавить, чтобы не прям каждый кадр это выполнялось
-        //Раз в минуту например, и в том случае, если изменение какое-то внешнее. Чтобы сразу происходило обновление.
-        UpdateHapinnes();
-    }*/
+        StartCoroutine(UpdateHappinesOverTime());
+    }
 
 
     public Feeling FeelingFromTheObject(ForeignObject foreignObject)
     {
         Feeling _feelingAboutObject = new Feeling();
-        //Пока только адаптировано для двух потребностей, поэтому как минимум на эмоцию поступает только одна самая выраженная потребность,а не к примеру 4
         float happinessChange = 0f;
         AbstractNeed mostSeveralNeed = null;
 
@@ -45,7 +39,7 @@ public class Subconscious : MonoBehaviour
             }
             else { mostSeveralNeed = need; }
         }
-        //Возможно стоит задумать над тем, то ли, что задумано я передаю ;)
+
         _feelingAboutObject.SetHappinessChange(happinessChange);
         _feelingAboutObject.SetHealthChange(foreignObject.GetDamageValue());
         _feelingAboutObject.SetFoodChange(foreignObject.GetFoodValue());
@@ -68,10 +62,18 @@ public class Subconscious : MonoBehaviour
         return _hapinnes;
     }
 
+    private IEnumerator UpdateHappinesOverTime()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(15f);
+            UpdateHapinnes();
+        }
+    }
+
 
     private void UpdateHapinnes()
     {
-        //Подумать над рассчётом счастья. Может быть изменить.
         _hapinnes = 0f;
 
         foreach (AbstractNeed need in _charactersNeeds)
@@ -79,6 +81,5 @@ public class Subconscious : MonoBehaviour
             need.SatisfactionLevelCalculation();
             _hapinnes += need.NeedResult();
         }
-        //Debug.Log("Счастье: " + _hapinnes);
     }
 }

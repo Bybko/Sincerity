@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
@@ -15,7 +13,6 @@ public class InstinctBrainAgent : Agent
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        Debug.Log("Inputs Instincts: " + _feeling.GetFoodChange() + " ;" + _feeling.GetHealthChange() + " ; " + _feeling.GetTotalHappinessChange());
         sensor.AddObservation(_feeling.GetFoodChange());
         sensor.AddObservation(_feeling.GetHealthChange());
         sensor.AddObservation(_feeling.GetTotalHappinessChange());

@@ -1,37 +1,20 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-// Подключен к подсознанию и отвечает за передачу информации о физическом состоянии персонажа. Его голод, энергия и т.д.
-// Соответственно будет влиять на потребности отдыха, еды и т.д.
-// По поводу энергии - будет условно 100 единиц, которые будут тратиться, она будет увеличиваться в том числе и с едой.
-// Таким образом энергия будет влиять или на голод или на желание сна
 public class PhysicalStatus : MonoBehaviour
 {
+    [SerializeField] private float _health = 100f;
     [SerializeField] private float _foodEnergySpending = 5f;
     [SerializeField] private float _requestedFoodResources = 100f;
+
     private float _currentFoodResources;
-    //Не столько привычные хп, сколько именно здоровье. Уровень самочувствия и т.д. То есть если мало хп, то это влияет
-    //на жизнеспособность персонажа и принятие им решений
-    [SerializeField] private float _health = 100f; 
+
 
     private void Start()
     {
         _currentFoodResources = _requestedFoodResources;
 
-        //Таймер и другие махинации со временем лучше потом сделать в отдельном классе. Класс, который в целом следит за временем.
-        //Можно реально сделать его как глобальные часы и сделать метод checkTime и на основе его что-то делать.
         StartCoroutine(DecreaseEnergyOverTime());
-    }
-
-
-    private IEnumerator DecreaseEnergyOverTime()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(5f);
-            DecreaseEnergy();
-        }
     }
 
 
@@ -45,11 +28,19 @@ public class PhysicalStatus : MonoBehaviour
     public void ChangeFoodResources(float foodValue) { _currentFoodResources += foodValue; }
     public void ChangeHealth(float hpValue) { _health += hpValue; }
 
+    private IEnumerator DecreaseEnergyOverTime()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(5f);
+            DecreaseEnergy();
+        }
+    }
+
 
     private void DecreaseEnergy()
     {
         _currentFoodResources = Mathf.Clamp(_currentFoodResources - _foodEnergySpending, 0f, _requestedFoodResources);
-        //Debug.Log("Текущая энергия: " + _currentFoodResources);
 
         float hungerDamage = 5f;
         if (_currentFoodResources < 10f)
@@ -61,7 +52,6 @@ public class PhysicalStatus : MonoBehaviour
         {
             _health = Mathf.Clamp(_health + hungerDamage, 0f, 100f);
         }
-        //Debug.Log("Текущее здоровье: " + _health);
     }
 
 

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
@@ -15,7 +13,6 @@ public class EmotionalBrainAgent : Agent
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        Debug.Log("Inputs Emotional: " + _feeling.GetMostNeedSatisfaction() + " ;" + _feeling.GetTotalHappinessChange());
         sensor.AddObservation(_feeling.GetMostNeedSatisfaction());
         sensor.AddObservation(_feeling.GetTotalHappinessChange());
     }
@@ -23,7 +20,6 @@ public class EmotionalBrainAgent : Agent
 
     public override void OnActionReceived(ActionBuffers actions)
     {
-        Debug.Log("Output Emotional " + actions.ContinuousActions[0]);
         _emotionalDecision = actions.ContinuousActions[0];
         _brain.IsEmotionalDecisionReady(true);
     }

@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class FoodNeed : AbstractNeed
@@ -14,10 +11,7 @@ public class FoodNeed : AbstractNeed
         _satisfaction = Mathf.Clamp01(_physicalStatus.GetCurrentFoodResources() 
             / _physicalStatus.GetRequestedFoodResources());
 
-        _severity =  1 - _satisfaction; //Чем больше удовлетворённость потребности в еде, тем меньше её выраженность
-
-        //Debug.Log("Голод. Удовлетворённость: " + _satisfaction);
-        //Debug.Log("Голод. Выраженность: " + _severity);
+        _severity =  1 - _satisfaction;
     }
 
 
