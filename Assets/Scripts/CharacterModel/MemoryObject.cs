@@ -16,6 +16,7 @@ public class MemoryObject
     public float GetInstinctDecision() { return _instinctDecision; }
     public float GetFinalDecision() { return _finalDecision; }
     public Transform GetObjectTransform() { return _objectImage.transform; }
+    public ForeignObject GetObjectImage() { return _objectImage; }  
 
     public void SetEmotionalDecision(float decision) { _emotionalDecision = decision; }
     public void SetInstinctDecision(float decision) { _instinctDecision = decision; }

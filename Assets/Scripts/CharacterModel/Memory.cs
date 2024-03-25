@@ -30,6 +30,15 @@ public class Memory : MonoBehaviour
 
     public void AddNewGoal(MemoryObject newGoal)
     {
+        for (int i = 0; i < _goals.Count; i++)
+        {
+            if (_goals[i].IsEqual(newGoal.GetObjectImage()))
+            {
+                _goals[i] = newGoal; //beacuse changes decisions of reference object 
+                return;
+            }
+        }
+        
         _goals.Add(newGoal);
     }
 
@@ -45,6 +54,13 @@ public class Memory : MonoBehaviour
     {
         Sort(_goals);
         return _goals[_goals.Count - 1];
+    }
+
+
+    public void ClearLists()
+    {
+        _goals.Clear();
+        _memoryObjects.Clear(); 
     }
 
 

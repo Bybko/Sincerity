@@ -21,7 +21,6 @@ public class Brain : MonoBehaviour
     public IEnumerator AnalizeForeignObject(ForeignObject foreignObject)
     {
         MemoryObject rememberedObject = _memory.Remember(foreignObject);
-
         if (rememberedObject != null) 
         {
             _brainDecision.SetInputs(rememberedObject.GetInstinctDecision(), rememberedObject.GetEmotionalDecision());
@@ -44,6 +43,12 @@ public class Brain : MonoBehaviour
         }
 
         AnalizeDecision();
+    }
+
+
+    public void ResetMemory()
+    {
+        _memory.ClearLists();
     }
 
 
