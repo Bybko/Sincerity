@@ -64,16 +64,6 @@ public class Memory : MonoBehaviour
     }
 
 
-    private bool CheckGoals(MemoryObject potentialGoal)
-    {
-        foreach (MemoryObject goalObject in _goals)
-        {
-            if (goalObject == potentialGoal) { return true; }
-        }
-        return false;
-    }
-
-
     private void Sort(List<MemoryObject> sortList)
     {
         for (int i = 0; i < sortList.Count - 1; i++) 

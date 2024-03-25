@@ -45,8 +45,6 @@ public class BrainAgent : Agent
         _physicalStatus.SetRandomValues();
 
         _brain.ResetMemory();
-
-        StartCoroutine(_receptors.CheckForeignObjects());
     }
 
 
