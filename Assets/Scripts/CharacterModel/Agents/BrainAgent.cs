@@ -41,10 +41,15 @@ public class BrainAgent : Agent
 
     public override void OnEpisodeBegin()
     {
+        _brain.ResetMemory();
+
+        _receptors.StopAllCoroutines();
+        _brain.StopAllCoroutines();
+
+        _brain.StopMoving();
+
         _playerTransform.localPosition = Vector3.zero;
         _physicalStatus.SetRandomValues();
-
-        _brain.ResetMemory();
     }
 
 

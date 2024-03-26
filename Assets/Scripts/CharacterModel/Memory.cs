@@ -46,7 +46,8 @@ public class Memory : MonoBehaviour
     public MemoryObject GetMostWantedObject() 
     {
         Sort(_memoryObjects);
-        return _memoryObjects[_memoryObjects.Count - 1]; 
+        if ( _memoryObjects.Count > 0 ) { return _memoryObjects[_memoryObjects.Count - 1]; }
+        else { return null; }
     }
 
 

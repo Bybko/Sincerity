@@ -52,6 +52,12 @@ public class Brain : MonoBehaviour
     }
 
 
+    public void StopMoving()
+    {
+        _navMesh.isStopped = true;
+    }
+
+
     private IEnumerator RequestBrainDecision()
     {
         _instincts.RequestDecision();
@@ -75,9 +81,14 @@ public class Brain : MonoBehaviour
     private void AnalizeDecision()
     {
         MemoryObject newGoal = _memory.GetMostWantedObject();
-        _memory.AddNewGoal(newGoal);
+        Debug.Log("Goal now is " + (newGoal == null));
+        if (newGoal != null)
+        {
+            _memory.AddNewGoal(newGoal);
 
-        _navMesh.SetDestination(_memory.GetMostWantedGoal().GetObjectTransform().position);
+            Debug.Log("My goal now is " + _memory.GetMostWantedGoal().GetObjectImage().GetFoodValue());
+            _navMesh.SetDestination(_memory.GetMostWantedGoal().GetObjectTransform().position);
+        }
     }
 
 
