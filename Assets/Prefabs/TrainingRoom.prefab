@@ -452,7 +452,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -676,11 +676,8 @@ MonoBehaviour:
   _brain: {fileID: 5338911918182856610}
   _subconscious: {fileID: 7177969452162092215}
   _brainAgent: {fileID: 893654310308634005}
-  _foreignObjects:
-  - {fileID: 5790048382971716734}
-  - {fileID: 7502798602962724198}
-  - {fileID: 7865618196601989788}
-  - {fileID: 7034328726504994101}
+  _viewedForeignObjects: []
+  _test: []
 --- !u!195 &3727347911184083790
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -969,7 +966,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -1302,7 +1299,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -1717,7 +1714,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}

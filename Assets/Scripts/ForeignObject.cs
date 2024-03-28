@@ -9,7 +9,7 @@ public class ForeignObject : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         Receptors receptors = other.GetComponent<Receptors>();
-        if (receptors != null)
+        if (receptors != null && other.isTrigger)
         {
             StartCoroutine(receptors.AddForeignObject(this));
         }
@@ -19,7 +19,7 @@ public class ForeignObject : MonoBehaviour
     public void OnTriggerExit(Collider other)
     {
         Receptors receptors = other.GetComponent<Receptors>();
-        if (receptors != null)
+        if (receptors != null && other.isTrigger)
         {
             StartCoroutine(receptors.DeleteForeignObject(this));
         }

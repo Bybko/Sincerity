@@ -11,6 +11,17 @@ public class Receptors : MonoBehaviour
 
     [SerializeField] private List<ForeignObject> _viewedForeignObjects = new List<ForeignObject>();
 
+    /*[SerializeField] private List<ForeignObject> _test = new List<ForeignObject>();
+
+
+    public IEnumerator CheckForeignObjects()
+    {
+        foreach (ForeignObject foreignObject in _test)
+        {
+            yield return StartCoroutine(_brain.AnalizeForeignObject(foreignObject));
+        }
+    }*/
+
 
     public IEnumerator AddForeignObject(ForeignObject foreignObject)
     {
@@ -41,9 +52,9 @@ public class Receptors : MonoBehaviour
     }
 
 
-    public void OnTriggerEnter(Collider other)
+    public void OnCollisionEnter(Collision collision)
     {
-        if (other.TryGetComponent<ForeignObject>(out ForeignObject goal))
+        if (collision.gameObject.TryGetComponent<ForeignObject>(out ForeignObject goal))
         {
             _subconscious.ForeignObjectsInfluence(goal);
             _brainAgent.CheckTrainEpisode();

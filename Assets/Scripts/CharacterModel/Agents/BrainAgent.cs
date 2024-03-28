@@ -46,10 +46,10 @@ public class BrainAgent : Agent
         _receptors.StopAllCoroutines();
         _brain.StopAllCoroutines();
 
-        _brain.StopMoving();
-
         _playerTransform.localPosition = Vector3.zero;
         _physicalStatus.SetRandomValues();
+
+        //StartCoroutine(_receptors.CheckForeignObjects());
     }
 
 
