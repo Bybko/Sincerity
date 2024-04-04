@@ -1,0 +1,73 @@
+{
+    "EmotionalDecision": {
+        "checkpoints": [
+            {
+                "steps": 192,
+                "file_path": "results\\NewComfortNeedTest\\EmotionalDecision\\EmotionalDecision-192.onnx",
+                "reward": null,
+                "creation_time": 1712262889.8449428,
+                "auxillary_file_paths": [
+                    "results\\NewComfortNeedTest\\EmotionalDecision\\EmotionalDecision-192.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 192,
+            "file_path": "results\\NewComfortNeedTest\\EmotionalDecision.onnx",
+            "reward": null,
+            "creation_time": 1712262889.8449428,
+            "auxillary_file_paths": [
+                "results\\NewComfortNeedTest\\EmotionalDecision\\EmotionalDecision-192.pt"
+            ]
+        }
+    },
+    "InstinctDecision": {
+        "checkpoints": [
+            {
+                "steps": 192,
+                "file_path": "results\\NewComfortNeedTest\\InstinctDecision\\InstinctDecision-192.onnx",
+                "reward": null,
+                "creation_time": 1712262889.8924868,
+                "auxillary_file_paths": [
+                    "results\\NewComfortNeedTest\\InstinctDecision\\InstinctDecision-192.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 192,
+            "file_path": "results\\NewComfortNeedTest\\InstinctDecision.onnx",
+            "reward": null,
+            "creation_time": 1712262889.8924868,
+            "auxillary_file_paths": [
+                "results\\NewComfortNeedTest\\InstinctDecision\\InstinctDecision-192.pt"
+            ]
+        }
+    },
+    "RationalDecision": {
+        "checkpoints": [
+            {
+                "steps": 1920,
+                "file_path": "results\\NewComfortNeedTest\\RationalDecision\\RationalDecision-1920.onnx",
+                "reward": -100.0,
+                "creation_time": 1712262889.9684277,
+                "auxillary_file_paths": [
+                    "results\\NewComfortNeedTest\\RationalDecision\\RationalDecision-1920.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 1920,
+            "file_path": "results\\NewComfortNeedTest\\RationalDecision.onnx",
+            "reward": -100.0,
+            "creation_time": 1712262889.9684277,
+            "auxillary_file_paths": [
+                "results\\NewComfortNeedTest\\RationalDecision\\RationalDecision-1920.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "2.0.1+cu118"
+    }
+}

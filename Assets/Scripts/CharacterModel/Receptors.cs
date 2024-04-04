@@ -11,17 +11,6 @@ public class Receptors : MonoBehaviour
 
     [SerializeField] private List<ForeignObject> _viewedForeignObjects = new List<ForeignObject>();
 
-    /*[SerializeField] private List<ForeignObject> _test = new List<ForeignObject>();
-
-
-    public IEnumerator CheckForeignObjects()
-    {
-        foreach (ForeignObject foreignObject in _test)
-        {
-            yield return StartCoroutine(_brain.AnalizeForeignObject(foreignObject));
-        }
-    }*/
-
 
     public IEnumerator AddForeignObject(ForeignObject foreignObject)
     {
@@ -33,9 +22,7 @@ public class Receptors : MonoBehaviour
 
         if (!equal)
         {
-            Debug.Log("I analize object " + foreignObject.GetFoodValue());
             yield return StartCoroutine(_brain.AnalizeForeignObject(foreignObject));
-            Debug.Log("And for object " + foreignObject.GetFoodValue() + " decision is " + _brainAgent.GetFinalDecision());
 
             _viewedForeignObjects.Add(foreignObject);
         }
@@ -59,5 +46,16 @@ public class Receptors : MonoBehaviour
             _subconscious.ForeignObjectsInfluence(goal);
             _brainAgent.CheckTrainEpisode();
         }
+    }
+
+    
+    public float EnvironmentDanger()
+    {
+        float totalDanger = 0f;
+        foreach (ForeignObject foreignObject in _viewedForeignObjects) 
+        {
+            totalDanger = Mathf.Clamp01(totalDanger + _subconscious.ForeignObjectDangerCalculate(foreignObject));
+        }
+        return totalDanger;
     }
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MemoryObject
 {
-    //add time operations and plans later, also a last known posiotion
+    //add time operations and plans later, also a last known position
     //also here would implement goal's methods for memory
     private ForeignObject _objectImage = null;
     private float _emotionalDecision = 0f;

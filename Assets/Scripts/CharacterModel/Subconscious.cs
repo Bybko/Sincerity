@@ -18,6 +18,7 @@ public class Subconscious : MonoBehaviour
         }
     }
 
+
     private void Update()
     {
         StartCoroutine(UpdateHappinesOverTime());
@@ -39,7 +40,7 @@ public class Subconscious : MonoBehaviour
             }
             else { mostSeveralNeed = need; }
         }
-
+        _feelingAboutObject.SetDanger(ForeignObjectDangerCalculate(foreignObject));
         _feelingAboutObject.SetHappinessChange(happinessChange);
         _feelingAboutObject.SetHealthChange(foreignObject.GetDamageValue());
         _feelingAboutObject.SetFoodChange(foreignObject.GetFoodValue());
@@ -61,6 +62,18 @@ public class Subconscious : MonoBehaviour
         UpdateHapinnes();
         return _hapinnes;
     }
+
+
+    public float ForeignObjectDangerCalculate(ForeignObject foreignObject)
+    {
+        float movingValue = 0f;
+        if (foreignObject.IsMoving()) { movingValue = 1f; }
+
+        float parametersNum = 3f; 
+        return Mathf.Clamp01((foreignObject.GetObjectSize() + (-1 * foreignObject.GetDamageValue()) + movingValue) 
+            / parametersNum);
+    }
+
 
     private IEnumerator UpdateHappinesOverTime()
     {

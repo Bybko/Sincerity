@@ -414,6 +414,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _foodValue: 0
   _damageValue: -20
+  _size: 10
+  _isMoving: 0
 --- !u!65 &7283800940104994523
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -661,6 +663,8 @@ MonoBehaviour:
   _health: 100
   _foodEnergySpending: 5
   _requestedFoodResources: 100
+  _energySpending: 0.1
+  _requestedEnergy: 100
 --- !u!114 &1748900583662328481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -677,7 +681,6 @@ MonoBehaviour:
   _subconscious: {fileID: 7177969452162092215}
   _brainAgent: {fileID: 893654310308634005}
   _viewedForeignObjects: []
-  _test: []
 --- !u!195 &3727347911184083790
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -928,6 +931,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _foodValue: 5
   _damageValue: 0
+  _size: 5
+  _isMoving: 0
 --- !u!65 &8832535279140555566
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1261,6 +1266,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _foodValue: -5
   _damageValue: 10
+  _size: 15
+  _isMoving: 0
 --- !u!65 &6318766164769200199
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1676,6 +1683,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _foodValue: 50
   _damageValue: -70
+  _size: 20
+  _isMoving: 0
 --- !u!65 &2118718598243741113
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1930,6 +1939,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _physicalStatus: {fileID: 1916180577376629856}
+  _receptors: {fileID: 1748900583662328481}
 --- !u!114 &2798279615744442342
 MonoBehaviour:
   m_ObjectHideFlags: 0

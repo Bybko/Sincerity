@@ -48,8 +48,6 @@ public class BrainAgent : Agent
 
         _playerTransform.localPosition = Vector3.zero;
         _physicalStatus.SetRandomValues();
-
-        //StartCoroutine(_receptors.CheckForeignObjects());
     }
 
 

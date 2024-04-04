@@ -4,6 +4,9 @@ public class ForeignObject : MonoBehaviour
 {
     [SerializeField] private float _foodValue;
     [SerializeField] private float _damageValue;
+    //make parameters bellow formed by Transform scale and NavMesh moving
+    [SerializeField] private float _size;
+    [SerializeField] private bool _isMoving;
 
 
     public void OnTriggerEnter(Collider other)
@@ -26,6 +29,9 @@ public class ForeignObject : MonoBehaviour
     }
 
 
+    public bool IsMoving() { return _isMoving; }
+
     public float GetFoodValue() { return _foodValue; }
     public float GetDamageValue() { return _damageValue; }
+    public float GetObjectSize() { return _size; }
 }

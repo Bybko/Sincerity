@@ -81,12 +81,10 @@ public class Brain : MonoBehaviour
     private void AnalizeDecision()
     {
         MemoryObject newGoal = _memory.GetMostWantedObject();
-        Debug.Log("Goal now is " + (newGoal == null));
         if (newGoal != null)
         {
             _memory.AddNewGoal(newGoal);
 
-            Debug.Log("My goal now is " + _memory.GetMostWantedGoal().GetObjectImage().GetFoodValue());
             _navMesh.SetDestination(_memory.GetMostWantedGoal().GetObjectTransform().position);
         }
     }
