@@ -1,18 +1,40 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
-public class ProtectionNeed : MonoBehaviour
+public class ProtectionNeed : AbstractNeed
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Memory _memory;
+
+
+    public override void SatisfactionLevelCalculation()
     {
-        
+        _satisfaction = _memory.OwnedObjectsHealthStatus();
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public override float PredictSatisfactionChange(ForeignObject foreignObject)
     {
+        float foreignObjectHP = Mathf.Clamp01(foreignObject.GetObjectHP() / 100f);
+
+        if (foreignObjectHP > _satisfaction)
+        {
+            return 0f;
+        }
         
+        return foreignObjectHP - _satisfaction; //would be negative difference, it's correct
+    }
+
+
+    public override float PredictHappinessChange(ForeignObject foreignObject)
+    {
+        float predictableSatisfaction = _satisfaction;
+
+        float foreignObjectHP = Mathf.Clamp01(foreignObject.GetObjectHP() / 100f);
+        if (foreignObjectHP < _satisfaction)
+        {
+            predictableSatisfaction = foreignObjectHP;
+        }
+
+        return Math.Abs(NeedResult() - PredictNeedResult(_severity, predictableSatisfaction));
     }
 }

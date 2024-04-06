@@ -3,8 +3,11 @@ using UnityEngine;
 
 public class Memory : MonoBehaviour
 {
+    [SerializeField] private Subconscious _subconscious;
+
     private List<MemoryObject> _memoryObjects = new List<MemoryObject>();
     private List<MemoryObject> _goals = new List<MemoryObject>();
+    private List<MemoryObject> _ownedObjects = new List<MemoryObject>();
 
 
     public void MemorizeObject(ForeignObject foreignObject, float instinct, float emotional, float final)
@@ -14,6 +17,7 @@ public class Memory : MonoBehaviour
         memoryObject.SetInstinctDecision(instinct);
         memoryObject.SetEmotionalDecision(emotional);
         memoryObject.SetFinalDecision(final);
+        memoryObject.SetObjectValue(_subconscious.ObjectValueCalculate(foreignObject));
         _memoryObjects.Add(memoryObject);
     }
 
@@ -62,6 +66,42 @@ public class Memory : MonoBehaviour
     {
         _goals.Clear();
         _memoryObjects.Clear(); 
+    }
+
+
+    public float TotalOwnedObjectsValue()
+    {
+        float totalValue = 0f;
+        if (_ownedObjects.Count > 0)
+        {
+            foreach (MemoryObject ownedObject in _ownedObjects) 
+            {
+                totalValue += ownedObject.GetObjectValue();
+            }
+
+            return Mathf.Clamp01(totalValue / _ownedObjects.Count);
+        }
+        return totalValue;
+    }
+
+
+    public float OwnedObjectsHealthStatus()
+    {
+        float mostWoundedObjectHP = 1f;
+        if (_ownedObjects != null)
+        {
+            foreach (MemoryObject ownedObject in _ownedObjects)
+            {
+                float currentObjectHP = Mathf.Clamp01(ownedObject.GetObjectImage().GetObjectHP() / 100f);
+                if (currentObjectHP < mostWoundedObjectHP)
+                {
+                    mostWoundedObjectHP = currentObjectHP;
+                }
+            }
+
+            return mostWoundedObjectHP;
+        }
+        return mostWoundedObjectHP;
     }
 
 

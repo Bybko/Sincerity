@@ -99,6 +99,14 @@ public class Subconscious : MonoBehaviour
     }
 
 
+    public float ObjectValueCalculate(ForeignObject foreignObject)
+    {
+        float parametersNum = 2f;
+        return Mathf.Clamp01((foreignObject.GetFoodValue() + foreignObject.GetDamageValue())
+            / parametersNum);
+    }
+
+
     private IEnumerator UpdateHappinesOverTime()
     {
         while (true)

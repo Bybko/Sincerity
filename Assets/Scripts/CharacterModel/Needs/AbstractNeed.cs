@@ -27,13 +27,13 @@ public abstract class AbstractNeed : MonoBehaviour
     
     protected virtual float PredictNeedResult(float predictableSeverity, float predictableSatisfaction)
     {
-        if (_satisfaction > 0.5f)
+        if (predictableSatisfaction > 0.5f)
         {
-            return _satisfaction * (float)Math.Pow(_severity, 2);
+            return predictableSatisfaction * (float)Math.Pow(predictableSeverity, 2);
         }
         else
         {
-            return -((1 - _satisfaction) * (float)Math.Pow(_severity, 2));
+            return -((1 - predictableSatisfaction) * (float)Math.Pow(predictableSeverity, 2));
         }
     }
 

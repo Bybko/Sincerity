@@ -1,18 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
-public class OwnershipNeed : MonoBehaviour
+public class OwnershipNeed : AbstractNeed
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Memory _memory;
+    [SerializeField] private Subconscious _subconscious;
+
+
+    public override void SatisfactionLevelCalculation()
     {
-        
+        _satisfaction = _memory.TotalOwnedObjectsValue();
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public override float PredictSatisfactionChange(ForeignObject foreignObject)
+    { 
+        //игнорится среднее арифметическое, типо все объекты в satisfaction делились на количество, а этот нет
+        return Math.Abs(_subconscious.ObjectValueCalculate(foreignObject));
+    }
+
+
+    public override float PredictHappinessChange(ForeignObject foreignObject)
     {
-        
+        //игнорится среднее арифметическое, типо все объекты в satisfaction делились на количество, а этот нет
+        float predictableSatisfaction = Mathf.Clamp01(_satisfaction 
+            + _subconscious.ObjectValueCalculate(foreignObject));
+        return Math.Abs(NeedResult() - PredictNeedResult(_severity, predictableSatisfaction));
     }
 }

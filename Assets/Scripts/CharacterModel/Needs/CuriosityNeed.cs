@@ -34,8 +34,8 @@ public class CuriosityNeed : AbstractNeed
 
     public override float PredictHappinessChange(ForeignObject foreignObject)
     {
-        float predictableSatisfaction = _satisfaction + 
-            _subconscious.InterestInForeignObjectCalculate(foreignObject);
+        float predictableSatisfaction = Mathf.Clamp01(_satisfaction + 
+            _subconscious.InterestInForeignObjectCalculate(foreignObject));
 
         return Math.Abs(NeedResult() - PredictNeedResult(_severity, predictableSatisfaction));
     }
