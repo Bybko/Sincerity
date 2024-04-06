@@ -1,0 +1,73 @@
+{
+    "InstinctDecision": {
+        "checkpoints": [
+            {
+                "steps": 0,
+                "file_path": "results\\CuriosityNeedTest\\InstinctDecision\\InstinctDecision-0.onnx",
+                "reward": null,
+                "creation_time": 1712409688.859342,
+                "auxillary_file_paths": [
+                    "results\\CuriosityNeedTest\\InstinctDecision\\InstinctDecision-0.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 0,
+            "file_path": "results\\CuriosityNeedTest\\InstinctDecision.onnx",
+            "reward": null,
+            "creation_time": 1712409688.859342,
+            "auxillary_file_paths": [
+                "results\\CuriosityNeedTest\\InstinctDecision\\InstinctDecision-0.pt"
+            ]
+        }
+    },
+    "EmotionalDecision": {
+        "checkpoints": [
+            {
+                "steps": 0,
+                "file_path": "results\\CuriosityNeedTest\\EmotionalDecision\\EmotionalDecision-0.onnx",
+                "reward": null,
+                "creation_time": 1712409688.9075806,
+                "auxillary_file_paths": [
+                    "results\\CuriosityNeedTest\\EmotionalDecision\\EmotionalDecision-0.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 0,
+            "file_path": "results\\CuriosityNeedTest\\EmotionalDecision.onnx",
+            "reward": null,
+            "creation_time": 1712409688.9075806,
+            "auxillary_file_paths": [
+                "results\\CuriosityNeedTest\\EmotionalDecision\\EmotionalDecision-0.pt"
+            ]
+        }
+    },
+    "RationalDecision": {
+        "checkpoints": [
+            {
+                "steps": 16,
+                "file_path": "results\\CuriosityNeedTest\\RationalDecision\\RationalDecision-16.onnx",
+                "reward": -100.0,
+                "creation_time": 1712409688.9572814,
+                "auxillary_file_paths": [
+                    "results\\CuriosityNeedTest\\RationalDecision\\RationalDecision-16.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 16,
+            "file_path": "results\\CuriosityNeedTest\\RationalDecision.onnx",
+            "reward": -100.0,
+            "creation_time": 1712409688.9572814,
+            "auxillary_file_paths": [
+                "results\\CuriosityNeedTest\\RationalDecision\\RationalDecision-16.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "2.0.1+cu118"
+    }
+}

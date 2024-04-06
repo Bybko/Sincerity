@@ -7,6 +7,7 @@ public class Subconscious : MonoBehaviour
     [SerializeField] private List<AbstractNeed> _charactersNeeds;
     [SerializeField] private PhysicalStatus _physicalStatus;
 
+    private CuriosityNeed _curiosityNeed;
     private float _hapinnes = 0f;
 
 
@@ -15,6 +16,11 @@ public class Subconscious : MonoBehaviour
         foreach (AbstractNeed need in _charactersNeeds)
         {
             need.Initialize();
+
+            if (need is CuriosityNeed)
+            {
+                _curiosityNeed = (CuriosityNeed)need;
+            }
         }
     }
 
@@ -71,6 +77,24 @@ public class Subconscious : MonoBehaviour
 
         float parametersNum = 3f; 
         return Mathf.Clamp01((foreignObject.GetObjectSize() + (-1 * foreignObject.GetDamageValue()) + movingValue) 
+            / parametersNum);
+    }
+
+
+    public void AddDiscoveryAward(ForeignObject foreignObject)
+    {
+        _curiosityNeed.AddSatisfactionForDiscovery(InterestInForeignObjectCalculate(foreignObject));
+    }
+
+
+    public float InterestInForeignObjectCalculate(ForeignObject foreignObject)
+    {
+        float movingValue = 0f;
+        if (foreignObject.IsMoving()) { movingValue = 1f; }
+
+        float parametersNum = 4f;
+        return Mathf.Clamp01((foreignObject.GetObjectSize() + Mathf.Abs(foreignObject.GetDamageValue()) 
+            + movingValue + foreignObject.GetFoodValue())
             / parametersNum);
     }
 

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public abstract class AbstractNeed : MonoBehaviour
@@ -13,17 +14,31 @@ public abstract class AbstractNeed : MonoBehaviour
 
     public virtual float NeedResult()
     {
-        return  _satisfaction + _severity;
+        if (_satisfaction > 0.5f)
+        {
+            return _satisfaction * (float)Math.Pow(_severity, 2);
+        }
+        else
+        {
+            return -((1 - _satisfaction) * (float)Math.Pow(_severity, 2));
+        }
     }
 
     
     protected virtual float PredictNeedResult(float predictableSeverity, float predictableSatisfaction)
     {
-        return predictableSatisfaction + predictableSeverity;
+        if (_satisfaction > 0.5f)
+        {
+            return _satisfaction * (float)Math.Pow(_severity, 2);
+        }
+        else
+        {
+            return -((1 - _satisfaction) * (float)Math.Pow(_severity, 2));
+        }
     }
 
 
-    public void Initialize() { _severity = Random.value; }
+    public void Initialize() { _severity = UnityEngine.Random.value; }
 
     public float GetSeverity() { return _severity; }
     public float GetSatisfaction() { return _satisfaction; }

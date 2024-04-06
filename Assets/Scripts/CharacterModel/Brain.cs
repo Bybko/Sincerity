@@ -32,6 +32,8 @@ public class Brain : MonoBehaviour
         }
         else
         {
+            _subconscious.AddDiscoveryAward(foreignObject);
+
             Feeling feeling = _subconscious.FeelingFromTheObject(foreignObject);
             _instincts.SetFeeling(feeling);
             _emotions.SetFeeling(feeling);

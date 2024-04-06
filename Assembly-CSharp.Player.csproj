@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Assets\ML-Agents\Examples\Pyramids\Scripts\PyramidArea.cs" />
     <Compile Include="Assets\ML-Agents\Examples\Match3\Scripts\Match3Board.cs" />
+    <Compile Include="Assets\Scripts\CharacterModel\Needs\OwnershipNeed.cs" />
     <Compile Include="Assets\ML-Agents\Examples\PushBlockWithInput\Scripts\PushBlockWithInputPlayerController.cs" />
     <Compile Include="Assets\ML-Agents\Examples\PushBlockWithInput\Scripts\PushBlockWithInputSettings.cs" />
     <Compile Include="Assets\ML-Agents\Examples\PushBlock\Scripts\GoalDetect.cs" />
@@ -118,10 +119,12 @@
     <Compile Include="Assets\ML-Agents\Examples\Soccer\Scripts\SoccerBallController.cs" />
     <Compile Include="Assets\Scripts\Timer.cs" />
     <Compile Include="Assets\ML-Agents\Examples\Sorter\Scripts\SorterAgent.cs" />
+    <Compile Include="Assets\Scripts\CharacterModel\Needs\CuriosityNeed.cs" />
     <Compile Include="Assets\ML-Agents\Examples\Pyramids\Scripts\PyramidAgent.cs" />
     <Compile Include="Assets\Scripts\CharacterModel\Receptors.cs" />
     <Compile Include="Assets\ML-Agents\Examples\SharedAssets\Scripts\FlyCamera.cs" />
     <Compile Include="Assets\Scripts\CharacterModel\PhysicalStatus.cs" />
+    <Compile Include="Assets\Scripts\CharacterModel\Needs\ProtectionNeed.cs" />
     <Compile Include="Assets\ML-Agents\Examples\SharedAssets\Scripts\JointDriveController.cs" />
     <Compile Include="Assets\ML-Agents\Examples\GridWorld\Scripts\GridSettings.cs" />
     <Compile Include="Assets\ML-Agents\Examples\PushBlock\Scripts\PushBlockEnvController.cs" />
