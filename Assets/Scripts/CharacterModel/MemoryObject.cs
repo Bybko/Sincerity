@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class MemoryObject
@@ -5,11 +6,18 @@ public class MemoryObject
     //add time operations and plans later, also a last known position
     //also here would implement goal's methods for memory
     private ForeignObject _objectImage = null;
+    private List<ICharacterAction> _actions = new List<ICharacterAction>();
     private float _objectValue = 0f;
 
     private float _emotionalDecision = 0f;
     private float _instinctDecision = 0f;
     private float _finalDecision = 0f;
+
+
+    public void AddAction(ICharacterAction action)
+    {
+        _actions.Add(action);
+    }
 
 
     public bool IsEqual(ForeignObject comparableObject) { return _objectImage == comparableObject; }
