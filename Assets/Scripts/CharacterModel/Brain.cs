@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -16,6 +17,13 @@ public class Brain : MonoBehaviour
     private bool _isEmotionalDecisionReady = false;
     private bool _isInstinctDecisionReady = false;
     private bool _isFinalDecisionReady = false;
+
+
+    private void Update()
+    {
+        //maybe too heavy for every frame update
+        AnalizeDecision();
+    }
 
 
     public IEnumerator AnalizeForeignObject(ForeignObject foreignObject)
@@ -42,9 +50,14 @@ public class Brain : MonoBehaviour
 
             _memory.MemorizeObject(foreignObject, _instincts.GetInstinctDecision(), 
                 _emotions.GetEmotionalDecision(), _brainDecision.GetFinalDecision());
-        }
 
-        AnalizeDecision();
+            //how to make the ICharacterActions objects initialize more universal? It's need make in brain
+            InteractionAction action = new InteractionAction();
+            action.SetNavMeshAgent(_navMesh);
+            action.SetConnectedObject(foreignObject);
+
+            _memory.SetNewAction(foreignObject, action);
+        }
     }
 
 
@@ -83,11 +96,11 @@ public class Brain : MonoBehaviour
     private void AnalizeDecision()
     {
         MemoryObject newGoal = _memory.GetMostWantedObject();
-        if (newGoal != null)
+        if (newGoal != null && newGoal.GetAction() != null)
         {
             _memory.AddNewGoal(newGoal);
 
-            _navMesh.SetDestination(_memory.GetMostWantedGoal().GetObjectTransform().position);
+            newGoal.GetAction().Action();
         }
     }
 

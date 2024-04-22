@@ -22,6 +22,15 @@ public class Memory : MonoBehaviour
     }
 
 
+    public void SetNewAction(ForeignObject foreignObject, ICharacterAction action)
+    {
+        foreach (MemoryObject rememberedObject in _memoryObjects)
+        {
+            if (rememberedObject.IsEqual(foreignObject)) { rememberedObject.SetAction(action); }
+        }
+    }
+
+
     public MemoryObject Remember(ForeignObject foreignObject)
     {
         foreach (MemoryObject rememberedObject in _memoryObjects)

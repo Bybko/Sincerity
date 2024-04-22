@@ -16,7 +16,7 @@ public class InteractionAction : ICharacterAction
 
     private void MoveTo()
     {
-        _navMesh.Move(_connectedObject.gameObject.transform.position);
+        _navMesh.SetDestination(_connectedObject.gameObject.transform.position);
     }
 
 
