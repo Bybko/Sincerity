@@ -23,6 +23,6 @@ public class EscapeAction : ICharacterAction
     }
 
 
-    public void SetConnectedObject(ForeignObject connectedObject) { _connectedObject = connectedObject; }
+    public void ConnectWithObject(ForeignObject connectedObject) { _connectedObject = connectedObject; }
     public void SetNavMeshAgent(NavMeshAgent agent) { _navMesh = agent; }
 }

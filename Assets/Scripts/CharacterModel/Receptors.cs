@@ -7,7 +7,7 @@ public class Receptors : MonoBehaviour
 {
     [SerializeField] private Brain _brain;
     [SerializeField] private Subconscious _subconscious;
-    [SerializeField] private BrainAgent _brainAgent; //for training
+    [SerializeField] private BrainActionAgent _brainAgent; //for training
 
     [SerializeField] private List<ForeignObject> _viewedForeignObjects = new List<ForeignObject>();
 

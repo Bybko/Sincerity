@@ -16,11 +16,11 @@ public class MemoryObject
 
     public bool IsEqual(ForeignObject comparableObject) { return _objectImage == comparableObject; }
 
-    public float GetEmotionalDecision() {  return _emotionalDecision; }
+    public float GetEmotionalDecision() { return _emotionalDecision; }
     public float GetInstinctDecision() { return _instinctDecision; }
     public float GetFinalDecision() { return _finalDecision; }
     public Transform GetObjectTransform() { return _objectImage.transform; }
-    public ForeignObject GetObjectImage() { return _objectImage; } 
+    public ForeignObject GetObjectImage() { return _objectImage; }
     public float GetObjectValue() { return _objectValue; }
     public ICharacterAction GetAction() { return _action; }
 
@@ -28,6 +28,13 @@ public class MemoryObject
     public void SetInstinctDecision(float decision) { _instinctDecision = decision; }
     public void SetFinalDecision(float decision) { _finalDecision = decision; }
     public void SetForeignObject(ForeignObject foreignObject) { _objectImage = foreignObject; }
-    public void SetObjectValue(float value) { _objectValue = value;}
-    public void SetAction(ICharacterAction action) { _action = action; }
+    public void SetObjectValue(float value) { _objectValue = value; }
+    public void SetAction(ICharacterAction action)
+    {
+        _action = action;
+        if (action != null)
+        {
+            _action.ConnectWithObject(_objectImage);
+        }
+    }
 }

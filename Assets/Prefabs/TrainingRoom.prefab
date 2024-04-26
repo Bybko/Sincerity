@@ -182,7 +182,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 546d2e2672d01a84b8760330018b5f6a, type: 3}
+  m_Model: {fileID: 0}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: EmotionalDecision
@@ -681,7 +681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _brain: {fileID: 5338911918182856610}
   _subconscious: {fileID: 7177969452162092215}
-  _brainAgent: {fileID: 4595482812290396940}
+  _brainAgent: {fileID: 4552197263486432966}
   _viewedForeignObjects: []
 --- !u!195 &3727347911184083790
 NavMeshAgent:
@@ -1398,7 +1398,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: d39f196a1b868904f9404008037f910e, type: 3}
+  m_Model: {fileID: 0}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: InstinctDecision
@@ -1898,7 +1898,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: f57a50be009760c4ca14e88e99559c26, type: 3}
+  m_Model: {fileID: 0}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: RationalDecision
@@ -1923,12 +1923,6 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
-  _receptors: {fileID: 1748900583662328481}
-  _physicalStatus: {fileID: 1916180577376629856}
-  _subconscious: {fileID: 7177969452162092215}
-  _playerTransform: {fileID: 7617733329458642920}
-  _instincts: {fileID: 1657357988708141422}
-  _emotions: {fileID: 1584718571757772193}
   _brain: {fileID: 5338911918182856610}
 --- !u!1 &8836852213429906467
 GameObject:
@@ -2001,6 +1995,7 @@ MonoBehaviour:
   _instincts: {fileID: 1657357988708141422}
   _emotions: {fileID: 1584718571757772193}
   _brainDecision: {fileID: 4595482812290396940}
+  _brainAction: {fileID: 4552197263486432966}
 --- !u!114 &7177969452162092215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2067,6 +2062,14 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
+  _receptors: {fileID: 1748900583662328481}
+  _physicalStatus: {fileID: 1916180577376629856}
+  _subconscious: {fileID: 7177969452162092215}
+  _playerTransform: {fileID: 7617733329458642920}
+  _instincts: {fileID: 1657357988708141422}
+  _emotions: {fileID: 1584718571757772193}
+  _brainAgent: {fileID: 4595482812290396940}
+  _brain: {fileID: 5338911918182856610}
 --- !u!1 &9098748137520538881
 GameObject:
   m_ObjectHideFlags: 0

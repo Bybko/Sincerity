@@ -1,3 +1,4 @@
+using UnityEngine;
 using UnityEngine.AI;
 
 public class InteractionAction : ICharacterAction
@@ -6,6 +7,12 @@ public class InteractionAction : ICharacterAction
 
     private ForeignObject _connectedObject;
     private NavMeshAgent _navMesh;
+
+
+    public InteractionAction()
+    {
+        _navMesh = GameObject.Find("Player").GetComponent<NavMeshAgent>();
+    }
 
 
     public void Action()
@@ -20,6 +27,6 @@ public class InteractionAction : ICharacterAction
     }
 
 
-    public void SetConnectedObject(ForeignObject connectedObject) { _connectedObject = connectedObject; }
+    public void ConnectWithObject(ForeignObject connectedObject) { _connectedObject = connectedObject; }
     public void SetNavMeshAgent(NavMeshAgent agent) { _navMesh = agent; }
 }

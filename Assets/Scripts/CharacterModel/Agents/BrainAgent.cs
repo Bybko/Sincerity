@@ -5,25 +5,11 @@ using Unity.MLAgents.Actuators;
 
 public class BrainAgent : Agent
 {
-    //for train episode initialize
-    [SerializeField] private Receptors _receptors;
-    [SerializeField] private PhysicalStatus _physicalStatus;
-    [SerializeField] private Subconscious _subconscious;
-    [SerializeField] private Transform _playerTransform;
-    [SerializeField] private InstinctBrainAgent _instincts;
-    [SerializeField] private EmotionalBrainAgent _emotions;
-
     [SerializeField] private Brain _brain;
 
     private float _instinctDecision = 0f;
     private float _emotionalDecision = 0f;
     private float _finalDecision = 0f;
-
-    //for a training
-    private void Update()
-    {
-        CheckTrainEpisode();
-    }
 
     public override void CollectObservations(VectorSensor sensor)
     {
@@ -36,52 +22,6 @@ public class BrainAgent : Agent
     {
         _finalDecision = actions.ContinuousActions[0];
         _brain.IsFinalDecisionReady(true);
-    }
-
-
-    public override void OnEpisodeBegin()
-    {
-        _brain.ResetMemory();
-
-        _receptors.StopAllCoroutines();
-        _brain.StopAllCoroutines();
-
-        _playerTransform.localPosition = Vector3.zero;
-        _physicalStatus.SetRandomValues();
-    }
-
-
-    public void CheckTrainEpisode()
-    {
-        if (_physicalStatus.GetHealth() <= 0)
-        {
-            SetReward(-100f);
-            _emotions.SetReward(-100f);
-            _instincts.SetReward(-100f);
-            EndEpisode();
-        }
-
-        if (_physicalStatus.GetHealth() == 100)
-        {
-            SetReward(10f);
-            _emotions.SetReward(10f);
-            _instincts.SetReward(10f);
-        }
-
-        if (_physicalStatus.GetCurrentFoodResources() == 100)
-        {
-            SetReward(5f);
-            _emotions.SetReward(5f);
-            _instincts.SetReward(5f);
-        }
-
-        if (_subconscious.GetHappines() == 0) 
-        {
-            SetReward(100f);
-            _emotions.SetReward(100f);
-            _instincts.SetReward(100f);
-            EndEpisode();
-        }
     }
 
 

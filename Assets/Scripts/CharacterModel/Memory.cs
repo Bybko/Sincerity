@@ -51,15 +51,25 @@ public class Memory : MonoBehaviour
                 return;
             }
         }
-        
+
         _goals.Add(newGoal);
     }
 
 
-    public MemoryObject GetMostWantedObject() 
+    public MemoryObject GetMostWantedObjectWithAction()
     {
         Sort(_memoryObjects);
-        if ( _memoryObjects.Count > 0 ) { return _memoryObjects[_memoryObjects.Count - 1]; }
+        if (_memoryObjects.Count > 0)
+        {
+            for (int i = _memoryObjects.Count - 1; i >= 0; i--)
+            {
+                if (_memoryObjects[i].GetAction() != null)
+                {
+                    return _memoryObjects[i];
+                }
+            }
+            return null;
+        }
         else { return null; }
     }
 
@@ -74,7 +84,7 @@ public class Memory : MonoBehaviour
     public void ClearLists()
     {
         _goals.Clear();
-        _memoryObjects.Clear(); 
+        _memoryObjects.Clear();
     }
 
 
@@ -83,7 +93,7 @@ public class Memory : MonoBehaviour
         float totalValue = 0f;
         if (_ownedObjects.Count > 0)
         {
-            foreach (MemoryObject ownedObject in _ownedObjects) 
+            foreach (MemoryObject ownedObject in _ownedObjects)
             {
                 totalValue += ownedObject.GetObjectValue();
             }
@@ -116,17 +126,17 @@ public class Memory : MonoBehaviour
 
     private void Sort(List<MemoryObject> sortList)
     {
-        for (int i = 0; i < sortList.Count - 1; i++) 
-        { 
-           for (int j = 0; j < sortList.Count - i - 1; j++) 
-           { 
-                if (sortList[j].GetFinalDecision() > sortList[j + 1].GetFinalDecision()) 
+        for (int i = 0; i < sortList.Count - 1; i++)
+        {
+            for (int j = 0; j < sortList.Count - i - 1; j++)
+            {
+                if (sortList[j].GetFinalDecision() > sortList[j + 1].GetFinalDecision())
                 {
                     MemoryObject temp = sortList[j];
                     sortList[j] = sortList[j + 1];
                     sortList[j + 1] = temp;
                 }
-           }
+            }
         }
     }
 }

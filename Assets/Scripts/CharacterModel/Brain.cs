@@ -13,10 +13,12 @@ public class Brain : MonoBehaviour
     [SerializeField] private InstinctBrainAgent _instincts;
     [SerializeField] private EmotionalBrainAgent _emotions;
     [SerializeField] private BrainAgent _brainDecision;
+    [SerializeField] private BrainActionAgent _brainAction;
 
     private bool _isEmotionalDecisionReady = false;
     private bool _isInstinctDecisionReady = false;
     private bool _isFinalDecisionReady = false;
+    private bool _isFinalActionReady = false;
 
 
     private void Update()
@@ -29,16 +31,7 @@ public class Brain : MonoBehaviour
     public IEnumerator AnalizeForeignObject(ForeignObject foreignObject)
     {
         MemoryObject rememberedObject = _memory.Remember(foreignObject);
-        if (rememberedObject != null) 
-        {
-            _brainDecision.SetInputs(rememberedObject.GetInstinctDecision(), rememberedObject.GetEmotionalDecision());
-            _brainDecision.RequestDecision();
-
-            yield return new WaitUntil(() => _isFinalDecisionReady);
-
-            IsFinalDecisionReady(false);
-        }
-        else
+        if (rememberedObject == null)
         {
             _subconscious.AddDiscoveryAward(foreignObject);
 
@@ -50,13 +43,7 @@ public class Brain : MonoBehaviour
 
             _memory.MemorizeObject(foreignObject, _instincts.GetInstinctDecision(), 
                 _emotions.GetEmotionalDecision(), _brainDecision.GetFinalDecision());
-
-            //how to make the ICharacterActions objects initialize more universal? It's need make in brain
-            InteractionAction action = new InteractionAction();
-            action.SetNavMeshAgent(_navMesh);
-            action.SetConnectedObject(foreignObject);
-
-            _memory.SetNewAction(foreignObject, action);
+            _memory.SetNewAction(foreignObject, _brainAction.GetAction());
         }
     }
 
@@ -90,13 +77,22 @@ public class Brain : MonoBehaviour
         yield return new WaitUntil(() => _isFinalDecisionReady);
 
         IsFinalDecisionReady(false);
+
+
+        _brainAction.SetInputs(_instincts.GetInstinctDecision(), _emotions.GetEmotionalDecision(),
+            _brainDecision.GetFinalDecision());
+        _brainAction.RequestDecision();
+
+        yield return new WaitUntil(() => _isFinalActionReady);
+
+        IsFinalActionReady(false);
     }
 
 
     private void AnalizeDecision()
     {
-        MemoryObject newGoal = _memory.GetMostWantedObject();
-        if (newGoal != null && newGoal.GetAction() != null)
+        MemoryObject newGoal = _memory.GetMostWantedObjectWithAction();
+        if (newGoal != null)
         {
             _memory.AddNewGoal(newGoal);
 
@@ -108,4 +104,5 @@ public class Brain : MonoBehaviour
     public void IsInstinctsDecisionReady(bool newStatus) { _isInstinctDecisionReady = newStatus; }
     public void IsEmotionalDecisionReady(bool newStatus) { _isEmotionalDecisionReady = newStatus; }
     public void IsFinalDecisionReady(bool newStatus) { _isFinalDecisionReady = newStatus; }
+    public void IsFinalActionReady(bool newStatus) { _isFinalActionReady = newStatus; }
 }
