@@ -75,6 +75,7 @@ public class Receptors : MonoBehaviour
 
     private IEnumerator SendAllViewedObjects()
     {
+        //would be better if agent is stopping while this function complete instead copy that list
         List<ForeignObject> copyList = new List<ForeignObject>();
         copyList.AddRange(_viewedForeignObjects);
         foreach (ForeignObject viewedForeignObject in copyList)

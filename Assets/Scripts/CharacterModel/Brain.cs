@@ -23,12 +23,6 @@ public class Brain : MonoBehaviour
     private bool _isFinalActionReady = false;
 
 
-    private void Start()
-    {
-
-    }
-
-
     private void Update()
     {
         //maybe too heavy for every frame update
@@ -58,7 +52,7 @@ public class Brain : MonoBehaviour
 
     public void TellAboutReachingObject(ForeignObject goal)
     {
-
+        _memory.ReachObject(goal);
     }
 
         
