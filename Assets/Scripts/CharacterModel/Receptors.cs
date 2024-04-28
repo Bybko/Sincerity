@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.AI;
 
 public class Receptors : MonoBehaviour
 {
@@ -9,7 +9,13 @@ public class Receptors : MonoBehaviour
     [SerializeField] private Subconscious _subconscious;
     [SerializeField] private BrainActionAgent _brainAgent; //for training
 
-    [SerializeField] private List<ForeignObject> _viewedForeignObjects = new List<ForeignObject>();
+    private List<ForeignObject> _viewedForeignObjects = new List<ForeignObject>();                     
+
+
+    private void Start()
+    {
+        _brain.OnActionRemove += Sender;
+    }
 
 
     public IEnumerator AddForeignObject(ForeignObject foreignObject)
@@ -43,6 +49,7 @@ public class Receptors : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<ForeignObject>(out ForeignObject goal))
         {
+            _brain.TellAboutReachingObject(goal);
             _subconscious.ForeignObjectsInfluence(goal);
             _brainAgent.CheckTrainEpisode();
         }
@@ -57,5 +64,22 @@ public class Receptors : MonoBehaviour
             totalDanger = Mathf.Clamp01(totalDanger + _subconscious.ForeignObjectDangerCalculate(foreignObject));
         }
         return totalDanger;
+    }
+
+
+    private void Sender()
+    {
+        StartCoroutine(SendAllViewedObjects());
+    }
+
+
+    private IEnumerator SendAllViewedObjects()
+    {
+        List<ForeignObject> copyList = new List<ForeignObject>();
+        copyList.AddRange(_viewedForeignObjects);
+        foreach (ForeignObject viewedForeignObject in copyList)
+        {
+            yield return StartCoroutine(_brain.AnalizeForeignObject(viewedForeignObject));
+        }
     }
 }

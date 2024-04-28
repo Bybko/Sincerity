@@ -2,5 +2,7 @@ public interface ICharacterAction
 {
     public abstract void Action();
 
-    public abstract void ConnectWithObject(ForeignObject connectedObject);
+    public abstract void ConnectWithObject(MemoryObject connectedObject);
+
+    public abstract void SelfDelete();
 }

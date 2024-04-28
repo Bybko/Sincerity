@@ -7,7 +7,7 @@ public class EscapeAction : ICharacterAction
 {
     public bool isActionFinished = false;
 
-    private ForeignObject _connectedObject;
+    private MemoryObject _connectedObject;
     private NavMeshAgent _navMesh;
 
 
@@ -23,6 +23,12 @@ public class EscapeAction : ICharacterAction
     }
 
 
-    public void ConnectWithObject(ForeignObject connectedObject) { _connectedObject = connectedObject; }
+    public void SelfDelete()
+    {
+
+    }
+
+
+    public void ConnectWithObject(MemoryObject connectedObject) { _connectedObject = connectedObject; }
     public void SetNavMeshAgent(NavMeshAgent agent) { _navMesh = agent; }
 }

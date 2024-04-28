@@ -1,10 +1,12 @@
+using System;
 using System.Collections;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Brain : MonoBehaviour
 {
+    public Action OnActionRemove;
+
     [SerializeField] private Memory _memory;
     [SerializeField] private Subconscious _subconscious;
     [SerializeField] private NavMeshAgent _navMesh;
@@ -19,6 +21,12 @@ public class Brain : MonoBehaviour
     private bool _isInstinctDecisionReady = false;
     private bool _isFinalDecisionReady = false;
     private bool _isFinalActionReady = false;
+
+
+    private void Start()
+    {
+
+    }
 
 
     private void Update()
@@ -47,6 +55,13 @@ public class Brain : MonoBehaviour
         }
     }
 
+
+    public void TellAboutReachingObject(ForeignObject goal)
+    {
+
+    }
+
+        
 
     public void ResetMemory()
     {

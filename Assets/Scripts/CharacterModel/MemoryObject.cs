@@ -34,7 +34,7 @@ public class MemoryObject
         _action = action;
         if (action != null)
         {
-            _action.ConnectWithObject(_objectImage);
+            _action.ConnectWithObject(this);
         }
     }
 }

@@ -6,7 +6,7 @@ public class Memory : MonoBehaviour
     [SerializeField] private Subconscious _subconscious;
 
     private List<MemoryObject> _memoryObjects = new List<MemoryObject>();
-    private List<MemoryObject> _goals = new List<MemoryObject>();
+    private List<MemoryObject> _goals = new List<MemoryObject>(); //why i actually need this list if goal could be sorted memoryObjects list? DELETE or MAKE IT NORMAL TO USE
     private List<MemoryObject> _ownedObjects = new List<MemoryObject>();
 
 
@@ -21,7 +21,7 @@ public class Memory : MonoBehaviour
         _memoryObjects.Add(memoryObject);
     }
 
-
+    
     public void SetNewAction(ForeignObject foreignObject, ICharacterAction action)
     {
         foreach (MemoryObject rememberedObject in _memoryObjects)
@@ -121,6 +121,21 @@ public class Memory : MonoBehaviour
             return mostWoundedObjectHP;
         }
         return mostWoundedObjectHP;
+    }
+
+
+    public void ReachObject(ForeignObject goal)
+    {
+        foreach (MemoryObject rememberedObject in _memoryObjects)
+        {
+            if (rememberedObject.IsEqual(goal)) 
+            { 
+                if (rememberedObject.GetAction() is InteractionAction)
+                {
+                    rememberedObject.GetAction().SelfDelete();
+                }
+            }
+        }
     }
 
 
