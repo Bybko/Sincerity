@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Subconscious : MonoBehaviour
 {
     [SerializeField] private List<AbstractNeed> _charactersNeeds;
     [SerializeField] private PhysicalStatus _physicalStatus;
-
+    [SerializeField] private NavMeshAgent _navmesh;
+            
     private CuriosityNeed _curiosityNeed;
     private float _hapinnes = 0f;
+    private bool _isWantToSleep = false;
 
 
     private void Start()
@@ -107,13 +110,26 @@ public class Subconscious : MonoBehaviour
     }
 
 
-    private IEnumerator UpdateHappinesOverTime()
+    public bool IsWantToSleep()
     {
-        while (true)
+        float currentEnergy = _physicalStatus.GetCurrentEnergy();
+        if (currentEnergy <= 15f)
         {
-            yield return new WaitForSeconds(15f);
-            UpdateHapinnes();
+            _isWantToSleep = true;
         }
+
+        if (currentEnergy > 15f && currentEnergy < 90f && _physicalStatus.IsSleeping())
+        {
+            _isWantToSleep = false;
+            if (_physicalStatus.IsSleeping()) { _isWantToSleep = true; }
+        }
+
+        if (currentEnergy > 90f)
+        {
+            _isWantToSleep = false;
+        }
+
+        return _isWantToSleep;
     }
 
 
@@ -127,4 +143,32 @@ public class Subconscious : MonoBehaviour
             _hapinnes += need.NeedResult();
         }
     }
+
+
+    public void FallAsleep()
+    {
+        _navmesh.isStopped = true; //it works strange, test it later
+        _physicalStatus.SetSleepingStatus(true);
+    }
+
+
+    private IEnumerator UpdateHappinesOverTime()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(15f);
+            UpdateHapinnes();
+        }
+    }
+
+
+    public void WakeUp() 
+    {
+        _navmesh.isStopped = false;
+        _physicalStatus.SetSleepingStatus(false); 
+    }
+
+
+    public bool SleepingStatus() { return _physicalStatus.IsSleeping(); }
+    public bool SafetySatus() { return _physicalStatus.IsSafe(); }
 }

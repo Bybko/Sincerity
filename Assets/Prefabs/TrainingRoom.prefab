@@ -667,6 +667,9 @@ MonoBehaviour:
   _requestedFoodResources: 100
   _energySpending: 0.1
   _requestedEnergy: 100
+  _safetyTimer: 5
+  _currentFoodResources: 0
+  _currentEnergy: 0
 --- !u!114 &1748900583662328481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -682,7 +685,6 @@ MonoBehaviour:
   _brain: {fileID: 5338911918182856610}
   _subconscious: {fileID: 7177969452162092215}
   _brainAgent: {fileID: 4552197263486432966}
-  _viewedForeignObjects: []
 --- !u!195 &3727347911184083790
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1991,6 +1993,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _memory: {fileID: 2541953843150297586}
   _subconscious: {fileID: 7177969452162092215}
+  _physicalStatus: {fileID: 1916180577376629856}
   _navMesh: {fileID: 3727347911184083790}
   _instincts: {fileID: 1657357988708141422}
   _emotions: {fileID: 1584718571757772193}
@@ -2015,6 +2018,7 @@ MonoBehaviour:
   - {fileID: 7756255364480823394}
   - {fileID: 7040088285324242138}
   _physicalStatus: {fileID: 1916180577376629856}
+  _navmesh: {fileID: 3727347911184083790}
 --- !u!114 &4082160090337041793
 MonoBehaviour:
   m_ObjectHideFlags: 0

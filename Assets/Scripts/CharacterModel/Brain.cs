@@ -9,6 +9,7 @@ public class Brain : MonoBehaviour
 
     [SerializeField] private Memory _memory;
     [SerializeField] private Subconscious _subconscious;
+    [SerializeField] private PhysicalStatus _physicalStatus;
     [SerializeField] private NavMeshAgent _navMesh;
 
     [Header("Agents")]
@@ -22,7 +23,7 @@ public class Brain : MonoBehaviour
     private bool _isFinalDecisionReady = false;
     private bool _isFinalActionReady = false;
 
-
+    
     private void Update()
     {
         //maybe too heavy for every frame update
@@ -55,8 +56,7 @@ public class Brain : MonoBehaviour
         _memory.ReachObject(goal);
     }
 
-        
-
+    
     public void ResetMemory()
     {
         _memory.ClearLists();
@@ -67,6 +67,7 @@ public class Brain : MonoBehaviour
     {
         _navMesh.isStopped = true;
     }
+
 
 
     private IEnumerator RequestBrainDecision()
@@ -100,13 +101,41 @@ public class Brain : MonoBehaviour
 
     private void AnalizeDecision()
     {
-        MemoryObject newGoal = _memory.GetMostWantedObjectWithAction();
-        if (newGoal != null)
+        if (_subconscious.IsWantToSleep() && !_subconscious.SleepingStatus())
         {
-            _memory.AddNewGoal(newGoal);
-
-            newGoal.GetAction().Action();
+            StartCoroutine(Sleep());
         }
+
+        if (!_subconscious.SleepingStatus())
+        {
+            MemoryObject newGoal = _memory.GetMostWantedObjectWithAction();
+            if (newGoal != null)
+            {
+                _memory.AddNewGoal(newGoal);
+
+                newGoal.GetAction().Action();
+            }
+            else
+            {
+                //search
+            }
+        }
+    }
+
+
+    private IEnumerator Sleep()
+    {
+        _subconscious.FallAsleep();
+
+        float energyRecovery = 10f;
+        do
+        {
+            yield return new WaitForSeconds(5);
+            _physicalStatus.ChangeEnergy(energyRecovery);
+
+        } while (_subconscious.SafetySatus() && _subconscious.IsWantToSleep());
+
+        _subconscious.WakeUp();
     }
 
 

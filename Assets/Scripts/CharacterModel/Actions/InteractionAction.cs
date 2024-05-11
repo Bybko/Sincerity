@@ -13,6 +13,9 @@ public class InteractionAction : ICharacterAction
 
     public InteractionAction()
     {
+        //у меня сейчас идёт поиск компонентов в действиях через конструкторы в которых GameObject.Find(")
+        //я к тому, что может быть так, что плееров будет несколько, а все компоненты будут иниициализироваться как будто у одного
+        //это нужно как-то умнее делать. мб кроме обжекта коннектить ещё и плеера
         _navMesh = GameObject.Find("Player").GetComponent<NavMeshAgent>();
         _brain = GameObject.Find("Player").GetComponentInChildren<Brain>();
     }

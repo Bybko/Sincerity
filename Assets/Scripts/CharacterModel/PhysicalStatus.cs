@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PhysicalStatus : MonoBehaviour
@@ -9,9 +11,14 @@ public class PhysicalStatus : MonoBehaviour
     [SerializeField] private float _requestedFoodResources = 100f;
     [SerializeField] private float _energySpending = 0.1f;
     [SerializeField] private float _requestedEnergy = 100f;
+    [SerializeField] private float _safetyTimer = 5f; //set 20f after
 
     private float _currentFoodResources;
     private float _currentEnergy;
+    private bool _isSleeping = false;
+
+    private float _lastDamageTime = 0f;
+    private bool _isSafe = true;
 
 
     private void Start()
@@ -23,6 +30,16 @@ public class PhysicalStatus : MonoBehaviour
     }
 
 
+    private void Update()
+    {
+        //idk is it good to use Time. think about it later
+        if (Time.time - _lastDamageTime > _safetyTimer)
+        {
+            _isSafe = true;
+        }
+    }
+
+
     public void SetRandomValues()
     {
         _currentFoodResources = Random.Range(0f, 50f);
@@ -30,9 +47,17 @@ public class PhysicalStatus : MonoBehaviour
     }
 
 
-    public void ChangeFoodResources(float foodValue) { _currentFoodResources += foodValue; }
-    public void ChangeHealth(float hpValue) { _health += hpValue; }
-    public void ChangeEnergy(float energyValue) {  _currentEnergy += energyValue; }
+    public void ChangeFoodResources(float foodValue) 
+    { _currentFoodResources = Mathf.Clamp(_currentFoodResources + foodValue, 0f, 100f); }
+
+    public void ChangeEnergy(float energyValue) 
+    {  _currentEnergy = Mathf.Clamp(_currentEnergy + energyValue, 0f, 100f); }
+
+    public void ChangeHealth(float hpValue) 
+    {
+        if (hpValue < 0f) { TakeDamadge(); }
+        _health = Mathf.Clamp(_health + hpValue, 0f, 100f);
+    }
 
 
     private IEnumerator DecreaseValuesOverTime()
@@ -53,6 +78,7 @@ public class PhysicalStatus : MonoBehaviour
         float hungerDamage = 5f;
         if (_currentFoodResources < 10f)
         {
+            TakeDamadge();
             _health = Mathf.Clamp(_health - hungerDamage, 0f, 100f);
         }
 
@@ -68,16 +94,28 @@ public class PhysicalStatus : MonoBehaviour
         _currentEnergy = Mathf.Clamp(_currentEnergy - _energySpending, 0f, _requestedEnergy);
 
         float tiredDamage = 5f;
-        if (_currentFoodResources < 10f)
+        if (_currentEnergy < 10f)
         {
+            //there is no need to use TakeDamage here bc character NEED sleep
             _health = Mathf.Clamp(_health - tiredDamage, 0f, 100f);
         }
     }
 
+
+    private void TakeDamadge()
+    {
+        _lastDamageTime = Time.time;
+        _isSafe = false;
+    }
+
+
+    public void SetSleepingStatus(bool newStatus) { _isSleeping = newStatus; }
 
     public float GetCurrentFoodResources() { return _currentFoodResources; }
     public float GetRequestedFoodResources() { return _requestedFoodResources; }
     public float GetHealth() { return _health; }
     public float GetCurrentEnergy() {  return _currentEnergy; }
     public float GetRequestedEnergy() {  return _requestedEnergy; }
+    public bool IsSleeping() { return _isSleeping; }
+    public bool IsSafe() { return _isSafe; }
 }

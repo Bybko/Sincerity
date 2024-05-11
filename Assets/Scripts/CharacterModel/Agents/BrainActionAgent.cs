@@ -71,6 +71,8 @@ public class BrainActionAgent : Agent
 
         _playerTransform.localPosition = Vector3.zero;
         _physicalStatus.SetRandomValues();
+
+        _subconscious.WakeUp();
     }
 
 

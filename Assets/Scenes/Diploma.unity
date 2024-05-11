@@ -1674,6 +1674,14 @@ PrefabInstance:
       propertyPath: _test.Array.data[3]
       value: 
       objectReference: {fileID: 1933506753}
+    - target: {fileID: 1916180577376629856, guid: 1bbd8f3ab62a93b4d9440e9bc4862ec4, type: 3}
+      propertyPath: _energySpending
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1916180577376629856, guid: 1bbd8f3ab62a93b4d9440e9bc4862ec4, type: 3}
+      propertyPath: _foodEnergySpending
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5160046408094879190, guid: 1bbd8f3ab62a93b4d9440e9bc4862ec4, type: 3}
       propertyPath: m_Model
       value: 
