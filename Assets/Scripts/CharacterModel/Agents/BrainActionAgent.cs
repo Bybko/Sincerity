@@ -65,6 +65,7 @@ public class BrainActionAgent : Agent
     public override void OnEpisodeBegin()
     {
         _brain.ResetMemory();
+        _brain.ResetSearchStatus();
 
         _receptors.StopAllCoroutines();
         _brain.StopAllCoroutines();

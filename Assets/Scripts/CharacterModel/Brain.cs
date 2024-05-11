@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -22,6 +23,8 @@ public class Brain : MonoBehaviour
     private bool _isInstinctDecisionReady = false;
     private bool _isFinalDecisionReady = false;
     private bool _isFinalActionReady = false;
+
+    private bool _isSearching = false;
 
     
     private void Update()
@@ -111,14 +114,12 @@ public class Brain : MonoBehaviour
             MemoryObject newGoal = _memory.GetMostWantedObjectWithAction();
             if (newGoal != null)
             {
+                _isSearching = false;
                 _memory.AddNewGoal(newGoal);
 
                 newGoal.GetAction().Action();
             }
-            else
-            {
-                //search
-            }
+            else if(_isSearching == false) { Search(); }
         }
     }
 
@@ -139,6 +140,23 @@ public class Brain : MonoBehaviour
     }
 
 
+    private void Search()
+    {
+        _isSearching = true;
+
+        float searchRadius = 10f;
+        float randomX = transform.position.x + UnityEngine.Random.Range(-searchRadius, searchRadius);
+        float randomZ = transform.position.z + UnityEngine.Random.Range(-searchRadius, searchRadius);
+        Vector3 randomPosition = new Vector3(randomX, transform.position.y, randomZ);
+
+        //maybe later if navmesh areas would be more complicated
+        //NavMeshHit hit;
+        //if (NavMesh.SamplePosition(randomPosition, out hit, searchRadius, NavMesh.AllAreas))
+        _navMesh.SetDestination(randomPosition);
+    }
+
+
+    public void ResetSearchStatus() { _isSearching = false; }
     public void IsInstinctsDecisionReady(bool newStatus) { _isInstinctDecisionReady = newStatus; }
     public void IsEmotionalDecisionReady(bool newStatus) { _isEmotionalDecisionReady = newStatus; }
     public void IsFinalDecisionReady(bool newStatus) { _isFinalDecisionReady = newStatus; }
