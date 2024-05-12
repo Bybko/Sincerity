@@ -449,6 +449,7 @@
 "Assets/ML-Agents/TestScenes/TestCompressedTexture/TestTextureSensor.cs"
 "Assets/ML-Agents/TestScenes/TestCompressedTexture/TestTextureSensorComponent.cs"
 "Assets/Scripts/CharacterModel/ActionPlan.cs"
+"Assets/Scripts/CharacterModel/Actions/AttackAction.cs"
 "Assets/Scripts/CharacterModel/Actions/EscapeAction.cs"
 "Assets/Scripts/CharacterModel/Actions/ICharacterAction.cs"
 "Assets/Scripts/CharacterModel/Actions/InteractionAction.cs"

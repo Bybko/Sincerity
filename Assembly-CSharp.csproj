@@ -120,6 +120,7 @@
     <Compile Include="Assets\Scripts\CharacterModel\Needs\ComfortNeed.cs" />
     <Compile Include="Assets\Scripts\CharacterModel\Brain.cs" />
     <Compile Include="Assets\ML-Agents\Examples\Match3\Scripts\Match3TileSelector.cs" />
+    <Compile Include="Assets\Scripts\CharacterModel\Actions\AttackAction.cs" />
     <Compile Include="Assets\ML-Agents\Examples\Soccer\Scripts\SoccerBallController.cs" />
     <Compile Include="Assets\Scripts\Timer.cs" />
     <Compile Include="Assets\ML-Agents\Examples\Sorter\Scripts\SorterAgent.cs" />

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
@@ -5,6 +6,8 @@ using Unity.MLAgents.Actuators;
 
 public class BrainActionAgent : Agent
 {
+    public Action OnEpisodeReset;
+
     //for train episode initialize
     [SerializeField] private Receptors _receptors;
     [SerializeField] private PhysicalStatus _physicalStatus;
@@ -31,9 +34,13 @@ public class BrainActionAgent : Agent
 
     public override void CollectObservations(VectorSensor sensor)
     {
+        float objectNearStatus = 0f;
+        if (_receptors.IsForeignObjectNearBy()) { objectNearStatus = 1f; }
+
         sensor.AddObservation(_instinctDecision);
         sensor.AddObservation(_emotionalDecision);
         sensor.AddObservation(_finalDecision);
+        sensor.AddObservation(objectNearStatus);
     }
 
 
@@ -51,10 +58,16 @@ public class BrainActionAgent : Agent
         switch (decidedActionNumber)
         {
             case 0:
+                Debug.Log("Ignore!!!");
                 _decidedAction = null;
                 break;
             case 1:
+                Debug.Log("Come!!");
                 _decidedAction = new InteractionAction();
+                break;
+            case 2:
+                Debug.Log("Attack!");
+                _decidedAction = new AttackAction();
                 break;
         }
 
@@ -74,6 +87,8 @@ public class BrainActionAgent : Agent
         _physicalStatus.SetRandomValues();
 
         _subconscious.WakeUp();
+
+        OnEpisodeReset.Invoke();
     }
 
 

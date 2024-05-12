@@ -9,7 +9,8 @@ public class Receptors : MonoBehaviour
     [SerializeField] private Subconscious _subconscious;
     [SerializeField] private BrainActionAgent _brainAgent; //for training
 
-    private List<ForeignObject> _viewedForeignObjects = new List<ForeignObject>();                     
+    private List<ForeignObject> _viewedForeignObjects = new List<ForeignObject>();
+    private ForeignObject _currentInteractObject;
 
 
     private void Start()
@@ -42,6 +43,7 @@ public class Receptors : MonoBehaviour
         float delayDelete = 10f;
         yield return new WaitForSeconds(delayDelete);
         _viewedForeignObjects.Remove(foreignObject);
+
     }
 
 
@@ -49,13 +51,24 @@ public class Receptors : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<ForeignObject>(out ForeignObject goal))
         {
+            SetCurrentInteractObject(goal);
+
+
             _brain.TellAboutReachingObject(goal);
-            _subconscious.ForeignObjectsInfluence(goal);
             _brainAgent.CheckTrainEpisode();
         }
     }
 
-    
+
+    public void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.TryGetComponent<ForeignObject>(out ForeignObject goal))
+        {
+            //SetCurrentInteractObject(null);
+        }
+    }
+
+
     public float EnvironmentDanger()
     {
         float totalDanger = 0f;
@@ -64,6 +77,13 @@ public class Receptors : MonoBehaviour
             totalDanger = Mathf.Clamp01(totalDanger + _subconscious.ForeignObjectDangerCalculate(foreignObject));
         }
         return totalDanger;
+    }
+
+
+    public void ForeignObjectDestroy(ForeignObject foreignObject)
+    {
+        _subconscious.ForeignObjectsInfluence(foreignObject);
+        _brainAgent.CheckTrainEpisode();
     }
 
 
@@ -83,4 +103,15 @@ public class Receptors : MonoBehaviour
             yield return StartCoroutine(_brain.AnalizeForeignObject(viewedForeignObject));
         }
     }
+
+
+    public bool IsForeignObjectNearBy() 
+    { 
+        if (_currentInteractObject == null) { return  false; }
+        return true;
+    }
+
+    public void SetCurrentInteractObject(ForeignObject foreignObject) { _currentInteractObject = foreignObject; }
+
+    public ForeignObject GetCurrentInteractObject() { return _currentInteractObject; }
 }

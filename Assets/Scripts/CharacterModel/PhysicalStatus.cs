@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PhysicalStatus : MonoBehaviour
 {
+    [SerializeField] private Receptors _receptors;
     //rebalance this parameters for a long game after learning
     [SerializeField] private float _health = 100f;
     [SerializeField] private float _foodEnergySpending = 5f;
@@ -12,6 +13,7 @@ public class PhysicalStatus : MonoBehaviour
     [SerializeField] private float _energySpending = 0.1f;
     [SerializeField] private float _requestedEnergy = 100f;
     [SerializeField] private float _safetyTimer = 5f; //set 20f after
+    [SerializeField] private float _damagePotential = -100f; //set -20f after, не надо шоб с одного удара выносил
 
     private float _currentFoodResources;
     private float _currentEnergy;
@@ -114,8 +116,10 @@ public class PhysicalStatus : MonoBehaviour
     public float GetCurrentFoodResources() { return _currentFoodResources; }
     public float GetRequestedFoodResources() { return _requestedFoodResources; }
     public float GetHealth() { return _health; }
+    public float GetPotentialDamage() { return _damagePotential; }
     public float GetCurrentEnergy() {  return _currentEnergy; }
     public float GetRequestedEnergy() {  return _requestedEnergy; }
+    public ForeignObject GetCurrentForeignObject() { return _receptors.GetCurrentInteractObject(); }
     public bool IsSleeping() { return _isSleeping; }
     public bool IsSafe() { return _isSafe; }
 }
