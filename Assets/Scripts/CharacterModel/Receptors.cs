@@ -64,7 +64,7 @@ public class Receptors : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<ForeignObject>(out ForeignObject goal))
         {
-            //SetCurrentInteractObject(null);
+            SetCurrentInteractObject(null);
         }
     }
 

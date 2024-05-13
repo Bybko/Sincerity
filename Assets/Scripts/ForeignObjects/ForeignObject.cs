@@ -65,9 +65,12 @@ public class ForeignObject : MonoBehaviour
 
     private void SelfDestroy()
     {
-        //Debug.Log("I'm died, my Food Value is: " + _foodValue);
-
-        if ( _currentReceptor != null ) { _currentReceptor.ForeignObjectDestroy(this); }
+        if ( _currentReceptor != null ) 
+        {
+            Debug.Log("I'm died, my Food Value is: " + _foodValue);
+            _currentReceptor.ForeignObjectDestroy(this);
+            _educationEpisode.SetComplexReward(10f);
+        }
 
         gameObject.SetActive(false);
     }

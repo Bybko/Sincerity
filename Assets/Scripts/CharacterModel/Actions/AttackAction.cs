@@ -20,9 +20,6 @@ public class AttackAction : ICharacterAction
     {
         if (_status.GetCurrentForeignObject() != null)
         {
-            //Debug.Log("Real attack on object " + _status.GetCurrentForeignObject().GetFoodValue()  + " by damage " +
-            //   _status.GetPotentialDamage());
-            //Debug.Log("HP right now is: " + _status.GetCurrentForeignObject().GetObjectHP());
             _status.GetCurrentForeignObject().ChangeHP(_status.GetPotentialDamage());
         }
 

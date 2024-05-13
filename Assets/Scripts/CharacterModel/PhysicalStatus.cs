@@ -15,8 +15,8 @@ public class PhysicalStatus : MonoBehaviour
     [SerializeField] private float _safetyTimer = 5f; //set 20f after
     [SerializeField] private float _damagePotential = -100f; //set -20f after, не надо шоб с одного удара выносил
 
-    private float _currentFoodResources;
-    private float _currentEnergy;
+    public float _currentFoodResources; //temp public
+    public float _currentEnergy; //temp public
     private bool _isSleeping = false;
 
     private float _lastDamageTime = 0f;

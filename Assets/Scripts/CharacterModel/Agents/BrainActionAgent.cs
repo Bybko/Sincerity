@@ -58,15 +58,12 @@ public class BrainActionAgent : Agent
         switch (decidedActionNumber)
         {
             case 0:
-                Debug.Log("Ignore!!!");
                 _decidedAction = null;
                 break;
             case 1:
-                Debug.Log("Come!!");
                 _decidedAction = new InteractionAction();
                 break;
             case 2:
-                Debug.Log("Attack!");
                 _decidedAction = new AttackAction();
                 break;
         }
@@ -105,18 +102,18 @@ public class BrainActionAgent : Agent
 
         if (_physicalStatus.GetHealth() == 100)
         {
-            SetReward(10f);
-            _brainAgent.SetReward(10f);
-            _emotions.SetReward(10f);
-            _instincts.SetReward(10f);
+            SetReward(50f);
+            _brainAgent.SetReward(50f);
+            _emotions.SetReward(50f);
+            _instincts.SetReward(50f);
         }
 
         if (_physicalStatus.GetCurrentFoodResources() == 100)
         {
-            SetReward(5f);
-            _brainAgent.SetReward(5f);
-            _emotions.SetReward(5f);
-            _instincts.SetReward(5f);
+            SetReward(25f);
+            _brainAgent.SetReward(25f);
+            _emotions.SetReward(25f);
+            _instincts.SetReward(25f);
         }
 
         if (_subconscious.GetHappines() == 0)
@@ -127,6 +124,15 @@ public class BrainActionAgent : Agent
             _instincts.SetReward(100f);
             EndEpisode();
         }
+    }
+
+
+    public void SetComplexReward(float reward)
+    {
+        SetReward(reward);
+        _brainAgent.SetReward(reward);
+        _emotions.SetReward(reward);
+        _instincts.SetReward(reward);
     }
 
 
