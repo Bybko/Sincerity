@@ -66,6 +66,9 @@ public class BrainActionAgent : Agent
             case 2:
                 _decidedAction = new AttackAction();
                 break;
+            case 3:
+                _decidedAction = new HealAction();
+                break;
         }
 
         _brain.IsFinalActionReady(true);

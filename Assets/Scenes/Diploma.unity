@@ -523,6 +523,14 @@ PrefabInstance:
       propertyPath: _foodEnergySpending
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 4082160090337041793, guid: 1bbd8f3ab62a93b4d9440e9bc4862ec4, type: 3}
+      propertyPath: m_BrainParameters.VectorActionSize.Array.data[0]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4082160090337041793, guid: 1bbd8f3ab62a93b4d9440e9bc4862ec4, type: 3}
+      propertyPath: m_BrainParameters.m_ActionSpec.m_NumContinuousActions
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5160046408094879190, guid: 1bbd8f3ab62a93b4d9440e9bc4862ec4, type: 3}
       propertyPath: m_Model
       value: 

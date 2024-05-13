@@ -413,12 +413,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _educationEpisode: {fileID: 4552197263486432966}
+  _objectHP: 100
   _foodValue: 0
   _damageValue: -100
+  _isOwned: 0
+  _isHealable: 0
   _size: 10
   _isMoving: 0
-  _isOwned: 0
-  _objectHP: 100
 --- !u!65 &7283800940104994523
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -671,6 +672,9 @@ MonoBehaviour:
   _requestedEnergy: 100
   _safetyTimer: 5
   _damagePotential: -100
+  _healPotential: 100
+  _currentFoodResources: 0
+  _currentEnergy: 0
 --- !u!114 &1748900583662328481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -935,12 +939,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _educationEpisode: {fileID: 4552197263486432966}
+  _objectHP: 100
   _foodValue: 100
   _damageValue: 0
+  _isOwned: 0
+  _isHealable: 0
   _size: 5
   _isMoving: 0
-  _isOwned: 0
-  _objectHP: 100
 --- !u!65 &8832535279140555566
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1273,12 +1278,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _educationEpisode: {fileID: 4552197263486432966}
+  _objectHP: 100
   _foodValue: -50
   _damageValue: 100
+  _isOwned: 0
+  _isHealable: 0
   _size: 15
   _isMoving: 0
-  _isOwned: 0
-  _objectHP: 100
 --- !u!65 &6318766164769200199
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1774,12 +1780,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _educationEpisode: {fileID: 4552197263486432966}
+  _objectHP: 100
   _foodValue: 20
   _damageValue: -70
+  _isOwned: 0
+  _isHealable: 0
   _size: 20
   _isMoving: 0
-  _isOwned: 0
-  _objectHP: 100
 --- !u!65 &2118718598243741113
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2039,9 +2046,9 @@ MonoBehaviour:
     VectorObservationSize: 4
     NumStackedVectorObservations: 1
     m_ActionSpec:
-      m_NumContinuousActions: 3
+      m_NumContinuousActions: 4
       BranchSizes: 
-    VectorActionSize: 03000000
+    VectorActionSize: 04000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1

@@ -5,16 +5,17 @@ public class ForeignObject : MonoBehaviour
     //so cringe
     [SerializeField] private BrainActionAgent _educationEpisode; //how do it for multiagent setting, 'cause it's only agent by one player
 
+    [SerializeField] private float _objectHP;
     [SerializeField] private float _foodValue;
     [SerializeField] private float _damageValue;
+    [SerializeField] private bool _isOwned;
+    [SerializeField] private bool _isHealable;
     //make parameters bellow formed by Transform scale and NavMesh moving
     [SerializeField] private float _size;
     [SerializeField] private bool _isMoving;
 
-    [SerializeField] private bool _isOwned;
-    [SerializeField] private float _objectHP;
-
     private Receptors _currentReceptor;
+
 
     //so cringe
     private void Start()
@@ -77,6 +78,7 @@ public class ForeignObject : MonoBehaviour
 
 
     public bool IsMoving() { return _isMoving; }
+    public bool IsHealable() { return _isHealable; }
 
     public float GetFoodValue() { return _foodValue; }
     public float GetDamageValue() { return _damageValue; }

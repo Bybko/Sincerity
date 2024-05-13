@@ -14,9 +14,10 @@ public class PhysicalStatus : MonoBehaviour
     [SerializeField] private float _requestedEnergy = 100f;
     [SerializeField] private float _safetyTimer = 5f; //set 20f after
     [SerializeField] private float _damagePotential = -100f; //set -20f after, не надо шоб с одного удара выносил
+    [SerializeField] private float _healPotential = 100f; //set 20f after
 
-    public float _currentFoodResources; //temp public
-    public float _currentEnergy; //temp public
+    private float _currentFoodResources;
+    private float _currentEnergy;
     private bool _isSleeping = false;
 
     private float _lastDamageTime = 0f;
@@ -117,6 +118,7 @@ public class PhysicalStatus : MonoBehaviour
     public float GetRequestedFoodResources() { return _requestedFoodResources; }
     public float GetHealth() { return _health; }
     public float GetPotentialDamage() { return _damagePotential; }
+    public float GetPotentialHeal() { return _healPotential; }
     public float GetCurrentEnergy() {  return _currentEnergy; }
     public float GetRequestedEnergy() {  return _requestedEnergy; }
     public ForeignObject GetCurrentForeignObject() { return _receptors.GetCurrentInteractObject(); }

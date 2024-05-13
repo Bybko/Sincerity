@@ -116,6 +116,7 @@
     <Compile Include="Assets\Scripts\ForeignObjects\ForeignObject.cs" />
     <Compile Include="Assets\ML-Agents\Examples\SharedAssets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\ML-Agents\Examples\DungeonEscape\Scripts\SimpleNPC.cs" />
+    <Compile Include="Assets\Scripts\CharacterModel\Actions\HealAction.cs" />
     <Compile Include="Assets\ML-Agents\Examples\SharedAssets\Scripts\ModelOverrider.cs" />
     <Compile Include="Assets\Scripts\CharacterModel\Needs\ComfortNeed.cs" />
     <Compile Include="Assets\Scripts\CharacterModel\Brain.cs" />
