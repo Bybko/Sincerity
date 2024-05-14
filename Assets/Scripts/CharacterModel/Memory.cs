@@ -130,7 +130,7 @@ public class Memory : MonoBehaviour
         {
             if (rememberedObject.IsEqual(goal)) 
             { 
-                if (rememberedObject.GetAction() is InteractionAction)
+                if (rememberedObject.GetAction() is WalkAction)
                 {
                     rememberedObject.GetAction().SelfDelete();
                 }

@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class InteractionAction : ICharacterAction
+public class WalkAction : ICharacterAction
 {
     public bool isActionFinished = false;
 
@@ -11,7 +11,7 @@ public class InteractionAction : ICharacterAction
     private Brain _brain;
 
 
-    public InteractionAction()
+    public WalkAction()
     {
         //у меня сейчас идёт поиск компонентов в действиях через конструкторы в которых GameObject.Find(")
         //я к тому, что может быть так, что плееров будет несколько, а все компоненты будут иниициализироваться как будто у одного

@@ -453,7 +453,8 @@
 "Assets/Scripts/CharacterModel/Actions/EscapeAction.cs"
 "Assets/Scripts/CharacterModel/Actions/HealAction.cs"
 "Assets/Scripts/CharacterModel/Actions/ICharacterAction.cs"
-"Assets/Scripts/CharacterModel/Actions/InteractionAction.cs"
+"Assets/Scripts/CharacterModel/Actions/MarkAction.cs"
+"Assets/Scripts/CharacterModel/Actions/WalkAction.cs"
 "Assets/Scripts/CharacterModel/Agents/BrainActionAgent.cs"
 "Assets/Scripts/CharacterModel/Agents/BrainAgent.cs"
 "Assets/Scripts/CharacterModel/Agents/EmotionalBrainAgent.cs"
@@ -472,6 +473,7 @@
 "Assets/Scripts/CharacterModel/PhysicalStatus.cs"
 "Assets/Scripts/CharacterModel/Receptors.cs"
 "Assets/Scripts/CharacterModel/Subconscious.cs"
+"Assets/Scripts/ForeignObjects/CharacterObject.cs"
 "Assets/Scripts/ForeignObjects/ForeignObject.cs"
 "Assets/Scripts/Timer.cs"
 -langversion:9.0

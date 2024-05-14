@@ -416,7 +416,6 @@ MonoBehaviour:
   _objectHP: 100
   _foodValue: 0
   _damageValue: -100
-  _isOwned: 0
   _isHealable: 0
   _size: 10
   _isMoving: 0
@@ -506,6 +505,7 @@ GameObject:
   - component: {fileID: 1916180577376629856}
   - component: {fileID: 1748900583662328481}
   - component: {fileID: 3727347911184083790}
+  - component: {fileID: 1054873374176004585}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -673,8 +673,6 @@ MonoBehaviour:
   _safetyTimer: 5
   _damagePotential: -100
   _healPotential: 100
-  _currentFoodResources: 0
-  _currentEnergy: 0
 --- !u!114 &1748900583662328481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -712,6 +710,25 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1054873374176004585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2928409165108646307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a8040ffe768bd643888b23561db2310, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _educationEpisode: {fileID: 0}
+  _objectHP: 0
+  _foodValue: 0
+  _damageValue: 0
+  _isHealable: 0
+  _size: 0
+  _isMoving: 0
 --- !u!1 &3016918647333931312
 GameObject:
   m_ObjectHideFlags: 0
@@ -942,7 +959,6 @@ MonoBehaviour:
   _objectHP: 100
   _foodValue: 100
   _damageValue: 0
-  _isOwned: 0
   _isHealable: 0
   _size: 5
   _isMoving: 0
@@ -1281,7 +1297,6 @@ MonoBehaviour:
   _objectHP: 100
   _foodValue: -50
   _damageValue: 100
-  _isOwned: 0
   _isHealable: 0
   _size: 15
   _isMoving: 0
@@ -1783,7 +1798,6 @@ MonoBehaviour:
   _objectHP: 100
   _foodValue: 20
   _damageValue: -70
-  _isOwned: 0
   _isHealable: 0
   _size: 20
   _isMoving: 0
@@ -2046,9 +2060,9 @@ MonoBehaviour:
     VectorObservationSize: 4
     NumStackedVectorObservations: 1
     m_ActionSpec:
-      m_NumContinuousActions: 4
+      m_NumContinuousActions: 5
       BranchSizes: 
-    VectorActionSize: 04000000
+    VectorActionSize: 05000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1

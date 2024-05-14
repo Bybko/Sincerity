@@ -87,9 +87,11 @@
     <Compile Include="Assets\ML-Agents\Examples\Match3\Scripts\Match3ExampleActuator.cs" />
     <Compile Include="Assets\ML-Agents\Examples\Soccer\Scripts\SoccerSettings.cs" />
     <Compile Include="Assets\ML-Agents\Examples\Startup\Scripts\Startup.cs" />
+    <Compile Include="Assets\Scripts\ForeignObjects\CharacterObject.cs" />
     <Compile Include="Assets\ML-Agents\Examples\PushBlockWithInput\Scripts\PushBlockWithInputAgentBasic.cs" />
     <Compile Include="Assets\ML-Agents\TestScenes\TestCompressedTexture\TestTextureSensor.cs" />
     <Compile Include="Assets\ML-Agents\Examples\Match3\Scripts\Match3Drawer.cs" />
+    <Compile Include="Assets\Scripts\CharacterModel\Actions\WalkAction.cs" />
     <Compile Include="Assets\ML-Agents\Examples\Hallway\Scripts\HallwaySettings.cs" />
     <Compile Include="Assets\ML-Agents\Examples\Soccer\Scripts\AgentSoccer.cs" />
     <Compile Include="Assets\ML-Agents\Examples\DungeonEscape\Scripts\DungeonEscapeEnvController.cs" />
@@ -108,6 +110,7 @@
     <Compile Include="Assets\ML-Agents\Examples\SharedAssets\Scripts\TargetController.cs" />
     <Compile Include="Assets\ML-Agents\Examples\GridWorld\Scripts\GridArea.cs" />
     <Compile Include="Assets\ML-Agents\Examples\Basic\Scripts\BasicController.cs" />
+    <Compile Include="Assets\Scripts\CharacterModel\Actions\MarkAction.cs" />
     <Compile Include="Assets\ML-Agents\Examples\PushBlock\Scripts\PushBlockSettings.cs" />
     <Compile Include="Assets\ML-Agents\Examples\Worm\Scripts\WormAgent.cs" />
     <Compile Include="Assets\ML-Agents\Examples\PushBlockWithInput\Scripts\PushBlockActions.cs" />
@@ -142,7 +145,6 @@
     <Compile Include="Assets\ML-Agents\Examples\SharedAssets\Scripts\Monitor.cs" />
     <Compile Include="Assets\Scripts\CharacterModel\Memory.cs" />
     <Compile Include="Assets\ML-Agents\Examples\Soccer\Scripts\SoccerEnvController.cs" />
-    <Compile Include="Assets\Scripts\CharacterModel\Actions\InteractionAction.cs" />
     <Compile Include="Assets\ML-Agents\Examples\PushBlock\Scripts\PushAgentCollab.cs" />
     <Compile Include="Assets\ML-Agents\Examples\3DBall\Scripts\Ball3DHardAgent.cs" />
     <Compile Include="Assets\ML-Agents\Examples\3DBall\Scripts\Ball3DAgent.cs" />

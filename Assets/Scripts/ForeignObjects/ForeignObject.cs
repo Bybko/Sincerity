@@ -8,12 +8,13 @@ public class ForeignObject : MonoBehaviour
     [SerializeField] private float _objectHP;
     [SerializeField] private float _foodValue;
     [SerializeField] private float _damageValue;
-    [SerializeField] private bool _isOwned;
     [SerializeField] private bool _isHealable;
     //make parameters bellow formed by Transform scale and NavMesh moving
     [SerializeField] private float _size;
     [SerializeField] private bool _isMoving;
 
+    private bool _isOwned;
+    //private ForeignObject _owner;
     private Receptors _currentReceptor;
 
 
@@ -50,6 +51,7 @@ public class ForeignObject : MonoBehaviour
     {
         gameObject.SetActive(true);
         _objectHP = 100f;
+        _isOwned = false;
     }        
 
 
@@ -77,14 +79,24 @@ public class ForeignObject : MonoBehaviour
     }
 
 
+    /*public bool IsOwned() 
+    {
+        if (_owner != null) { return true; }
+        return false;
+    }*/
+    public bool IsOwned()
+    {
+        return _isOwned;
+    }
+
     public bool IsMoving() { return _isMoving; }
     public bool IsHealable() { return _isHealable; }
 
     public float GetFoodValue() { return _foodValue; }
     public float GetDamageValue() { return _damageValue; }
     public float GetObjectSize() { return _size; }
-    public bool GetOwnedStatus() { return _isOwned; }
     public float GetObjectHP() { return _objectHP; }
 
-    public void SetOwnedStatus(bool currentOwnedStatus) { _isOwned = currentOwnedStatus; }
+    //public void SetObjectOwner(ForeignObject newOwner) { _owner = newOwner; }
+    public void SetObjectOwner(bool newOwner) { _isOwned = newOwner; }
 }

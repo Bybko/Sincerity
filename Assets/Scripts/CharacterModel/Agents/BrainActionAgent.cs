@@ -61,13 +61,16 @@ public class BrainActionAgent : Agent
                 _decidedAction = null;
                 break;
             case 1:
-                _decidedAction = new InteractionAction();
+                _decidedAction = new WalkAction();
                 break;
             case 2:
                 _decidedAction = new AttackAction();
                 break;
             case 3:
                 _decidedAction = new HealAction();
+                break;
+            case 4:
+                _decidedAction = new MarkAction();
                 break;
         }
 
