@@ -80,7 +80,7 @@ public class Receptors : MonoBehaviour
     }
 
 
-    public void ForeignObjectDestroy(ForeignObject foreignObject)
+    public void ForeignObjectLegacy(ForeignObject foreignObject)
     {
         _subconscious.ForeignObjectsInfluence(foreignObject);
         _brainAgent.CheckTrainEpisode();

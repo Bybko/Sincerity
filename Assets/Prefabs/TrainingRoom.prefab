@@ -208,6 +208,50 @@ MonoBehaviour:
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
   _brain: {fileID: 5338911918182856610}
+--- !u!1 &1801343160194576681
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 33466861098936792}
+  - component: {fileID: 7591525259537756819}
+  m_Layer: 0
+  m_Name: EventHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &33466861098936792
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801343160194576681}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 113849625868322249}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7591525259537756819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801343160194576681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fb2a1244b961354b921942536afc889, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1830664505463820811
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,10 +368,10 @@ GameObject:
   - component: {fileID: 5103460080375632208}
   - component: {fileID: 63419546025827448}
   - component: {fileID: 7470432277030466727}
-  - component: {fileID: 7034328726504994101}
   - component: {fileID: 7283800940104994523}
   - component: {fileID: 2295161442006627229}
   - component: {fileID: 8266674338962874560}
+  - component: {fileID: 7128478399154901638}
   m_Layer: 0
   m_Name: Food (4)
   m_TagString: Untagged
@@ -400,25 +444,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7034328726504994101
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2763185518637077868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fc29cc64f69bfc4483caf6d322468bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _educationEpisode: {fileID: 4552197263486432966}
-  _objectHP: 100
-  _foodValue: 0
-  _damageValue: -100
-  _isHealable: 0
-  _size: 10
-  _isMoving: 0
 --- !u!65 &7283800940104994523
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -488,6 +513,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7128478399154901638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2763185518637077868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 922f8db356f0fbb469f77edcf4097849, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _events: {fileID: 7591525259537756819}
+  _foodValue: 0
+  _damageValue: -70
+  _objectHP: 100
+  _size: 8
+  _isMoving: 0
 --- !u!1 &2928409165108646307
 GameObject:
   m_ObjectHideFlags: 0
@@ -505,7 +548,7 @@ GameObject:
   - component: {fileID: 1916180577376629856}
   - component: {fileID: 1748900583662328481}
   - component: {fileID: 3727347911184083790}
-  - component: {fileID: 1054873374176004585}
+  - component: {fileID: 5224034941751431898}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -710,7 +753,7 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1054873374176004585
+--- !u!114 &5224034941751431898
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -722,13 +765,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a8040ffe768bd643888b23561db2310, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _educationEpisode: {fileID: 0}
-  _objectHP: 0
-  _foodValue: 0
+  _events: {fileID: 7591525259537756819}
+  _foodValue: 5
   _damageValue: 0
-  _isHealable: 0
-  _size: 0
-  _isMoving: 0
+  _objectHP: 0
+  _size: 1
+  _isMoving: 1
 --- !u!1 &3016918647333931312
 GameObject:
   m_ObjectHideFlags: 0
@@ -867,10 +909,10 @@ GameObject:
   - component: {fileID: 6573874826293308879}
   - component: {fileID: 8674936123421854151}
   - component: {fileID: 5096377871469347745}
-  - component: {fileID: 7502798602962724198}
   - component: {fileID: 8832535279140555566}
   - component: {fileID: 7577382443098795295}
   - component: {fileID: 5762691433270220141}
+  - component: {fileID: 6403127340004789231}
   m_Layer: 0
   m_Name: Food (2)
   m_TagString: Untagged
@@ -943,25 +985,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7502798602962724198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3092071042785739569}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fc29cc64f69bfc4483caf6d322468bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _educationEpisode: {fileID: 4552197263486432966}
-  _objectHP: 100
-  _foodValue: 100
-  _damageValue: 0
-  _isHealable: 0
-  _size: 5
-  _isMoving: 0
 --- !u!65 &8832535279140555566
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1031,6 +1054,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6403127340004789231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3092071042785739569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 922f8db356f0fbb469f77edcf4097849, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _events: {fileID: 7591525259537756819}
+  _foodValue: 5
+  _damageValue: 0
+  _objectHP: 100
+  _size: 2
+  _isMoving: 0
 --- !u!1 &3145549755763404265
 GameObject:
   m_ObjectHideFlags: 0
@@ -1205,10 +1246,10 @@ GameObject:
   - component: {fileID: 3481619710749880500}
   - component: {fileID: 5365898524996548583}
   - component: {fileID: 7118988616016272784}
-  - component: {fileID: 7865618196601989788}
   - component: {fileID: 6318766164769200199}
   - component: {fileID: 7661131175911993947}
   - component: {fileID: 7719011572342622349}
+  - component: {fileID: 2713263334484882040}
   m_Layer: 0
   m_Name: Food (3)
   m_TagString: Untagged
@@ -1281,25 +1322,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7865618196601989788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4424852294112444048}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fc29cc64f69bfc4483caf6d322468bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _educationEpisode: {fileID: 4552197263486432966}
-  _objectHP: 100
-  _foodValue: -50
-  _damageValue: 100
-  _isHealable: 0
-  _size: 15
-  _isMoving: 0
 --- !u!65 &6318766164769200199
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1369,6 +1391,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2713263334484882040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4424852294112444048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 922f8db356f0fbb469f77edcf4097849, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _events: {fileID: 7591525259537756819}
+  _foodValue: -10
+  _damageValue: 20
+  _objectHP: 100
+  _size: 8
+  _isMoving: 0
 --- !u!1 &6319077849396815557
 GameObject:
   m_ObjectHideFlags: 0
@@ -1606,6 +1646,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 33466861098936792}
   - {fileID: 7617733329458642920}
   - {fileID: 5378300684111454087}
   - {fileID: 5316390152587566700}
@@ -1706,10 +1747,10 @@ GameObject:
   - component: {fileID: 5316390152587566700}
   - component: {fileID: 772306966404864067}
   - component: {fileID: 7190222038176153714}
-  - component: {fileID: 5790048382971716734}
   - component: {fileID: 2118718598243741113}
   - component: {fileID: 4424453505105513013}
   - component: {fileID: 4985618048003878374}
+  - component: {fileID: 1029831455098947672}
   m_Layer: 0
   m_Name: Food (1)
   m_TagString: Untagged
@@ -1782,25 +1823,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5790048382971716734
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7419987871489277177}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fc29cc64f69bfc4483caf6d322468bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _educationEpisode: {fileID: 4552197263486432966}
-  _objectHP: 100
-  _foodValue: 20
-  _damageValue: -70
-  _isHealable: 0
-  _size: 20
-  _isMoving: 0
 --- !u!65 &2118718598243741113
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1870,6 +1892,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1029831455098947672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7419987871489277177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 922f8db356f0fbb469f77edcf4097849, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _events: {fileID: 7591525259537756819}
+  _foodValue: 50
+  _damageValue: -70
+  _objectHP: 100
+  _size: 12
+  _isMoving: 0
 --- !u!1 &7868910619919424883
 GameObject:
   m_ObjectHideFlags: 0
@@ -2091,6 +2131,7 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
+  _events: {fileID: 7591525259537756819}
   _receptors: {fileID: 1748900583662328481}
   _physicalStatus: {fileID: 1916180577376629856}
   _subconscious: {fileID: 7177969452162092215}

@@ -1,19 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class MarkAction : ICharacterAction
 {
     private MemoryObject _connectedObject;
     private PhysicalStatus _status;
     private Brain _brain;
+    private GameObject _character;
 
 
-    public MarkAction()
+    public MarkAction(GameObject character)
     {
-        _status = GameObject.Find("Player").GetComponent<PhysicalStatus>();
-        _brain = GameObject.Find("Player").GetComponentInChildren<Brain>();
+        _character = character;
+        _status = character.GetComponent<PhysicalStatus>();
+        _brain = character.GetComponentInChildren<Brain>();
     }
 
 
@@ -21,7 +20,7 @@ public class MarkAction : ICharacterAction
     {
         if (_status.GetCurrentForeignObject() != null)
         {
-            _status.GetCurrentForeignObject().SetObjectOwner(true);
+            _status.GetCurrentForeignObject().SetObjectOwner(_character.GetComponent<CharacterObject>());
         }
 
         SelfDelete();

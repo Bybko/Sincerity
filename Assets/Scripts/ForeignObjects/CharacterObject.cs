@@ -1,18 +1,62 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class CharacterObject : ForeignObject
 {
-    // Start is called before the first frame update
-    void Start()
+    private PhysicalStatus _physicalStatus;
+
+
+    private void Start()
     {
-        
+        _owner = null;
+        _physicalStatus = gameObject.GetComponent<PhysicalStatus>();
+        _damageValue = _physicalStatus.GetPotentialDamage();
     }
 
-    // Update is called once per frame
-    void Update()
+
+    private void Update()
     {
-        
+        _objectHP = _physicalStatus.GetHealth();
+
+        if (_objectHP == 0f) { SelfDestroy(); }
+    }
+
+
+    public override void Interact()
+    {
+        return;
+    }
+
+
+    public override void ObjectReset()
+    {
+        gameObject.SetActive(true);
+    }
+
+
+    public override void SelfDestroy()
+    {
+        gameObject.SetActive(false);
+    }
+
+
+    public override void ChangeHP(float hpValue)
+    {
+        _physicalStatus.ChangeHealth(hpValue);
+    }
+
+
+    public override bool IsOwned()
+    {
+        return false;
+    }
+
+
+    public override ForeignObject GetOwner()
+    {
+        return null;
+    }
+
+
+    public override void SetObjectOwner(ForeignObject newOwner)
+    {
+        return;
     }
 }

@@ -473,7 +473,9 @@
 "Assets/Scripts/CharacterModel/PhysicalStatus.cs"
 "Assets/Scripts/CharacterModel/Receptors.cs"
 "Assets/Scripts/CharacterModel/Subconscious.cs"
+"Assets/Scripts/EventHandler.cs"
 "Assets/Scripts/ForeignObjects/CharacterObject.cs"
+"Assets/Scripts/ForeignObjects/FoodObject.cs"
 "Assets/Scripts/ForeignObjects/ForeignObject.cs"
 "Assets/Scripts/Timer.cs"
 -langversion:9.0

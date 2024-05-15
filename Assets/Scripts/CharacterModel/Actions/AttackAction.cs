@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackAction : ICharacterAction
@@ -9,10 +7,10 @@ public class AttackAction : ICharacterAction
     private Brain _brain;
 
 
-    public AttackAction()
+    public AttackAction(GameObject character)
     {
-        _status = GameObject.Find("Player").GetComponent<PhysicalStatus>();
-        _brain = GameObject.Find("Player").GetComponentInChildren<Brain>();
+        _status = character.GetComponent<PhysicalStatus>();
+        _brain = character.GetComponentInChildren<Brain>();
     }
 
 

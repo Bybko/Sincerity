@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
@@ -6,9 +5,8 @@ using Unity.MLAgents.Actuators;
 
 public class BrainActionAgent : Agent
 {
-    public Action OnEpisodeReset;
-
     //for train episode initialize
+    [SerializeField] private EventHandler _events;
     [SerializeField] private Receptors _receptors;
     [SerializeField] private PhysicalStatus _physicalStatus;
     [SerializeField] private Subconscious _subconscious;
@@ -23,6 +21,13 @@ public class BrainActionAgent : Agent
     private float _emotionalDecision = 0f;
     private float _finalDecision = 0f;
     private ICharacterAction _decidedAction;
+    private GameObject _characher;
+
+
+    private void Start()
+    {
+        _characher = transform.parent.gameObject;
+    }
 
 
     //for a training
@@ -61,16 +66,16 @@ public class BrainActionAgent : Agent
                 _decidedAction = null;
                 break;
             case 1:
-                _decidedAction = new WalkAction();
+                _decidedAction = new WalkAction(_characher);
                 break;
             case 2:
-                _decidedAction = new AttackAction();
+                _decidedAction = new AttackAction(_characher);
                 break;
             case 3:
-                _decidedAction = new HealAction();
+                _decidedAction = new HealAction(_characher);
                 break;
             case 4:
-                _decidedAction = new MarkAction();
+                _decidedAction = new MarkAction(_characher);
                 break;
         }
 
@@ -91,7 +96,7 @@ public class BrainActionAgent : Agent
 
         _subconscious.WakeUp();
 
-        OnEpisodeReset.Invoke();
+        _events.OnEpisodeReset.Invoke();
     }
 
 

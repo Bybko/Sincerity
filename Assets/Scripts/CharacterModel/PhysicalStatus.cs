@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PhysicalStatus : MonoBehaviour
@@ -18,9 +16,8 @@ public class PhysicalStatus : MonoBehaviour
 
     private float _currentFoodResources;
     private float _currentEnergy;
-    private bool _isSleeping = false;
-
     private float _lastDamageTime = 0f;
+    private bool _isSleeping = false;
     private bool _isSafe = true;
 
 

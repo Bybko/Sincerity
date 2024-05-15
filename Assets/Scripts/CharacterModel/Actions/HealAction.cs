@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HealAction : ICharacterAction
@@ -9,16 +7,16 @@ public class HealAction : ICharacterAction
     private Brain _brain;
 
 
-    public HealAction()
+    public HealAction(GameObject character)
     {
-        _status = GameObject.Find("Player").GetComponent<PhysicalStatus>();
-        _brain = GameObject.Find("Player").GetComponentInChildren<Brain>();
+        _status = character.GetComponent<PhysicalStatus>();
+        _brain = character.GetComponentInChildren<Brain>();
     }
 
 
     public void Action()
     {
-        if (_status.GetCurrentForeignObject() != null && _status.GetCurrentForeignObject().IsHealable())
+        if (_status.GetCurrentForeignObject() != null)
         {
             _status.GetCurrentForeignObject().ChangeHP(_status.GetPotentialHeal());
         }
