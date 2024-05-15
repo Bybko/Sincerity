@@ -12,7 +12,7 @@ public abstract class ForeignObject : MonoBehaviour
     [SerializeField] protected bool _isMoving;
 
     protected ForeignObject _owner;
-
+    
 
     public abstract void Interact();
     public abstract void ObjectReset();

@@ -49,10 +49,9 @@ public class Receptors : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.TryGetComponent<ForeignObject>(out ForeignObject goal))
+        if (collision.gameObject.TryGetComponent<FoodObject>(out FoodObject goal))
         {
             SetCurrentInteractObject(goal);
-
 
             _brain.TellAboutReachingObject(goal);
             _brainAgent.CheckTrainEpisode();
@@ -62,7 +61,7 @@ public class Receptors : MonoBehaviour
 
     public void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.TryGetComponent<ForeignObject>(out ForeignObject goal))
+        if (collision.gameObject.TryGetComponent<FoodObject>(out FoodObject goal))
         {
             SetCurrentInteractObject(null);
         }
@@ -79,7 +78,7 @@ public class Receptors : MonoBehaviour
         return totalDanger;
     }
 
-
+   
     public void ForeignObjectLegacy(ForeignObject foreignObject)
     {
         _subconscious.ForeignObjectsInfluence(foreignObject);

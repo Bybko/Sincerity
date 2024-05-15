@@ -42,10 +42,17 @@ public class BrainActionAgent : Agent
         float objectNearStatus = 0f;
         if (_receptors.IsForeignObjectNearBy()) { objectNearStatus = 1f; }
 
+        float objectOwnetyStatus = 0f;
+        if (_physicalStatus.GetCurrentForeignObject() != null && _physicalStatus.GetCurrentForeignObject().IsOwned()) 
+        { 
+            objectOwnetyStatus = 1f; 
+        }
+
         sensor.AddObservation(_instinctDecision);
         sensor.AddObservation(_emotionalDecision);
         sensor.AddObservation(_finalDecision);
         sensor.AddObservation(objectNearStatus);
+        sensor.AddObservation(objectOwnetyStatus);
     }
 
 
@@ -76,6 +83,9 @@ public class BrainActionAgent : Agent
                 break;
             case 4:
                 _decidedAction = new MarkAction(_characher);
+                break;
+            case 5:
+                _decidedAction = new InteractionAction(_characher);
                 break;
         }
 
