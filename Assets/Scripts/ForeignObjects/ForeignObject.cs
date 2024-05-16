@@ -25,7 +25,9 @@ public abstract class ForeignObject : MonoBehaviour
         Receptors receptors = other.GetComponent<Receptors>();
         if (receptors != null && other.isTrigger)
         {
-            StartCoroutine(receptors.AddForeignObject(this));
+            Debug.Log("Object " + _foodValue);
+            //StartCoroutine(receptors.AddForeignObject(this));
+            receptors.AddCoroutine(receptors.AddForeignObject(this));
         }
     }
 
@@ -35,7 +37,8 @@ public abstract class ForeignObject : MonoBehaviour
         Receptors receptors = other.GetComponent<Receptors>();
         if (receptors != null && other.isTrigger)
         {
-            StartCoroutine(receptors.DeleteForeignObject(this));
+            //StartCoroutine(receptors.DeleteForeignObject(this));
+            receptors.AddCoroutine(receptors.DeleteForeignObject(this));
         }
     }
 

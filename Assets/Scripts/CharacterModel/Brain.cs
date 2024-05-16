@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Security.Cryptography;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AI;
@@ -77,9 +78,11 @@ public class Brain : MonoBehaviour
     {
         _instincts.RequestDecision();
         _emotions.RequestDecision();
-        
+
+        Debug.Log("Start thinking");
         yield return new WaitUntil(() => _isEmotionalDecisionReady && _isInstinctDecisionReady);
-        
+        Debug.Log("Emotians and instincts are ready");
+
         //reset for next decision
         IsEmotionalDecisionReady(false);
         IsInstinctsDecisionReady(false);
@@ -87,16 +90,21 @@ public class Brain : MonoBehaviour
         _brainDecision.SetInputs(_instincts.GetInstinctDecision(), _emotions.GetEmotionalDecision());
         _brainDecision.RequestDecision();
 
+        Debug.Log("Start thinking");
         yield return new WaitUntil(() => _isFinalDecisionReady);
+        Debug.Log("Rational is ready");
 
         IsFinalDecisionReady(false);
 
 
         _brainAction.SetInputs(_instincts.GetInstinctDecision(), _emotions.GetEmotionalDecision(),
             _brainDecision.GetFinalDecision());
+        _brainAction.SetCurrentForeignObject(_physicalStatus.GetCurrentForeignObject());
         _brainAction.RequestDecision();
 
+        Debug.Log("Start thinking");
         yield return new WaitUntil(() => _isFinalActionReady);
+        Debug.Log("ACTIOOOOOOON");
 
         IsFinalActionReady(false);
     }
@@ -106,6 +114,7 @@ public class Brain : MonoBehaviour
     {
         if (_subconscious.IsWantToSleep() && !_subconscious.SleepingStatus())
         {
+            Debug.Log("I'm sleeping...");
             StartCoroutine(Sleep());
         }
 
@@ -119,7 +128,7 @@ public class Brain : MonoBehaviour
 
                 newGoal.GetAction().Action();
             }
-            else if(_isSearching == false) { Search(); }
+            //else if(_isSearching == false) { Debug.Log("I'm searching..."); Search(); }
         }
     }
 

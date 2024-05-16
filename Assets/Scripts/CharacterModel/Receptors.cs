@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,11 +12,30 @@ public class Receptors : MonoBehaviour
 
     private List<ForeignObject> _viewedForeignObjects = new List<ForeignObject>();
     private ForeignObject _currentInteractObject;
+    private Queue<IEnumerator> coroutinesQueue = new Queue<IEnumerator>();
+    private bool _isAnalizing = false;
 
 
     private void Start()
     {
         _brain.OnActionRemove += Sender;
+    }
+
+
+    private void Update()
+    {
+        if (coroutinesQueue.Count > 0 && !IsAnalized()) 
+        {
+            SetAnalizingStatus(true);
+            IEnumerator coroutine = coroutinesQueue.Dequeue();
+            StartCoroutine(coroutine);
+        }
+    }
+
+
+    public void AddCoroutine(IEnumerator coroutine)
+    {
+        coroutinesQueue.Enqueue(coroutine);
     }
 
 
@@ -34,6 +54,7 @@ public class Receptors : MonoBehaviour
             _viewedForeignObjects.Add(foreignObject);
         }
 
+        SetAnalizingStatus(false);
         yield return null;
     }
 
@@ -43,7 +64,7 @@ public class Receptors : MonoBehaviour
         float delayDelete = 10f;
         yield return new WaitForSeconds(delayDelete);
         _viewedForeignObjects.Remove(foreignObject);
-
+        SetAnalizingStatus(false);
     }
 
 
@@ -88,7 +109,8 @@ public class Receptors : MonoBehaviour
 
     private void Sender()
     {
-        StartCoroutine(SendAllViewedObjects());
+        //StartCoroutine(SendAllViewedObjects());
+        AddCoroutine(SendAllViewedObjects());
     }
 
 
@@ -101,6 +123,7 @@ public class Receptors : MonoBehaviour
         {
             yield return StartCoroutine(_brain.AnalizeForeignObject(viewedForeignObject));
         }
+        SetAnalizingStatus(false);
     }
 
 
@@ -109,8 +132,10 @@ public class Receptors : MonoBehaviour
         if (_currentInteractObject == null) { return  false; }
         return true;
     }
+    public bool IsAnalized() { return _isAnalizing; }
 
     public void SetCurrentInteractObject(ForeignObject foreignObject) { _currentInteractObject = foreignObject; }
+    public void SetAnalizingStatus(bool newStatus) { _isAnalizing = newStatus; }
 
     public ForeignObject GetCurrentInteractObject() { return _currentInteractObject; }
 }

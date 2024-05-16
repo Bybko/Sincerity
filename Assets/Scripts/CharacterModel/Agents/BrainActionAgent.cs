@@ -22,6 +22,7 @@ public class BrainActionAgent : Agent
     private float _finalDecision = 0f;
     private ICharacterAction _decidedAction;
     private GameObject _characher;
+    private ForeignObject _currentForeignObject = null;
 
 
     private void Start()
@@ -40,10 +41,13 @@ public class BrainActionAgent : Agent
     public override void CollectObservations(VectorSensor sensor)
     {
         float objectNearStatus = 0f;
-        if (_receptors.IsForeignObjectNearBy()) { objectNearStatus = 1f; }
+        if (_currentForeignObject != null && _physicalStatus.GetCurrentForeignObject() == _currentForeignObject) 
+        { 
+            objectNearStatus = 1f; 
+        }
 
         float objectOwnetyStatus = 0f;
-        if (_physicalStatus.GetCurrentForeignObject() != null && _physicalStatus.GetCurrentForeignObject().IsOwned()) 
+        if (_currentForeignObject != null && _currentForeignObject.IsOwned()) 
         { 
             objectOwnetyStatus = 1f; 
         }
@@ -67,24 +71,31 @@ public class BrainActionAgent : Agent
             }
         }
 
+        Debug.Log("For object " + _currentForeignObject + " i decided: ");
         switch (decidedActionNumber)
         {
             case 0:
+                Debug.Log("Ignore");
                 _decidedAction = null;
                 break;
             case 1:
+                Debug.Log("Walk");
                 _decidedAction = new WalkAction(_characher);
                 break;
             case 2:
+                Debug.Log("Attack");
                 _decidedAction = new AttackAction(_characher);
                 break;
             case 3:
+                Debug.Log("Heal");
                 _decidedAction = new HealAction(_characher);
                 break;
             case 4:
+                Debug.Log("Mark");
                 _decidedAction = new MarkAction(_characher);
                 break;
             case 5:
+                Debug.Log("Interact");
                 _decidedAction = new InteractionAction(_characher);
                 break;
         }
@@ -98,8 +109,8 @@ public class BrainActionAgent : Agent
         _brain.ResetMemory();
         _brain.ResetSearchStatus();
 
-        _receptors.StopAllCoroutines();
-        _brain.StopAllCoroutines();
+        //_receptors.StopAllCoroutines();
+        //_brain.StopAllCoroutines();
 
         _playerTransform.localPosition = Vector3.zero;
         _physicalStatus.SetRandomValues();
@@ -162,6 +173,12 @@ public class BrainActionAgent : Agent
         _instinctDecision = instinctDecision;
         _emotionalDecision = emotionalDecision;
         _finalDecision = finalDecision;
+    }
+
+
+    public void SetCurrentForeignObject(ForeignObject foreignObject) 
+    {
+        _currentForeignObject = foreignObject;
     }
 
 
