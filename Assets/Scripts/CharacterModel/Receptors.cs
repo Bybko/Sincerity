@@ -39,6 +39,12 @@ public class Receptors : MonoBehaviour
     }
 
 
+    public void ResetCoroutinesQueue()
+    {
+        coroutinesQueue.Clear();
+    }
+
+
     public IEnumerator AddForeignObject(ForeignObject foreignObject)
     {
         bool equal = false;
@@ -109,7 +115,6 @@ public class Receptors : MonoBehaviour
 
     private void Sender()
     {
-        //StartCoroutine(SendAllViewedObjects());
         AddCoroutine(SendAllViewedObjects());
     }
 

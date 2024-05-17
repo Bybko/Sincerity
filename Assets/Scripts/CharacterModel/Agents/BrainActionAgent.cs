@@ -71,7 +71,6 @@ public class BrainActionAgent : Agent
             }
         }
 
-        Debug.Log("For object " + _currentForeignObject + " i decided: ");
         switch (decidedActionNumber)
         {
             case 0:
@@ -109,8 +108,9 @@ public class BrainActionAgent : Agent
         _brain.ResetMemory();
         _brain.ResetSearchStatus();
 
-        //_receptors.StopAllCoroutines();
-        //_brain.StopAllCoroutines();
+        _receptors.StopAllCoroutines();
+        _receptors.ResetCoroutinesQueue();
+        _brain.StopAllCoroutines();
 
         _playerTransform.localPosition = Vector3.zero;
         _physicalStatus.SetRandomValues();

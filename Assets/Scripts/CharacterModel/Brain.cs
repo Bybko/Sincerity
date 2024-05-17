@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Security.Cryptography;
+using System.Xml.Serialization;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AI;
@@ -25,6 +26,7 @@ public class Brain : MonoBehaviour
     private bool _isFinalDecisionReady = false;
     private bool _isFinalActionReady = false;
 
+    private Vector3 _searchingPosition;
     private bool _isSearching = false;
 
     
@@ -51,6 +53,10 @@ public class Brain : MonoBehaviour
             _memory.MemorizeObject(foreignObject, _instincts.GetInstinctDecision(), 
                 _emotions.GetEmotionalDecision(), _brainDecision.GetFinalDecision());
             _memory.SetNewAction(foreignObject, _brainAction.GetAction());
+        }
+        else
+        {
+            yield return StartCoroutine(RequestBrainAction(rememberedObject));
         }
     }
 
@@ -79,9 +85,7 @@ public class Brain : MonoBehaviour
         _instincts.RequestDecision();
         _emotions.RequestDecision();
 
-        Debug.Log("Start thinking");
         yield return new WaitUntil(() => _isEmotionalDecisionReady && _isInstinctDecisionReady);
-        Debug.Log("Emotians and instincts are ready");
 
         //reset for next decision
         IsEmotionalDecisionReady(false);
@@ -90,9 +94,7 @@ public class Brain : MonoBehaviour
         _brainDecision.SetInputs(_instincts.GetInstinctDecision(), _emotions.GetEmotionalDecision());
         _brainDecision.RequestDecision();
 
-        Debug.Log("Start thinking");
         yield return new WaitUntil(() => _isFinalDecisionReady);
-        Debug.Log("Rational is ready");
 
         IsFinalDecisionReady(false);
 
@@ -102,9 +104,22 @@ public class Brain : MonoBehaviour
         _brainAction.SetCurrentForeignObject(_physicalStatus.GetCurrentForeignObject());
         _brainAction.RequestDecision();
 
-        Debug.Log("Start thinking");
         yield return new WaitUntil(() => _isFinalActionReady);
         Debug.Log("ACTIOOOOOOON");
+
+        IsFinalActionReady(false);
+    }
+
+
+    private IEnumerator RequestBrainAction(MemoryObject rememberedObject)
+    {
+        _brainAction.SetInputs(rememberedObject.GetInstinctDecision(), rememberedObject.GetEmotionalDecision(),
+            rememberedObject.GetFinalDecision());
+        _brainAction.SetCurrentForeignObject(_physicalStatus.GetCurrentForeignObject());
+        _brainAction.RequestDecision();
+
+        yield return new WaitUntil(() => _isFinalActionReady);
+        Debug.Log("Remembered object reaction");
 
         IsFinalActionReady(false);
     }
@@ -125,10 +140,13 @@ public class Brain : MonoBehaviour
             {
                 _isSearching = false;
                 _memory.AddNewGoal(newGoal);
-
                 newGoal.GetAction().Action();
             }
-            //else if(_isSearching == false) { Debug.Log("I'm searching..."); Search(); }
+            else if(_isSearching == false || _searchingPosition == gameObject.transform.position) 
+            { 
+                Debug.Log("I'm searching..."); 
+                Search(); 
+            }
         }
     }
 
@@ -157,6 +175,7 @@ public class Brain : MonoBehaviour
         float randomX = transform.position.x + UnityEngine.Random.Range(-searchRadius, searchRadius);
         float randomZ = transform.position.z + UnityEngine.Random.Range(-searchRadius, searchRadius);
         Vector3 randomPosition = new Vector3(randomX, transform.position.y, randomZ);
+        _searchingPosition = randomPosition;
 
         //maybe later if navmesh areas would be more complicated
         //NavMeshHit hit;
