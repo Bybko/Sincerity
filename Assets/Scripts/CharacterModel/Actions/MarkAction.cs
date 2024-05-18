@@ -18,6 +18,7 @@ public class MarkAction : ICharacterAction
 
     public void Action()
     {
+        Debug.Log("The mark action is start!");
         if (_status.GetCurrentForeignObject() != null)
         {
             _status.GetCurrentForeignObject().SetObjectOwner(_character.GetComponent<CharacterObject>());
@@ -29,6 +30,7 @@ public class MarkAction : ICharacterAction
 
     public void SelfDelete()
     {
+        Debug.Log("The mark action is done!");
         _connectedObject.SetAction(null);
         _brain.OnActionRemove.Invoke();
     }

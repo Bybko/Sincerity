@@ -68,16 +68,19 @@ public class Memory : MonoBehaviour
                     return _memoryObjects[i];
                 }
             }
-            return null;
         }
-        else { return null; }
+        return null;
     }
 
 
     public MemoryObject GetMostWantedGoal()
     {
-        Sort(_goals);
-        return _goals[_goals.Count - 1];
+        if (_goals.Count > 0) 
+        {
+            Sort(_goals);
+            return _goals[_goals.Count - 1];
+        }
+        return null;
     }
 
 

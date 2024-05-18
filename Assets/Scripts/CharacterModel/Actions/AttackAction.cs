@@ -16,6 +16,7 @@ public class AttackAction : ICharacterAction
 
     public void Action()
     {
+        Debug.Log("The attack action is start!");
         if (_status.GetCurrentForeignObject() != null)
         {
             _status.GetCurrentForeignObject().ChangeHP(_status.GetPotentialDamage());
@@ -27,6 +28,7 @@ public class AttackAction : ICharacterAction
 
     public void SelfDelete()
     {
+        Debug.Log("The attack action is done!");
         _connectedObject.SetAction(null);
         _brain.OnActionRemove.Invoke();
     }

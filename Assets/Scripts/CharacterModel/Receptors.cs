@@ -12,7 +12,7 @@ public class Receptors : MonoBehaviour
 
     private List<ForeignObject> _viewedForeignObjects = new List<ForeignObject>();
     private ForeignObject _currentInteractObject;
-    private Queue<IEnumerator> coroutinesQueue = new Queue<IEnumerator>();
+    private Queue<IEnumerator> _coroutinesQueue = new Queue<IEnumerator>();
     private bool _isAnalizing = false;
 
 
@@ -24,10 +24,10 @@ public class Receptors : MonoBehaviour
 
     private void Update()
     {
-        if (coroutinesQueue.Count > 0 && !IsAnalized()) 
+        if (_coroutinesQueue.Count > 0 && !IsAnalized()) 
         {
             SetAnalizingStatus(true);
-            IEnumerator coroutine = coroutinesQueue.Dequeue();
+            IEnumerator coroutine = _coroutinesQueue.Dequeue();
             StartCoroutine(coroutine);
         }
     }
@@ -35,13 +35,14 @@ public class Receptors : MonoBehaviour
 
     public void AddCoroutine(IEnumerator coroutine)
     {
-        coroutinesQueue.Enqueue(coroutine);
+        _coroutinesQueue.Enqueue(coroutine);
     }
 
 
     public void ResetCoroutinesQueue()
     {
-        coroutinesQueue.Clear();
+        _coroutinesQueue.Clear();
+        SetAnalizingStatus(false);
     }
 
 
@@ -78,10 +79,10 @@ public class Receptors : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<FoodObject>(out FoodObject goal))
         {
+            Debug.Log("Enter");
             SetCurrentInteractObject(goal);
 
             _brain.TellAboutReachingObject(goal);
-            _brainAgent.CheckTrainEpisode();
         }
     }
 
@@ -90,6 +91,7 @@ public class Receptors : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<FoodObject>(out FoodObject goal))
         {
+            Debug.Log("Exit");
             SetCurrentInteractObject(null);
         }
     }
@@ -109,7 +111,6 @@ public class Receptors : MonoBehaviour
     public void ForeignObjectLegacy(ForeignObject foreignObject)
     {
         _subconscious.ForeignObjectsInfluence(foreignObject);
-        _brainAgent.CheckTrainEpisode();
     }
 
 
@@ -124,6 +125,7 @@ public class Receptors : MonoBehaviour
         //would be better if agent is stopping while this function complete instead copy that list
         List<ForeignObject> copyList = new List<ForeignObject>();
         copyList.AddRange(_viewedForeignObjects);
+
         foreach (ForeignObject viewedForeignObject in copyList)
         {
             yield return StartCoroutine(_brain.AnalizeForeignObject(viewedForeignObject));
@@ -138,6 +140,10 @@ public class Receptors : MonoBehaviour
         return true;
     }
     public bool IsAnalized() { return _isAnalizing; }
+    public bool IsCoroutinesQueueOver() { 
+        if (_coroutinesQueue.Count == 0 && !IsAnalized()) { return true; } 
+        return false; 
+    }
 
     public void SetCurrentInteractObject(ForeignObject foreignObject) { _currentInteractObject = foreignObject; }
     public void SetAnalizingStatus(bool newStatus) { _isAnalizing = newStatus; }

@@ -34,7 +34,7 @@ public class BrainActionAgent : Agent
     //for a training
     private void Update()
     {
-        CheckTrainEpisode();
+        //CheckTrainEpisode();
     }
 
 
@@ -108,9 +108,7 @@ public class BrainActionAgent : Agent
         _brain.ResetMemory();
         _brain.ResetSearchStatus();
 
-        _receptors.StopAllCoroutines();
         _receptors.ResetCoroutinesQueue();
-        _brain.StopAllCoroutines();
 
         _playerTransform.localPosition = Vector3.zero;
         _physicalStatus.SetRandomValues();
@@ -118,6 +116,8 @@ public class BrainActionAgent : Agent
         _subconscious.WakeUp();
 
         _events.OnEpisodeReset.Invoke();
+
+        Debug.Log("Episode was reloaded");
     }
 
 

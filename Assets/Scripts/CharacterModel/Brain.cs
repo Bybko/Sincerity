@@ -14,6 +14,7 @@ public class Brain : MonoBehaviour
     [SerializeField] private Subconscious _subconscious;
     [SerializeField] private PhysicalStatus _physicalStatus;
     [SerializeField] private NavMeshAgent _navMesh;
+    [SerializeField] private Receptors _receptors;
 
     [Header("Agents")]
     [SerializeField] private InstinctBrainAgent _instincts;
@@ -57,6 +58,7 @@ public class Brain : MonoBehaviour
         else
         {
             yield return StartCoroutine(RequestBrainAction(rememberedObject));
+            _memory.SetNewAction(foreignObject, _brainAction.GetAction());
         }
     }
 
@@ -64,6 +66,7 @@ public class Brain : MonoBehaviour
     public void TellAboutReachingObject(ForeignObject goal)
     {
         _memory.ReachObject(goal);
+        Debug.Log("You'd reached the goal!");
     }
 
     
@@ -133,7 +136,7 @@ public class Brain : MonoBehaviour
             StartCoroutine(Sleep());
         }
 
-        if (!_subconscious.SleepingStatus())
+        if (!_subconscious.SleepingStatus() && _receptors.IsCoroutinesQueueOver())
         {
             MemoryObject newGoal = _memory.GetMostWantedObjectWithAction();
             if (newGoal != null)

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.TextCore.Text;
 
 public class WalkAction : ICharacterAction
 {
@@ -19,18 +20,17 @@ public class WalkAction : ICharacterAction
 
     public void Action()
     {
-        MoveTo();
-    }
-
-
-    private void MoveTo()
-    {
-        _navMesh.SetDestination(_connectedObject.GetObjectTransform().position);
+        Debug.Log("The walk action is start!");
+        if (_connectedObject.GetObjectImage() != null)
+        { 
+            _navMesh.SetDestination(_connectedObject.GetObjectTransform().position); 
+        }
     }
 
 
     public void SelfDelete()
     {
+        Debug.Log("The walk action is done!");
         _connectedObject.SetAction(null);
         _brain.OnActionRemove.Invoke();   
     }

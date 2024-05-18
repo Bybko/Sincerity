@@ -35,7 +35,8 @@ public abstract class ForeignObject : MonoBehaviour
         Receptors receptors = other.GetComponent<Receptors>();
         if (receptors != null && other.isTrigger)
         {
-            receptors.AddCoroutine(receptors.DeleteForeignObject(this));
+            StartCoroutine(receptors.DeleteForeignObject(this)); //there is no need add this coroutine in queue, bc it
+                                                                 //has an execution delay and will slow down the queue 
         }
     }
 
