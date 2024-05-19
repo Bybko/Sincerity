@@ -18,7 +18,6 @@ public class InteractionAction : ICharacterAction
 
     public void Action()
     {
-        Debug.Log("The interact action is start!");
         if (_status.GetCurrentForeignObject() != null && _status.GetCurrentForeignObject().IsOwned())
         {
             _character.GetComponent<Receptors>().ForeignObjectLegacy(_status.GetCurrentForeignObject());
@@ -31,7 +30,6 @@ public class InteractionAction : ICharacterAction
 
     public void SelfDelete()
     {
-        Debug.Log("The interact action is done!");
         _connectedObject.SetAction(null);
         _brain.OnActionRemove.Invoke();
     }

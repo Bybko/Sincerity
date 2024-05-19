@@ -16,7 +16,6 @@ public class HealAction : ICharacterAction
 
     public void Action()
     {
-        Debug.Log("The heal action is start!");
         if (_status.GetCurrentForeignObject() != null)
         {
             _status.GetCurrentForeignObject().ChangeHP(_status.GetPotentialHeal());
@@ -28,7 +27,6 @@ public class HealAction : ICharacterAction
 
     public void SelfDelete()
     {
-        Debug.Log("The heal action is done!");
         _connectedObject.SetAction(null);
         _brain.OnActionRemove.Invoke();
     }

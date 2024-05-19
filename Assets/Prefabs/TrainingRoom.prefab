@@ -706,6 +706,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3f8ccd010bf00f4f938390d263535a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _events: {fileID: 7591525259537756819}
   _brain: {fileID: 5338911918182856610}
   _subconscious: {fileID: 7177969452162092215}
   _brainAgent: {fileID: 4552197263486432966}
@@ -1955,6 +1956,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f743a7eec8da840861621658340919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _events: {fileID: 7591525259537756819}
   _subconscious: {fileID: 7177969452162092215}
 --- !u!114 &5338911918182856610
 MonoBehaviour:

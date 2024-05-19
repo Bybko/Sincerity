@@ -20,7 +20,6 @@ public class WalkAction : ICharacterAction
 
     public void Action()
     {
-        Debug.Log("The walk action is start!");
         if (_connectedObject.GetObjectImage() != null)
         { 
             _navMesh.SetDestination(_connectedObject.GetObjectTransform().position); 
@@ -30,7 +29,6 @@ public class WalkAction : ICharacterAction
 
     public void SelfDelete()
     {
-        Debug.Log("The walk action is done!");
         _connectedObject.SetAction(null);
         _brain.OnActionRemove.Invoke();   
     }

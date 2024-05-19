@@ -34,7 +34,7 @@ public class BrainActionAgent : Agent
     //for a training
     private void Update()
     {
-        //CheckTrainEpisode();
+        CheckTrainEpisode();
     }
 
 
@@ -74,27 +74,21 @@ public class BrainActionAgent : Agent
         switch (decidedActionNumber)
         {
             case 0:
-                Debug.Log("Ignore");
                 _decidedAction = null;
                 break;
             case 1:
-                Debug.Log("Walk");
                 _decidedAction = new WalkAction(_characher);
                 break;
             case 2:
-                Debug.Log("Attack");
                 _decidedAction = new AttackAction(_characher);
                 break;
             case 3:
-                Debug.Log("Heal");
                 _decidedAction = new HealAction(_characher);
                 break;
             case 4:
-                Debug.Log("Mark");
                 _decidedAction = new MarkAction(_characher);
                 break;
             case 5:
-                Debug.Log("Interact");
                 _decidedAction = new InteractionAction(_characher);
                 break;
         }
@@ -116,8 +110,6 @@ public class BrainActionAgent : Agent
         _subconscious.WakeUp();
 
         _events.OnEpisodeReset.Invoke();
-
-        Debug.Log("Episode was reloaded");
     }
 
 

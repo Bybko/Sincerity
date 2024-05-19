@@ -66,7 +66,6 @@ public class Brain : MonoBehaviour
     public void TellAboutReachingObject(ForeignObject goal)
     {
         _memory.ReachObject(goal);
-        Debug.Log("You'd reached the goal!");
     }
 
     
@@ -108,7 +107,6 @@ public class Brain : MonoBehaviour
         _brainAction.RequestDecision();
 
         yield return new WaitUntil(() => _isFinalActionReady);
-        Debug.Log("ACTIOOOOOOON");
 
         IsFinalActionReady(false);
     }
@@ -122,7 +120,6 @@ public class Brain : MonoBehaviour
         _brainAction.RequestDecision();
 
         yield return new WaitUntil(() => _isFinalActionReady);
-        Debug.Log("Remembered object reaction");
 
         IsFinalActionReady(false);
     }
@@ -132,7 +129,6 @@ public class Brain : MonoBehaviour
     {
         if (_subconscious.IsWantToSleep() && !_subconscious.SleepingStatus())
         {
-            Debug.Log("I'm sleeping...");
             StartCoroutine(Sleep());
         }
 
@@ -147,7 +143,6 @@ public class Brain : MonoBehaviour
             }
             else if(_isSearching == false || _searchingPosition == gameObject.transform.position) 
             { 
-                Debug.Log("I'm searching..."); 
                 Search(); 
             }
         }

@@ -39,5 +39,6 @@ public class FoodObject : ForeignObject
     public override void SelfDestroy()
     {
         gameObject.SetActive(false);
+        _events.OnForeignObjectDestroy.Invoke();
     }
 }

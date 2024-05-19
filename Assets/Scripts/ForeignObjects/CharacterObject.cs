@@ -34,6 +34,7 @@ public class CharacterObject : ForeignObject
     public override void SelfDestroy()
     {
         gameObject.SetActive(false);
+        _events.OnForeignObjectDestroy.Invoke();
     }
 
 

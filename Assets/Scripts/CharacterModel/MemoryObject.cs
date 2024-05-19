@@ -13,6 +13,7 @@ public class MemoryObject
     private float _finalDecision = 0f;
 
 
+    public bool CheckImageObject() { return _objectImage.gameObject.activeSelf; }
     public bool IsEqual(ForeignObject comparableObject) { return _objectImage == comparableObject; }
 
     public float GetEmotionalDecision() { return _emotionalDecision; }

@@ -6,6 +6,7 @@ using UnityEngine.AI;
 
 public class Receptors : MonoBehaviour
 {
+    [SerializeField] private EventHandler _events;
     [SerializeField] private Brain _brain;
     [SerializeField] private Subconscious _subconscious;
     [SerializeField] private BrainActionAgent _brainAgent; //for training
@@ -19,6 +20,7 @@ public class Receptors : MonoBehaviour
     private void Start()
     {
         _brain.OnActionRemove += Sender;
+        _events.OnForeignObjectDestroy += ViewedForeignObjectBrush;
     }
 
 
@@ -79,7 +81,6 @@ public class Receptors : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<FoodObject>(out FoodObject goal))
         {
-            Debug.Log("Enter");
             SetCurrentInteractObject(goal);
 
             _brain.TellAboutReachingObject(goal);
@@ -91,7 +92,6 @@ public class Receptors : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<FoodObject>(out FoodObject goal))
         {
-            Debug.Log("Exit");
             SetCurrentInteractObject(null);
         }
     }
@@ -107,7 +107,7 @@ public class Receptors : MonoBehaviour
         return totalDanger;
     }
 
-   
+
     public void ForeignObjectLegacy(ForeignObject foreignObject)
     {
         _subconscious.ForeignObjectsInfluence(foreignObject);
@@ -122,15 +122,25 @@ public class Receptors : MonoBehaviour
 
     private IEnumerator SendAllViewedObjects()
     {
-        //would be better if agent is stopping while this function complete instead copy that list
-        List<ForeignObject> copyList = new List<ForeignObject>();
-        copyList.AddRange(_viewedForeignObjects);
-
-        foreach (ForeignObject viewedForeignObject in copyList)
+        foreach (ForeignObject viewedForeignObject in _viewedForeignObjects)
         {
             yield return StartCoroutine(_brain.AnalizeForeignObject(viewedForeignObject));
         }
         SetAnalizingStatus(false);
+    }
+
+
+    private void ViewedForeignObjectBrush()
+    {
+        ForeignObject deletableObject = null;
+        foreach (ForeignObject viewedForeignObject in _viewedForeignObjects)
+        {
+            if (!viewedForeignObject.gameObject.activeSelf)
+            {
+                deletableObject = viewedForeignObject;
+            }
+        }
+        _viewedForeignObjects.Remove(deletableObject);
     }
 
 
@@ -139,7 +149,9 @@ public class Receptors : MonoBehaviour
         if (_currentInteractObject == null) { return  false; }
         return true;
     }
+
     public bool IsAnalized() { return _isAnalizing; }
+
     public bool IsCoroutinesQueueOver() { 
         if (_coroutinesQueue.Count == 0 && !IsAnalized()) { return true; } 
         return false; 

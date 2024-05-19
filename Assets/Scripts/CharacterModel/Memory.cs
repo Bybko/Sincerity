@@ -1,13 +1,21 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Memory : MonoBehaviour
 {
+    [SerializeField] private EventHandler _events;
     [SerializeField] private Subconscious _subconscious;
 
     private List<MemoryObject> _memoryObjects = new List<MemoryObject>();
     private List<MemoryObject> _goals = new List<MemoryObject>(); //why i actually need this list if goal could be sorted memoryObjects list? DELETE or MAKE IT NORMAL TO USE
     private List<MemoryObject> _ownedObjects = new List<MemoryObject>();
+
+
+    private void Start()
+    {
+        _events.OnForeignObjectDestroy += ListBrush;
+    }
 
 
     public void MemorizeObject(ForeignObject foreignObject, float instinct, float emotional, float final)
@@ -139,6 +147,21 @@ public class Memory : MonoBehaviour
                 }
             }
         }
+    }
+
+
+    private void ListBrush()
+    {
+        MemoryObject deletableObject = null;
+
+        foreach (MemoryObject memoryObject in _memoryObjects)
+        {
+            if (! memoryObject.CheckImageObject()) { deletableObject = memoryObject; }
+        }
+
+        _memoryObjects.Remove(deletableObject);
+        _ownedObjects.Remove(deletableObject);
+        _goals.Remove(deletableObject);
     }
 
 
