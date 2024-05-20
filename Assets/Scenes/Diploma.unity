@@ -824,11 +824,15 @@ PrefabInstance:
       objectReference: {fileID: 5022602860645237092, guid: fd7778861aea7474bb6311bc87e95c49, type: 3}
     - target: {fileID: 571790059505827895, guid: 1bbd8f3ab62a93b4d9440e9bc4862ec4, type: 3}
       propertyPath: m_BehaviorType
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1010191903060117581, guid: 1bbd8f3ab62a93b4d9440e9bc4862ec4, type: 3}
       propertyPath: m_Radius
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1801343160194576681, guid: 1bbd8f3ab62a93b4d9440e9bc4862ec4, type: 3}
+      propertyPath: m_Name
+      value: ControlObject
       objectReference: {fileID: 0}
     - target: {fileID: 1916180577376629856, guid: 1bbd8f3ab62a93b4d9440e9bc4862ec4, type: 3}
       propertyPath: _energySpending
@@ -847,8 +851,16 @@ PrefabInstance:
       value: 6.36
       objectReference: {fileID: 0}
     - target: {fileID: 3727347911184083790, guid: 1bbd8f3ab62a93b4d9440e9bc4862ec4, type: 3}
+      propertyPath: m_Speed
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3727347911184083790, guid: 1bbd8f3ab62a93b4d9440e9bc4862ec4, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3727347911184083790, guid: 1bbd8f3ab62a93b4d9440e9bc4862ec4, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4082160090337041793, guid: 1bbd8f3ab62a93b4d9440e9bc4862ec4, type: 3}
       propertyPath: m_Model
@@ -856,7 +868,7 @@ PrefabInstance:
       objectReference: {fileID: 5022602860645237092, guid: 9030822e5b64be045b2bcb3655dab1fd, type: 3}
     - target: {fileID: 4082160090337041793, guid: 1bbd8f3ab62a93b4d9440e9bc4862ec4, type: 3}
       propertyPath: m_BehaviorType
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4082160090337041793, guid: 1bbd8f3ab62a93b4d9440e9bc4862ec4, type: 3}
       propertyPath: m_BrainParameters.VectorObservationSize
@@ -924,7 +936,7 @@ PrefabInstance:
       objectReference: {fileID: 5022602860645237092, guid: 27a94a570cc24184ca70f20ce164ebb1, type: 3}
     - target: {fileID: 7452315665819734971, guid: 1bbd8f3ab62a93b4d9440e9bc4862ec4, type: 3}
       propertyPath: m_BehaviorType
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7719011572342622349, guid: 1bbd8f3ab62a93b4d9440e9bc4862ec4, type: 3}
       propertyPath: m_Constraints
@@ -936,7 +948,7 @@ PrefabInstance:
       objectReference: {fileID: 5022602860645237092, guid: 49d4b9b836bebee4397c1859523610a6, type: 3}
     - target: {fileID: 8121884051781673563, guid: 1bbd8f3ab62a93b4d9440e9bc4862ec4, type: 3}
       propertyPath: m_BehaviorType
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8266674338962874560, guid: 1bbd8f3ab62a93b4d9440e9bc4862ec4, type: 3}
       propertyPath: m_Constraints
@@ -944,7 +956,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8533127159345909204, guid: 1bbd8f3ab62a93b4d9440e9bc4862ec4, type: 3}
       propertyPath: m_Constraints
-      value: 0
+      value: 126
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

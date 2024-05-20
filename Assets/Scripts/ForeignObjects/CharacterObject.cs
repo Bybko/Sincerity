@@ -8,6 +8,8 @@ public class CharacterObject : ForeignObject
         _owner = null;
         _physicalStatus = gameObject.GetComponent<PhysicalStatus>();
         _damageValue = _physicalStatus.GetPotentialDamage();
+
+        _events.OnEpisodeReset += ObjectReset;
     }
 
 
@@ -33,7 +35,7 @@ public class CharacterObject : ForeignObject
 
     public override void SelfDestroy()
     {
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
         _events.OnForeignObjectDestroy.Invoke();
     }
 

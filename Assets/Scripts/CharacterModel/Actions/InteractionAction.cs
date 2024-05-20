@@ -20,6 +20,7 @@ public class InteractionAction : ICharacterAction
     {
         if (_status.GetCurrentForeignObject() != null && _status.GetCurrentForeignObject().IsOwned())
         {
+            //it's only for food, make it more abstract, mb by interact methods in foreignObject class
             _character.GetComponent<Receptors>().ForeignObjectLegacy(_status.GetCurrentForeignObject());
             _status.GetCurrentForeignObject().SelfDestroy();
         }

@@ -99,6 +99,8 @@ public class BrainActionAgent : Agent
 
     public override void OnEpisodeBegin()
     {
+        _events.OnEpisodeReset.Invoke();
+
         _brain.ResetMemory();
         _brain.ResetSearchStatus();
 
@@ -108,8 +110,6 @@ public class BrainActionAgent : Agent
         _physicalStatus.SetRandomValues();
 
         _subconscious.WakeUp();
-
-        _events.OnEpisodeReset.Invoke();
     }
 
 
@@ -130,6 +130,7 @@ public class BrainActionAgent : Agent
             _brainAgent.SetReward(50f);
             _emotions.SetReward(50f);
             _instincts.SetReward(50f);
+            EndEpisode();
         }
 
         if (_physicalStatus.GetCurrentFoodResources() == 100)
@@ -138,14 +139,6 @@ public class BrainActionAgent : Agent
             _brainAgent.SetReward(25f);
             _emotions.SetReward(25f);
             _instincts.SetReward(25f);
-        }
-
-        if (_subconscious.GetHappines() == 0)
-        {
-            SetReward(100f);
-            _brainAgent.SetReward(100f);
-            _emotions.SetReward(100f);
-            _instincts.SetReward(100f);
             EndEpisode();
         }
     }

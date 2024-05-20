@@ -141,6 +141,7 @@
     <Compile Include="Assets\Scripts\CharacterModel\Agents\InstinctBrainAgent.cs" />
     <Compile Include="Assets\ML-Agents\Examples\WallJump\Scripts\WallJumpAgent.cs" />
     <Compile Include="Assets\ML-Agents\Examples\DungeonEscape\Scripts\PushAgentEscape.cs" />
+    <Compile Include="Assets\Scripts\TrainingController.cs" />
     <Compile Include="Assets\ML-Agents\Examples\Basic\Scripts\BasicSensorComponent.cs" />
     <Compile Include="Assets\ML-Agents\Examples\FoodCollector\Scripts\FoodCollectorAgent.cs" />
     <Compile Include="Assets\ML-Agents\Examples\SharedAssets\Scripts\Monitor.cs" />

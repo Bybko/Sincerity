@@ -70,10 +70,9 @@ public class Receptors : MonoBehaviour
 
     public IEnumerator DeleteForeignObject(ForeignObject foreignObject)
     {
-        float delayDelete = 10f;
+        float delayDelete = 5f;
         yield return new WaitForSeconds(delayDelete);
         _viewedForeignObjects.Remove(foreignObject);
-        SetAnalizingStatus(false);
     }
 
 
@@ -122,7 +121,11 @@ public class Receptors : MonoBehaviour
 
     private IEnumerator SendAllViewedObjects()
     {
-        foreach (ForeignObject viewedForeignObject in _viewedForeignObjects)
+        //copy list for training, bc agent always randomly moves. After training it works well without copying
+        List<ForeignObject> copyList = new List<ForeignObject>();
+        copyList.AddRange(_viewedForeignObjects);
+
+        foreach (ForeignObject viewedForeignObject in copyList)
         {
             yield return StartCoroutine(_brain.AnalizeForeignObject(viewedForeignObject));
         }

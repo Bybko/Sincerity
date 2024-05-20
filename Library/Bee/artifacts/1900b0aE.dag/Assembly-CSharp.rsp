@@ -479,6 +479,7 @@
 "Assets/Scripts/ForeignObjects/FoodObject.cs"
 "Assets/Scripts/ForeignObjects/ForeignObject.cs"
 "Assets/Scripts/Timer.cs"
+"Assets/Scripts/TrainingController.cs"
 -langversion:9.0
 
 /deterministic
