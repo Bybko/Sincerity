@@ -5,6 +5,7 @@ public class InteractionAction : ICharacterAction
     private MemoryObject _connectedObject;
     private PhysicalStatus _status;
     private Brain _brain;
+    private Memory _memory;
     private GameObject _character;
 
 
@@ -13,6 +14,7 @@ public class InteractionAction : ICharacterAction
         _character = character;
         _status = character.GetComponent<PhysicalStatus>();
         _brain = character.GetComponentInChildren<Brain>();
+        _memory = character.GetComponentInChildren<Memory>();
     }
 
 
@@ -20,9 +22,17 @@ public class InteractionAction : ICharacterAction
     {
         if (_status.GetCurrentForeignObject() != null && _status.GetCurrentForeignObject().IsOwned())
         {
+            Debug.Log("Succesfully interact with object: " + _status.GetCurrentForeignObject().GetFoodValue());
+            if (_status.GetCurrentForeignObject().GetDamageValue() < 0) 
+            {
+                _character.GetComponentInChildren<BrainActionAgent>().SetSimpleReward(-0.5f);
+            }
+            else { _character.GetComponentInChildren<BrainActionAgent>().SetSimpleReward(0.5f); }
+
             //it's only for food, make it more abstract, mb by interact methods in foreignObject class
             _character.GetComponent<Receptors>().ForeignObjectLegacy(_status.GetCurrentForeignObject());
             _status.GetCurrentForeignObject().SelfDestroy();
+            _memory.ReleaseObject(_connectedObject);
         }
 
         SelfDelete();

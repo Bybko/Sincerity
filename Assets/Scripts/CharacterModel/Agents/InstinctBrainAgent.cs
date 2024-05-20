@@ -13,6 +13,7 @@ public class InstinctBrainAgent : Agent
 
     public override void CollectObservations(VectorSensor sensor)
     {
+        sensor.AddObservation(_feeling.GetDanger());
         sensor.AddObservation(_feeling.GetFoodChange());
         sensor.AddObservation(_feeling.GetHealthChange());
         sensor.AddObservation(_feeling.GetTotalHappinessChange());

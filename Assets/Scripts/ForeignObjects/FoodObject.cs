@@ -40,5 +40,6 @@ public class FoodObject : ForeignObject
     {
         gameObject.SetActive(false);
         _events.OnForeignObjectDestroy.Invoke();
+        _events.OnEpisodeEnd.Invoke();
     }
 }

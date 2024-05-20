@@ -17,6 +17,7 @@ public class BrainActionAgent : Agent
 
     [SerializeField] private Brain _brain;
 
+    private float _prevHappinesLevel = -100f;
     private float _instinctDecision = 0f;
     private float _emotionalDecision = 0f;
     private float _finalDecision = 0f;
@@ -28,13 +29,7 @@ public class BrainActionAgent : Agent
     private void Start()
     {
         _characher = transform.parent.gameObject;
-    }
-
-
-    //for a training
-    private void Update()
-    {
-        CheckTrainEpisode();
+        _events.OnEpisodeEnd += CheckTrainEpisode;
     }
 
 
@@ -117,30 +112,34 @@ public class BrainActionAgent : Agent
     {
         if (_physicalStatus.GetHealth() <= 0)
         {
-            SetReward(-100f);
-            _brainAgent.SetReward(-100f);
-            _emotions.SetReward(-100f);
-            _instincts.SetReward(-100f);
-            EndEpisode();
+            SetComplexReward(-1f);
         }
 
         if (_physicalStatus.GetHealth() == 100)
         {
-            SetReward(50f);
-            _brainAgent.SetReward(50f);
-            _emotions.SetReward(50f);
-            _instincts.SetReward(50f);
-            EndEpisode();
+            SetComplexReward(1f);
         }
 
         if (_physicalStatus.GetCurrentFoodResources() == 100)
         {
-            SetReward(25f);
-            _brainAgent.SetReward(25f);
-            _emotions.SetReward(25f);
-            _instincts.SetReward(25f);
-            EndEpisode();
+            SetComplexReward(0.8f);
         }
+
+        /*if (_prevHappinesLevel < _subconscious.GetHappines())
+        {
+            _prevHappinesLevel = _subconscious.GetHappines();
+            SetComplexReward(1f);
+        }
+        else 
+        {
+            _prevHappinesLevel = _subconscious.GetHappines();
+            SetComplexReward(-1f);
+        }*/
+
+        _brainAgent.EndEpisode();
+        _emotions.EndEpisode();
+        _instincts.EndEpisode();
+        EndEpisode();
     }
 
 
@@ -150,6 +149,12 @@ public class BrainActionAgent : Agent
         _brainAgent.SetReward(reward);
         _emotions.SetReward(reward);
         _instincts.SetReward(reward);
+    }
+
+
+    public void SetSimpleReward(float reward)
+    {
+        SetReward(reward);
     }
 
 

@@ -127,10 +127,10 @@ public class Brain : MonoBehaviour
 
     private void AnalizeDecision()
     {
-        if (_subconscious.IsWantToSleep() && !_subconscious.SleepingStatus())
+        /*if (_subconscious.IsWantToSleep() && !_subconscious.SleepingStatus())
         {
             StartCoroutine(Sleep());
-        }
+        }*/
 
         if (!_subconscious.SleepingStatus() && _receptors.IsCoroutinesQueueOver())
         {
@@ -141,10 +141,10 @@ public class Brain : MonoBehaviour
                 _memory.AddNewGoal(newGoal);
                 newGoal.GetAction().Action();
             }
-            else if(_isSearching == false || _searchingPosition == gameObject.transform.position) 
+            /*else if(_isSearching == false || _searchingPosition == gameObject.transform.position) 
             { 
                 Search(); 
-            }
+            }*/
         }
     }
 

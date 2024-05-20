@@ -37,6 +37,7 @@ public class CharacterObject : ForeignObject
     {
         //gameObject.SetActive(false);
         _events.OnForeignObjectDestroy.Invoke();
+        _events.OnEpisodeEnd.Invoke();
     }
 
 

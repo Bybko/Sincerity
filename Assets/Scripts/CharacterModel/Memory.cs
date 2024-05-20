@@ -96,6 +96,7 @@ public class Memory : MonoBehaviour
     {
         _goals.Clear();
         _memoryObjects.Clear();
+        _ownedObjects.Clear();
     }
 
 
@@ -112,6 +113,18 @@ public class Memory : MonoBehaviour
             return Mathf.Clamp01(totalValue / _ownedObjects.Count);
         }
         return totalValue;
+    }
+
+
+    public void OwnObject(MemoryObject newObject)
+    {
+        _ownedObjects.Add(newObject);
+    }
+
+
+    public void ReleaseObject(MemoryObject releasableObject)
+    {
+        _ownedObjects.Remove(releasableObject);
     }
 
 
@@ -160,8 +173,8 @@ public class Memory : MonoBehaviour
         }
 
         _memoryObjects.Remove(deletableObject);
-        _ownedObjects.Remove(deletableObject);
         _goals.Remove(deletableObject);
+        //objects from _ownedObjects are deleting by special methods or stayed untill character remove them by self reflection
     }
 
 
