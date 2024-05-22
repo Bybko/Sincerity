@@ -141,13 +141,13 @@
     <Compile Include="Assets\Scripts\CharacterModel\Agents\InstinctBrainAgent.cs" />
     <Compile Include="Assets\ML-Agents\Examples\WallJump\Scripts\WallJumpAgent.cs" />
     <Compile Include="Assets\ML-Agents\Examples\DungeonEscape\Scripts\PushAgentEscape.cs" />
-    <Compile Include="Assets\Scripts\TrainingController.cs" />
     <Compile Include="Assets\ML-Agents\Examples\Basic\Scripts\BasicSensorComponent.cs" />
     <Compile Include="Assets\ML-Agents\Examples\FoodCollector\Scripts\FoodCollectorAgent.cs" />
     <Compile Include="Assets\ML-Agents\Examples\SharedAssets\Scripts\Monitor.cs" />
     <Compile Include="Assets\Scripts\ForeignObjects\FoodObject.cs" />
     <Compile Include="Assets\Scripts\CharacterModel\Memory.cs" />
     <Compile Include="Assets\ML-Agents\Examples\Soccer\Scripts\SoccerEnvController.cs" />
+    <Compile Include="Assets\Scripts\TrainingAcademy.cs" />
     <Compile Include="Assets\Scripts\CharacterModel\Actions\InteractionAction.cs" />
     <Compile Include="Assets\ML-Agents\Examples\PushBlock\Scripts\PushAgentCollab.cs" />
     <Compile Include="Assets\ML-Agents\Examples\3DBall\Scripts\Ball3DHardAgent.cs" />

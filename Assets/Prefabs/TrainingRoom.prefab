@@ -218,10 +218,8 @@ GameObject:
   m_Component:
   - component: {fileID: 33466861098936792}
   - component: {fileID: 7591525259537756819}
-  - component: {fileID: 5999516648590112208}
-  - component: {fileID: 4943067602128295867}
   m_Layer: 0
-  m_Name: ControlObject
+  m_Name: Events
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -254,63 +252,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fb2a1244b961354b921942536afc889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5999516648590112208
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1801343160194576681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 516e14f762b7d07458b065621b25531a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agentParameters:
-    maxStep: 0
-  hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
-  _events: {fileID: 7591525259537756819}
-  _receptors: {fileID: 1748900583662328481}
-  _physicalStatus: {fileID: 1916180577376629856}
-  _subconscious: {fileID: 7177969452162092215}
-  _playerTransform: {fileID: 7617733329458642920}
-  _brain: {fileID: 5338911918182856610}
-  _rationalAction: {fileID: 4552197263486432966}
-  _rationalDecision: {fileID: 4595482812290396940}
-  _emotionsDecision: {fileID: 1584718571757772193}
-  _instinctDecision: {fileID: 1657357988708141422}
---- !u!114 &4943067602128295867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1801343160194576681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d1c4e0b1822b495aa52bc52839ecb30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_BrainParameters:
-    VectorObservationSize: 1
-    NumStackedVectorObservations: 1
-    m_ActionSpec:
-      m_NumContinuousActions: 0
-      BranchSizes: 01000000
-    VectorActionSize: 01000000
-    VectorActionDescriptions: []
-    VectorActionSpaceType: 0
-    hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
-  m_InferenceDevice: 0
-  m_BehaviorType: 0
-  m_BehaviorName: My Behavior
-  TeamId: 0
-  m_UseChildSensors: 1
-  m_UseChildActuators: 1
-  m_DeterministicInference: 0
-  m_ObservableAttributeHandling: 0
 --- !u!1 &1830664505463820811
 GameObject:
   m_ObjectHideFlags: 0

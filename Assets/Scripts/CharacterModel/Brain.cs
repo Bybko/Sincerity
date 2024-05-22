@@ -51,6 +51,8 @@ public class Brain : MonoBehaviour
 
             yield return StartCoroutine(RequestBrainDecision());
 
+            CreateReward(foreignObject);
+
             _memory.MemorizeObject(foreignObject, _instincts.GetInstinctDecision(), 
                 _emotions.GetEmotionalDecision(), _brainDecision.GetFinalDecision());
             _memory.SetNewAction(foreignObject, _brainAction.GetAction());
@@ -99,7 +101,6 @@ public class Brain : MonoBehaviour
         yield return new WaitUntil(() => _isFinalDecisionReady);
 
         IsFinalDecisionReady(false);
-
 
         _brainAction.SetInputs(_instincts.GetInstinctDecision(), _emotions.GetEmotionalDecision(),
             _brainDecision.GetFinalDecision());
@@ -179,6 +180,26 @@ public class Brain : MonoBehaviour
         //NavMeshHit hit;
         //if (NavMesh.SamplePosition(randomPosition, out hit, searchRadius, NavMesh.AllAreas))
         _navMesh.SetDestination(randomPosition);
+    }
+
+
+    private void CreateReward(ForeignObject foreignObject)
+    {
+        //Just only for food yet
+        float damage = foreignObject.GetDamageValue();
+        float foodValue = foreignObject.GetFoodValue();
+        if(damage <= 0 && foodValue < 0)
+        {
+            if (_instincts.GetInstinctDecision() > 0) { _instincts.SetReward(-0.5f); }
+            if (_emotions.GetEmotionalDecision() > 0) { _emotions.SetReward(-0.5f); }
+            if (_brainDecision.GetFinalDecision() > 0) { _brainDecision.SetReward(-0.5f); }
+        }
+        else if (damage > 50 || foodValue > 50) 
+        {
+            if (_instincts.GetInstinctDecision() > 0) { _instincts.SetReward(0.5f); }
+            if (_emotions.GetEmotionalDecision() > 0) { _emotions.SetReward(0.5f); }
+            if (_brainDecision.GetFinalDecision() > 0) { _brainDecision.SetReward(0.5f); }
+        }
     }
 
 
