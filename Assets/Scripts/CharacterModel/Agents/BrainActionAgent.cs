@@ -18,8 +18,6 @@ public class BrainActionAgent : Agent
     [SerializeField] private Brain _brain;
 
     private float _prevHappinesLevel = -100f;
-    private float _instinctDecision = 0f;
-    private float _emotionalDecision = 0f;
     private float _finalDecision = 0f;
     private ICharacterAction _decidedAction;
     private GameObject _characher;
@@ -47,8 +45,6 @@ public class BrainActionAgent : Agent
             objectOwnetyStatus = 1f; 
         }
 
-        sensor.AddObservation(_instinctDecision);
-        sensor.AddObservation(_emotionalDecision);
         sensor.AddObservation(_finalDecision);
         sensor.AddObservation(objectNearStatus);
         sensor.AddObservation(objectOwnetyStatus);
@@ -70,21 +66,27 @@ public class BrainActionAgent : Agent
         {
             case 0:
                 _decidedAction = null;
+                if (_finalDecision < 0) { SetReward(0.4f); } else { SetReward(-0.4f); }
                 break;
             case 1:
                 _decidedAction = new WalkAction(_characher);
+                if (_finalDecision > 0) { SetReward(0.4f); } else { SetReward(-0.4f); }
                 break;
             case 2:
                 _decidedAction = new AttackAction(_characher);
+                if (_finalDecision < 0) { SetReward(0.4f); } else { SetReward(-0.4f); }
                 break;
             case 3:
                 _decidedAction = new HealAction(_characher);
+                if (_finalDecision > 0) { SetReward(0.4f); } else { SetReward(-0.4f); }
                 break;
             case 4:
                 _decidedAction = new MarkAction(_characher);
+                if (_finalDecision > 0) { SetReward(0.4f); } else { SetReward(-0.4f); }
                 break;
             case 5:
                 _decidedAction = new InteractionAction(_characher);
+                if (_finalDecision > 0) { SetReward(0.4f); } else { SetReward(-0.4f); }
                 break;
         }
 
@@ -112,17 +114,17 @@ public class BrainActionAgent : Agent
     {
         if (_physicalStatus.GetHealth() <= 0)
         {
-            SetComplexReward(-1f);
+            SetSimpleReward(-1f);
         }
 
         if (_physicalStatus.GetHealth() == 100)
         {
-            SetComplexReward(1f);
+            SetSimpleReward(1f);
         }
 
         if (_physicalStatus.GetCurrentFoodResources() == 100)
         {
-            SetComplexReward(0.8f);
+            SetSimpleReward(0.8f);
         }
 
         /*if (_prevHappinesLevel < _subconscious.GetHappines())
@@ -158,10 +160,8 @@ public class BrainActionAgent : Agent
     }
 
 
-    public void SetInputs(float instinctDecision, float emotionalDecision, float finalDecision)
+    public void SetInputs(float finalDecision)
     {
-        _instinctDecision = instinctDecision;
-        _emotionalDecision = emotionalDecision;
         _finalDecision = finalDecision;
     }
 

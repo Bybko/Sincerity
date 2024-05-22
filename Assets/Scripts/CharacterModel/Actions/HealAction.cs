@@ -1,14 +1,17 @@
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class HealAction : ICharacterAction
 {
     private MemoryObject _connectedObject;
     private PhysicalStatus _status;
     private Brain _brain;
+    private GameObject _character;
 
 
     public HealAction(GameObject character)
     {
+        _character = character;
         _status = character.GetComponent<PhysicalStatus>();
         _brain = character.GetComponentInChildren<Brain>();
     }
@@ -16,9 +19,9 @@ public class HealAction : ICharacterAction
 
     public void Action()
     {
-        if (_status.GetCurrentForeignObject() != null)
+        if (_status.GetCurrentForeignObject() == _connectedObject.GetObjectImage())
         {
-            _status.GetCurrentForeignObject().ChangeHP(_status.GetPotentialHeal());
+            _connectedObject.GetObjectImage().ChangeHP(_status.GetPotentialHeal());
         }
 
         SelfDelete();

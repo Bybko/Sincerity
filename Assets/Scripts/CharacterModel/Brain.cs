@@ -40,8 +40,9 @@ public class Brain : MonoBehaviour
 
     public IEnumerator AnalizeForeignObject(ForeignObject foreignObject)
     {
+        bool isTraining = true;
         MemoryObject rememberedObject = _memory.Remember(foreignObject);
-        if (rememberedObject == null)
+        if (rememberedObject == null || isTraining)
         {
             _subconscious.AddDiscoveryAward(foreignObject);
 
@@ -53,8 +54,11 @@ public class Brain : MonoBehaviour
 
             CreateReward(foreignObject);
 
-            _memory.MemorizeObject(foreignObject, _instincts.GetInstinctDecision(), 
-                _emotions.GetEmotionalDecision(), _brainDecision.GetFinalDecision());
+            if (rememberedObject == null)
+            {
+                _memory.MemorizeObject(foreignObject, _instincts.GetInstinctDecision(),
+                    _emotions.GetEmotionalDecision(), _brainDecision.GetFinalDecision());
+            }
             _memory.SetNewAction(foreignObject, _brainAction.GetAction());
         }
         else
@@ -102,8 +106,7 @@ public class Brain : MonoBehaviour
 
         IsFinalDecisionReady(false);
 
-        _brainAction.SetInputs(_instincts.GetInstinctDecision(), _emotions.GetEmotionalDecision(),
-            _brainDecision.GetFinalDecision());
+        _brainAction.SetInputs(_brainDecision.GetFinalDecision());
         _brainAction.SetCurrentForeignObject(_physicalStatus.GetCurrentForeignObject());
         _brainAction.RequestDecision();
 
@@ -115,8 +118,7 @@ public class Brain : MonoBehaviour
 
     private IEnumerator RequestBrainAction(MemoryObject rememberedObject)
     {
-        _brainAction.SetInputs(rememberedObject.GetInstinctDecision(), rememberedObject.GetEmotionalDecision(),
-            rememberedObject.GetFinalDecision());
+        _brainAction.SetInputs(rememberedObject.GetFinalDecision());
         _brainAction.SetCurrentForeignObject(_physicalStatus.GetCurrentForeignObject());
         _brainAction.RequestDecision();
 
@@ -176,9 +178,6 @@ public class Brain : MonoBehaviour
         Vector3 randomPosition = new Vector3(randomX, transform.position.y, randomZ);
         _searchingPosition = randomPosition;
 
-        //maybe later if navmesh areas would be more complicated
-        //NavMeshHit hit;
-        //if (NavMesh.SamplePosition(randomPosition, out hit, searchRadius, NavMesh.AllAreas))
         _navMesh.SetDestination(randomPosition);
     }
 
@@ -190,15 +189,15 @@ public class Brain : MonoBehaviour
         float foodValue = foreignObject.GetFoodValue();
         if(damage <= 0 && foodValue < 0)
         {
-            if (_instincts.GetInstinctDecision() > 0) { _instincts.SetReward(-0.5f); }
-            if (_emotions.GetEmotionalDecision() > 0) { _emotions.SetReward(-0.5f); }
-            if (_brainDecision.GetFinalDecision() > 0) { _brainDecision.SetReward(-0.5f); }
+            if (_instincts.GetInstinctDecision() > 0) { _instincts.SetReward(-1f); } else { _instincts.SetReward(1f); }
+            if (_emotions.GetEmotionalDecision() > 0) { _emotions.SetReward(-1f); } else { _emotions.SetReward(1f); }
+            if (_brainDecision.GetFinalDecision() > 0) { _brainDecision.SetReward(-1f); } else { _brainDecision.SetReward(1f); }
         }
         else if (damage > 50 || foodValue > 50) 
         {
-            if (_instincts.GetInstinctDecision() > 0) { _instincts.SetReward(0.5f); }
-            if (_emotions.GetEmotionalDecision() > 0) { _emotions.SetReward(0.5f); }
-            if (_brainDecision.GetFinalDecision() > 0) { _brainDecision.SetReward(0.5f); }
+            if (_instincts.GetInstinctDecision() > 0) { _instincts.SetReward(1f); } else {  _instincts.SetReward(-1f);}
+            if (_emotions.GetEmotionalDecision() > 0) { _emotions.SetReward(1f); } else { _emotions.SetReward(-1f); }
+            if (_brainDecision.GetFinalDecision() > 0) { _brainDecision.SetReward(1f); } else { _brainDecision.SetReward(-1f); }
         }
     }
 

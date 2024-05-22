@@ -20,14 +20,14 @@ public class MarkAction : ICharacterAction
 
     public void Action()
     {
-        if (_status.GetCurrentForeignObject() != null)
+        if (_status.GetCurrentForeignObject() == _connectedObject.GetObjectImage())
         {
-            _character.GetComponentInChildren<BrainActionAgent>().SetSimpleReward(0.2f);
+            _character.GetComponentInChildren<BrainActionAgent>().SetSimpleReward(0.1f);
 
-            _status.GetCurrentForeignObject().SetObjectOwner(_character.GetComponent<CharacterObject>());
+            _connectedObject.GetObjectImage().SetObjectOwner(_character.GetComponent<CharacterObject>());
             _memory.OwnObject(_connectedObject);
         }
-        else { _character.GetComponentInChildren<BrainActionAgent>().SetSimpleReward(-0.2f); }
+        else { _character.GetComponentInChildren<BrainActionAgent>().SetSimpleReward(-0.1f); }
 
         SelfDelete();
     }

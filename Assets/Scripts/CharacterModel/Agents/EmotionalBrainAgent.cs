@@ -12,7 +12,7 @@ public class EmotionalBrainAgent : Agent
 
 
     public override void CollectObservations(VectorSensor sensor)
-    {
+    { 
         sensor.AddObservation(_feeling.GetMostNeedSatisfaction());
         sensor.AddObservation(_feeling.GetTotalHappinessChange());
     }

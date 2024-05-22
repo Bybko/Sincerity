@@ -20,17 +20,19 @@ public class InteractionAction : ICharacterAction
 
     public void Action()
     {
-        if (_status.GetCurrentForeignObject() != null && _status.GetCurrentForeignObject().IsOwned())
+        if (_status.GetCurrentForeignObject() == _connectedObject.GetObjectImage() 
+            && _status.GetCurrentForeignObject().IsOwned())
         {
-            Debug.Log("Succesfully interact with object: " + _status.GetCurrentForeignObject().GetFoodValue());
-            _character.GetComponentInChildren<BrainActionAgent>().SetSimpleReward(0.5f);
+            Debug.Log("Succesfully interact with object: " + _connectedObject.GetObjectImage().GetFoodValue());
+            _character.GetComponentInChildren<BrainActionAgent>().SetSimpleReward(0.1f);
 
             //it's only for food, make it more abstract, mb by interact methods in foreignObject class
-            _character.GetComponent<Receptors>().ForeignObjectLegacy(_status.GetCurrentForeignObject());
-            _status.GetCurrentForeignObject().SelfDestroy();
+            _character.GetComponent<Receptors>().ForeignObjectLegacy(_connectedObject.GetObjectImage());
+            _connectedObject.GetObjectImage().SelfDestroy();
             _memory.ReleaseObject(_connectedObject);
         }
-        else { _character.GetComponentInChildren<BrainActionAgent>().SetSimpleReward(-0.5f); }
+        else {
+            _character.GetComponentInChildren<BrainActionAgent>().SetSimpleReward(-0.1f); }
 
         SelfDelete();
     }
