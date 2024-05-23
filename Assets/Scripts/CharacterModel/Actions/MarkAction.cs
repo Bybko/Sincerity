@@ -22,12 +22,12 @@ public class MarkAction : ICharacterAction
     {
         if (_status.GetCurrentForeignObject() == _connectedObject.GetObjectImage())
         {
-            _character.GetComponentInChildren<BrainActionAgent>().SetSimpleReward(0.1f);
+            _character.GetComponent<CharacterAgents>().SetActionReward(0.1f);
 
             _connectedObject.GetObjectImage().SetObjectOwner(_character.GetComponent<CharacterObject>());
             _memory.OwnObject(_connectedObject);
         }
-        else { _character.GetComponentInChildren<BrainActionAgent>().SetSimpleReward(-0.1f); }
+        else { _character.GetComponent<CharacterAgents>().SetActionReward(-0.1f); }
 
         SelfDelete();
     }

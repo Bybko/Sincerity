@@ -5,19 +5,9 @@ using Unity.MLAgents.Actuators;
 
 public class BrainActionAgent : Agent
 {
-    //for train episode initialize
-    [SerializeField] private EventHandler _events;
-    [SerializeField] private Receptors _receptors;
     [SerializeField] private PhysicalStatus _physicalStatus;
-    [SerializeField] private Subconscious _subconscious;
-    [SerializeField] private Transform _playerTransform;
-    [SerializeField] private InstinctBrainAgent _instincts;
-    [SerializeField] private EmotionalBrainAgent _emotions;
-    [SerializeField] private BrainAgent _brainAgent;
-
     [SerializeField] private Brain _brain;
 
-    private float _prevHappinesLevel = -100f;
     private float _finalDecision = 0f;
     private ICharacterAction _decidedAction;
     private GameObject _characher;
@@ -27,7 +17,6 @@ public class BrainActionAgent : Agent
     private void Start()
     {
         _characher = transform.parent.gameObject;
-        _events.OnEpisodeEnd += CheckTrainEpisode;
     }
 
 
@@ -91,72 +80,6 @@ public class BrainActionAgent : Agent
         }
 
         _brain.IsFinalActionReady(true);
-    }
-
-
-    public override void OnEpisodeBegin()
-    {
-        _events.OnEpisodeReset.Invoke();
-
-        _brain.ResetMemory();
-        _brain.ResetSearchStatus();
-
-        _receptors.ResetCoroutinesQueue();
-
-        _playerTransform.localPosition = Vector3.zero;
-        _physicalStatus.SetRandomValues();
-
-        _subconscious.WakeUp();
-    }
-
-
-    public void CheckTrainEpisode()
-    {
-        if (_physicalStatus.GetHealth() <= 0)
-        {
-            SetSimpleReward(-1f);
-        }
-
-        if (_physicalStatus.GetHealth() == 100)
-        {
-            SetSimpleReward(1f);
-        }
-
-        if (_physicalStatus.GetCurrentFoodResources() == 100)
-        {
-            SetSimpleReward(0.8f);
-        }
-
-        /*if (_prevHappinesLevel < _subconscious.GetHappines())
-        {
-            _prevHappinesLevel = _subconscious.GetHappines();
-            SetComplexReward(1f);
-        }
-        else 
-        {
-            _prevHappinesLevel = _subconscious.GetHappines();
-            SetComplexReward(-1f);
-        }*/
-
-        _brainAgent.EndEpisode();
-        _emotions.EndEpisode();
-        _instincts.EndEpisode();
-        EndEpisode();
-    }
-
-
-    public void SetComplexReward(float reward)
-    {
-        SetReward(reward);
-        _brainAgent.SetReward(reward);
-        _emotions.SetReward(reward);
-        _instincts.SetReward(reward);
-    }
-
-
-    public void SetSimpleReward(float reward)
-    {
-        SetReward(reward);
     }
 
 
