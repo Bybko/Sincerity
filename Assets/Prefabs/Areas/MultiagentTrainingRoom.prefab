@@ -1589,7 +1589,6 @@ GameObject:
   m_Component:
   - component: {fileID: 113849625868322249}
   - component: {fileID: 6102153387384894364}
-  - component: {fileID: 8214168340988156337}
   m_Layer: 0
   m_Name: MultiagentTrainingRoom
   m_TagString: Untagged
@@ -1631,44 +1630,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e12485817c1374582bc111174a27eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agentParameters:
-    maxStep: 0
-  hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
   _events: {fileID: 7591525259537756819}
   characterAgents:
   - {fileID: 4161343511775424948}
---- !u!114 &8214168340988156337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7240923624950705389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d1c4e0b1822b495aa52bc52839ecb30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_BrainParameters:
-    VectorObservationSize: 0
-    NumStackedVectorObservations: 1
-    m_ActionSpec:
-      m_NumContinuousActions: 0
-      BranchSizes: 
-    VectorActionSize: 
-    VectorActionDescriptions: []
-    VectorActionSpaceType: 0
-    hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
-  m_InferenceDevice: 0
-  m_BehaviorType: 0
-  m_BehaviorName: My Behavior
-  TeamId: 0
-  m_UseChildSensors: 1
-  m_UseChildActuators: 1
-  m_DeterministicInference: 0
-  m_ObservableAttributeHandling: 0
 --- !u!1 &7340866510201626705
 GameObject:
   m_ObjectHideFlags: 0

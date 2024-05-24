@@ -25,6 +25,7 @@ public class Brain : MonoBehaviour
     private bool _isFinalActionReady = false;
 
     private Vector3 _searchingPosition;
+    private float _distanceThreshold = 0.1f;
     private bool _isSearching = false;
 
     
@@ -140,8 +141,9 @@ public class Brain : MonoBehaviour
                 _memory.AddNewGoal(newGoal);
                 newGoal.GetAction().Action();
             }
-            else if(_isSearching == false || _searchingPosition == gameObject.transform.position) 
-            { 
+            else if(_isSearching == false ||
+                Vector3.Distance(_searchingPosition, gameObject.transform.position) < _distanceThreshold) 
+            {
                 Search(); 
             }
         }
@@ -169,11 +171,27 @@ public class Brain : MonoBehaviour
         _isSearching = true;
 
         float searchRadius = 10f;
-        float randomX = transform.position.x + UnityEngine.Random.Range(-searchRadius, searchRadius);
-        float randomZ = transform.position.z + UnityEngine.Random.Range(-searchRadius, searchRadius);
-        Vector3 randomPosition = new Vector3(randomX, transform.position.y, randomZ);
-        _searchingPosition = randomPosition;
+        float randomX = 0f;
+        float randomZ = 0f;
+        Vector3 randomPosition = new Vector3(0f, 0f, 0f);
 
+        bool isNavMeshArea = false;
+        while (!isNavMeshArea)
+        {
+            randomX = transform.position.x + UnityEngine.Random.Range(-searchRadius, searchRadius);
+            randomZ = transform.position.z + UnityEngine.Random.Range(-searchRadius, searchRadius);
+            randomPosition = new Vector3(randomX, transform.position.y, randomZ);
+
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(randomPosition, out hit, searchRadius, NavMesh.AllAreas))
+            {
+                randomPosition.x = hit.position.x;
+                randomPosition.z = hit.position.z;
+                isNavMeshArea = true;
+            }
+        }
+
+        _searchingPosition = randomPosition;
         _navMesh.SetDestination(randomPosition);
     }
 
