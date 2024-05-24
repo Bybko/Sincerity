@@ -13,7 +13,7 @@ public class FoodObject : ForeignObject
     public override void ObjectReset()
     {
         gameObject.SetActive(true);
-        gameObject.transform.position = _spawnPoint;
+        gameObject.transform.localPosition = _spawnPoint;
         _objectHP = 100f;
         _owner = null;
     }
@@ -35,14 +35,19 @@ public class FoodObject : ForeignObject
 
     public override void Interact()
     {
-        _owner.GetComponent<Receptors>().ForeignObjectLegacy(this);
+        if (_owner != null) 
+        {
+            _owner.GetComponent<Receptors>().ForeignObjectLegacy(this);
+            _owner.GetComponentInChildren<Memory>().ReleaseObject(this);
+            SelfDestroy();
+        }
     }
 
 
     public override void SelfDestroy()
     {
         gameObject.SetActive(false);
-        //_events.OnForeignObjectDestroy.Invoke();
-        //_events.OnEpisodeEnd.Invoke();
+        _events.OnForeignObjectDestroy.Invoke();
+        _events.OnEpisodeEnd.Invoke();
     }
 }

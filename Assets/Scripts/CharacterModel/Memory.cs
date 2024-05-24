@@ -121,9 +121,15 @@ public class Memory : MonoBehaviour
     }
 
 
-    public void ReleaseObject(MemoryObject releasableObject)
+    public void ReleaseObject(ForeignObject releasableObject)
     {
-        _ownedObjects.Remove(releasableObject);
+        MemoryObject release = null;
+        foreach(MemoryObject ownedObject in _ownedObjects)
+        {
+            if (ownedObject.IsEqual(releasableObject)) { release = ownedObject; }
+        }
+
+        _ownedObjects.Remove(release);
     }
 
 
@@ -159,6 +165,16 @@ public class Memory : MonoBehaviour
                 }
             }
         }
+    }
+
+
+    public StorageObject FindOwnedStorageObject()
+    {
+        foreach (MemoryObject ownedObject in _ownedObjects)
+        {
+            if (ownedObject.GetObjectImage() is StorageObject) { return (StorageObject)ownedObject.GetObjectImage(); }
+        }
+        return null;
     }
 
 

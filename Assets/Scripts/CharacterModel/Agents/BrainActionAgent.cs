@@ -2,6 +2,7 @@ using UnityEngine;
 using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
 using Unity.MLAgents.Actuators;
+using Unity.VisualScripting;
 
 public class BrainActionAgent : Agent
 {
@@ -75,6 +76,10 @@ public class BrainActionAgent : Agent
                 break;
             case 5:
                 _decidedAction = new InteractionAction(_characher);
+                if (_finalDecision > 0) { SetReward(0.4f); } else { SetReward(-0.4f); }
+                break;
+            case 6:
+                _decidedAction = new StorageAction(_characher);
                 if (_finalDecision > 0) { SetReward(0.4f); } else { SetReward(-0.4f); }
                 break;
         }

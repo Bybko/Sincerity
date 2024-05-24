@@ -1,10 +1,7 @@
 using UnityEngine;
-using Unity.MLAgents;
-using Unity.MLAgents.Sensors;
-using Unity.MLAgents.Actuators;
 using System.Collections.Generic;
 
-public class TrainingArea : Agent
+public class TrainingArea : MonoBehaviour
 {
     [SerializeField] private EventHandler _events;    
     [SerializeField] private List<CharacterAgents> characterAgents = new List<CharacterAgents>();
@@ -13,14 +10,6 @@ public class TrainingArea : Agent
     private void Start()
     {
         _events.OnEpisodeEnd += CheckTrainEpisode;
-    }
-
-
-    public override void OnEpisodeBegin()
-    {
-        _events.OnEpisodeReset.Invoke();
-
-        foreach (CharacterAgents agent in characterAgents) { agent.ResetAgent(); }
     }
 
 
@@ -42,10 +31,20 @@ public class TrainingArea : Agent
             {
                 agent.SetActionReward(0.8f);
             }
-
-            agent.TotalEndEpisode();
         }
 
-        EndEpisode();
+        EpisodeReset();
+    }
+
+
+    private void EpisodeReset()
+    {
+        foreach (CharacterAgents agent in characterAgents)
+        {
+            agent.TotalEndEpisode();
+            agent.ResetAgent();
+        }
+
+        _events.OnEpisodeReset.Invoke();
     }
 }
