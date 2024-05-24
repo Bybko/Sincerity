@@ -1,6 +1,7 @@
 public class CharacterObject : ForeignObject
 {
     private PhysicalStatus _physicalStatus;
+    private bool _isInsideStorage = false;
 
 
     private void Start()
@@ -63,4 +64,9 @@ public class CharacterObject : ForeignObject
     {
         return;
     }
+
+
+    public bool IsInside() { return _isInsideStorage; }
+
+    public void SetInsideStatus(bool newStatus) { _isInsideStorage = newStatus; }
 }

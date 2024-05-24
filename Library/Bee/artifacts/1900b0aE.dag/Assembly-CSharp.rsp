@@ -454,6 +454,7 @@
 "Assets/Scripts/CharacterModel/Actions/ICharacterAction.cs"
 "Assets/Scripts/CharacterModel/Actions/InteractionAction.cs"
 "Assets/Scripts/CharacterModel/Actions/MarkAction.cs"
+"Assets/Scripts/CharacterModel/Actions/StorageAction.cs"
 "Assets/Scripts/CharacterModel/Actions/WalkAction.cs"
 "Assets/Scripts/CharacterModel/Agents/BrainActionAgent.cs"
 "Assets/Scripts/CharacterModel/Agents/BrainAgent.cs"
@@ -478,6 +479,8 @@
 "Assets/Scripts/ForeignObjects/CharacterObject.cs"
 "Assets/Scripts/ForeignObjects/FoodObject.cs"
 "Assets/Scripts/ForeignObjects/ForeignObject.cs"
+"Assets/Scripts/ForeignObjects/StorageObject/StorageCell.cs"
+"Assets/Scripts/ForeignObjects/StorageObject/StorageObject.cs"
 "Assets/Scripts/Timer.cs"
 "Assets/Scripts/TrainingArea.cs"
 -langversion:9.0

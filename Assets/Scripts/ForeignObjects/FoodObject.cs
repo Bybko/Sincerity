@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class FoodObject : ForeignObject
 {
+    [SerializeField] private Vector3 _spawnPoint;
+
     private void Start()
     {
         _events.OnEpisodeReset += ObjectReset;
@@ -11,6 +13,7 @@ public class FoodObject : ForeignObject
     public override void ObjectReset()
     {
         gameObject.SetActive(true);
+        gameObject.transform.position = _spawnPoint;
         _objectHP = 100f;
         _owner = null;
     }
@@ -39,7 +42,7 @@ public class FoodObject : ForeignObject
     public override void SelfDestroy()
     {
         gameObject.SetActive(false);
-        _events.OnForeignObjectDestroy.Invoke();
-        _events.OnEpisodeEnd.Invoke();
+        //_events.OnForeignObjectDestroy.Invoke();
+        //_events.OnEpisodeEnd.Invoke();
     }
 }

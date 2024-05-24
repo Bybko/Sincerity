@@ -1,8 +1,5 @@
 using System;
 using System.Collections;
-using System.Security.Cryptography;
-using System.Xml.Serialization;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -87,7 +84,6 @@ public class Brain : MonoBehaviour
     }
 
 
-
     private IEnumerator RequestBrainDecision()
     {
         _instincts.RequestDecision();
@@ -130,10 +126,10 @@ public class Brain : MonoBehaviour
 
     private void AnalizeDecision()
     {
-        /*if (_subconscious.IsWantToSleep() && !_subconscious.SleepingStatus())
+        if (_subconscious.IsWantToSleep() && !_subconscious.SleepingStatus())
         {
             StartCoroutine(Sleep());
-        }*/
+        }
 
         if (!_subconscious.SleepingStatus() && _receptors.IsCoroutinesQueueOver())
         {
@@ -144,10 +140,10 @@ public class Brain : MonoBehaviour
                 _memory.AddNewGoal(newGoal);
                 newGoal.GetAction().Action();
             }
-            /*else if(_isSearching == false || _searchingPosition == gameObject.transform.position) 
+            else if(_isSearching == false || _searchingPosition == gameObject.transform.position) 
             { 
                 Search(); 
-            }*/
+            }
         }
     }
 

@@ -64,6 +64,8 @@
     <Compile Include="Assets\ML-Agents\Examples\Match3\Scripts\Match3Board.cs" />
     <Compile Include="Assets\Scripts\CharacterModel\Needs\OwnershipNeed.cs" />
     <Compile Include="Assets\Scripts\CharacterModel\Actions\EscapeAction.cs" />
+    <Compile Include="Assets\Scripts\CharacterModel\Actions\StorageAction.cs" />
+    <Compile Include="Assets\Scripts\ForeignObjects\StorageObject\StorageCell.cs" />
     <Compile Include="Assets\Scripts\CharacterModel\Agents\InstinctActionAgent.cs" />
     <Compile Include="Assets\ML-Agents\Examples\PushBlockWithInput\Scripts\PushBlockWithInputPlayerController.cs" />
     <Compile Include="Assets\ML-Agents\Examples\PushBlockWithInput\Scripts\PushBlockWithInputSettings.cs" />
@@ -124,6 +126,7 @@
     <Compile Include="Assets\Scripts\CharacterModel\Needs\ComfortNeed.cs" />
     <Compile Include="Assets\Scripts\CharacterModel\Brain.cs" />
     <Compile Include="Assets\ML-Agents\Examples\Match3\Scripts\Match3TileSelector.cs" />
+    <Compile Include="Assets\Scripts\ForeignObjects\StorageObject\StorageObject.cs" />
     <Compile Include="Assets\Scripts\CharacterModel\Actions\AttackAction.cs" />
     <Compile Include="Assets\Scripts\CharacterModel\Agents\CharacterAgents.cs" />
     <Compile Include="Assets\ML-Agents\Examples\Soccer\Scripts\SoccerBallController.cs" />

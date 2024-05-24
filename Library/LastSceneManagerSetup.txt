@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/Diploma.unity
+- path: Assets/Scenes/TestingScene.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
