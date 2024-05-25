@@ -16,6 +16,8 @@ public class InstinctBrainAgent : Agent
         sensor.AddObservation(_feeling.GetDanger());
         sensor.AddObservation(_feeling.GetFoodChange());
         sensor.AddObservation(_feeling.GetHealthChange());
+        sensor.AddObservation(_feeling.GetCurrentFoodResources());
+        sensor.AddObservation(_feeling.GetCurrentHealth());
         sensor.AddObservation(_feeling.GetTotalHappinessChange());
     }
 

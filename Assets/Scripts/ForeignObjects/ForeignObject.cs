@@ -12,6 +12,7 @@ public abstract class ForeignObject : MonoBehaviour
     [SerializeField] protected bool _isMoving;
 
     protected ForeignObject _owner;
+    protected bool _isStored = false;
     
 
     public abstract void Interact();
@@ -46,6 +47,7 @@ public abstract class ForeignObject : MonoBehaviour
         return false;
     }
     public bool IsMoving() { return _isMoving; }
+    public virtual bool IsStored() { return _isStored; }
 
     public float GetFoodValue() { return _foodValue; }
     public float GetDamageValue() { return _damageValue; }
@@ -54,4 +56,5 @@ public abstract class ForeignObject : MonoBehaviour
     public virtual ForeignObject GetOwner() { return _owner; }
 
     public virtual void SetObjectOwner(ForeignObject newOwner) { _owner = newOwner; }
+    public virtual void SetStoredStatus(bool newStatus) { _isStored = newStatus; }
 }

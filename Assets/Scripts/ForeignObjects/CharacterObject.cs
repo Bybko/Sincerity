@@ -66,6 +66,18 @@ public class CharacterObject : ForeignObject
     }
 
 
+    public override void SetStoredStatus(bool newStatus)
+    {
+        return;
+    }
+
+
+    public override bool IsStored()
+    {
+        return false;
+    }
+
+
     public bool IsInside() { return _isInsideStorage; }
 
     public void SetInsideStatus(bool newStatus) { _isInsideStorage = newStatus; }

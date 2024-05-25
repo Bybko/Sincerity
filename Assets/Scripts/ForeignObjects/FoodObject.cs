@@ -16,6 +16,7 @@ public class FoodObject : ForeignObject
         gameObject.transform.localPosition = _spawnPoint;
         _objectHP = 100f;
         _owner = null;
+        _isStored = false;
     }
 
 
@@ -48,6 +49,6 @@ public class FoodObject : ForeignObject
     {
         gameObject.SetActive(false);
         _events.OnForeignObjectDestroy.Invoke();
-        _events.OnEpisodeEnd.Invoke();
+        //_events.OnEpisodeEnd.Invoke();
     }
 }

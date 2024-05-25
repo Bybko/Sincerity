@@ -79,6 +79,35 @@ public class StorageObject : ForeignObject
         }
     }
 
+    
+    public bool IsFree()
+    {
+        foreach (StorageCell cell in _cells)
+        {
+            cell.CheckStoredObject();
+            if (!cell.IsOccupied()) { return true; }
+        }
+        return false;
+    }
+
+
+    public float GetStoredAward()
+    {
+        float generalAward = 0f;
+        foreach (StorageCell cell in _cells)
+        {
+            if (cell.GetStoredObject() != null)
+            {
+                if (cell.GetStoredObject().GetFoodValue() > 50 || cell.GetStoredObject().GetDamageValue() > 50)
+                {
+                    generalAward += 1f;
+                }
+            }
+        }
+
+        return generalAward;
+    }
+
 
     public void SetVisitor(CharacterObject newVisitor) { _visitor = newVisitor; }
 }

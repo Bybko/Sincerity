@@ -168,11 +168,15 @@ public class Memory : MonoBehaviour
     }
 
 
-    public StorageObject FindOwnedStorageObject()
+    public StorageObject FindFreeOwnedStorageObject()
     {
         foreach (MemoryObject ownedObject in _ownedObjects)
         {
-            if (ownedObject.GetObjectImage() is StorageObject) { return (StorageObject)ownedObject.GetObjectImage(); }
+            if (ownedObject.GetObjectImage() is StorageObject) 
+            {
+                StorageObject potentialStorageObject = (StorageObject)ownedObject.GetObjectImage();
+                if (potentialStorageObject.IsFree()) { return potentialStorageObject; }
+            }
         }
         return null;
     }

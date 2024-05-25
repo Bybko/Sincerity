@@ -47,9 +47,16 @@ public class StorageCell : MonoBehaviour
 
     public void DestroyStoredObject()
     {
-        _storedObject.SelfDestroy();
+        if (_storedObject != null) 
+        {
+            _storedObject.SelfDestroy();
+            _storedObject = null;
+            _isOccupied = false;
+        }
     }
 
 
     public bool IsOccupied() {  return _isOccupied; }
+
+    public ForeignObject GetStoredObject() { return _storedObject; }
 }

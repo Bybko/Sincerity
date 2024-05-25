@@ -9,10 +9,12 @@ public class WalkAction : ICharacterAction
     private MemoryObject _connectedObject;
     private NavMeshAgent _navMesh;
     private Brain _brain;
+    private GameObject _character;
 
 
     public WalkAction(GameObject character)
     {
+        _character = character;
         _navMesh = character.GetComponent<NavMeshAgent>();
         _brain = character.GetComponentInChildren<Brain>();
     }
@@ -22,7 +24,12 @@ public class WalkAction : ICharacterAction
     {
         if (_connectedObject.GetObjectImage() != null)
         { 
-            _navMesh.SetDestination(_connectedObject.GetObjectTransform().position); 
+            if (!_connectedObject.GetObjectImage().IsStored() || 
+                (_connectedObject.GetObjectImage().IsStored() && _character.GetComponent<CharacterObject>().IsInside()))
+            {
+                _navMesh.SetDestination(_connectedObject.GetObjectPosition());
+            }
+            else { _character.GetComponent<CharacterAgents>().SetActionReward(-0.1f); }
         }
     }
 

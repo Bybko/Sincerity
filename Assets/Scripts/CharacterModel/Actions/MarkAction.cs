@@ -20,9 +20,14 @@ public class MarkAction : ICharacterAction
 
     public void Action()
     {
-        if (_status.GetCurrentForeignObject() == _connectedObject.GetObjectImage())
+        if (_status.GetCurrentForeignObject() == _connectedObject.GetObjectImage() && 
+            !_connectedObject.GetObjectImage().IsOwned())
         {
             _character.GetComponent<CharacterAgents>().SetActionReward(0.1f);
+            if (_connectedObject.GetObjectImage() is StorageObject) 
+            { 
+                _character.GetComponent<CharacterAgents>().SetActionReward(0.5f); 
+            }
 
             _connectedObject.GetObjectImage().SetObjectOwner(_character.GetComponent<CharacterObject>());
             _memory.OwnObject(_connectedObject);

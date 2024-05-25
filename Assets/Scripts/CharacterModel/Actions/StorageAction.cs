@@ -23,12 +23,13 @@ public class StorageAction : ICharacterAction
         if (_status.GetCurrentForeignObject() == _connectedObject.GetObjectImage()
             && _status.GetCurrentForeignObject().IsOwned())
         {
-            if (_memory.FindOwnedStorageObject() != null) 
+            if (_memory.FindFreeOwnedStorageObject() != null && !(_connectedObject.GetObjectImage() is StorageObject)) 
             {
                 Debug.Log("Succesfully store object: " + _connectedObject.GetObjectImage().GetFoodValue());
                 _character.GetComponent<CharacterAgents>().SetActionReward(0.1f);
 
-                _memory.FindOwnedStorageObject().StoreObject(_connectedObject.GetObjectImage());
+                _memory.FindFreeOwnedStorageObject().StoreObject(_connectedObject.GetObjectImage());
+                _connectedObject.GetObjectImage().SetStoredStatus(true);
             }
         }
         else

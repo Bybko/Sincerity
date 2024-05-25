@@ -6,6 +6,9 @@ public class TrainingArea : MonoBehaviour
     [SerializeField] private EventHandler _events;    
     [SerializeField] private List<CharacterAgents> characterAgents = new List<CharacterAgents>();
 
+    //temp
+    [SerializeField] private StorageObject _storageObject;
+
 
     private void Start()
     {
@@ -13,11 +16,19 @@ public class TrainingArea : MonoBehaviour
     }
 
 
+    private void Update()
+    {
+        if (!_storageObject.IsFree()) { _events.OnEpisodeEnd.Invoke(); }
+    }
+
+
     public void CheckTrainEpisode()
     {
         foreach (CharacterAgents agent in characterAgents)
         {
-            if (agent.GetAgentHealth() <= 0)
+            agent.SetActionReward(_storageObject.GetStoredAward());
+
+            /*if (agent.GetAgentHealth() <= 0)
             {
                 agent.SetActionReward(-1f);
             }
@@ -30,7 +41,7 @@ public class TrainingArea : MonoBehaviour
             if (agent.GetAgentFoodResources() == 100)
             {
                 agent.SetActionReward(0.8f);
-            }
+            }*/
         }
 
         EpisodeReset();
