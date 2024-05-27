@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 2
+    VectorObservationSize: 4
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 1
@@ -81,6 +81,7 @@ MonoBehaviour:
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
   _brain: {fileID: 2425397931821383450}
+  _character: {fileID: 2576233337599285858}
 --- !u!1 &1036076100245809385
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,6 +163,9 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
+  _character: {fileID: 4835971087726663963}
+  _brain: {fileID: 2425397931821383450}
+  _status: {fileID: 8153972317270326488}
 --- !u!1 &1233371462548612251
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,12 +232,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcb1710f7dcab2a4496dfaaa8d5fbc06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _characterTransform: {fileID: 146576520272705360}
   _memory: {fileID: 5258457269634650442}
   _subconscious: {fileID: 586131663255716879}
   _physicalStatus: {fileID: 8153972317270326488}
   _navMesh: {fileID: 6342525843610706934}
   _receptors: {fileID: 8357072715137929753}
   _instincts: {fileID: 8988904225246773718}
+  _instinctsAction: {fileID: 7534962575402000290}
   _emotions: {fileID: 9097574363898271001}
   _brainDecision: {fileID: 6087021504480295860}
   _brainAction: {fileID: 6094418959926328958}
@@ -270,12 +276,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 5
+    VectorObservationSize: 6
     NumStackedVectorObservations: 1
     m_ActionSpec:
-      m_NumContinuousActions: 7
+      m_NumContinuousActions: 8
       BranchSizes: 
-    VectorActionSize: 07000000
+    VectorActionSize: 08000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
@@ -456,7 +462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 6
+    VectorObservationSize: 7
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 1
@@ -491,6 +497,7 @@ MonoBehaviour:
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
   _brain: {fileID: 2425397931821383450}
+  _character: {fileID: 2576233337599285858}
 --- !u!1 &4835971087726663963
 GameObject:
   m_ObjectHideFlags: 0
@@ -756,6 +763,7 @@ MonoBehaviour:
   _rationalDecision: {fileID: 6087021504480295860}
   _emotionalDecision: {fileID: 9097574363898271001}
   _instinctDecision: {fileID: 8988904225246773718}
+  _instinctAction: {fileID: 7534962575402000290}
 --- !u!1 &8968437564114921176
 GameObject:
   m_ObjectHideFlags: 0

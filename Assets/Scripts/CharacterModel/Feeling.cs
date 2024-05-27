@@ -1,6 +1,9 @@
+using Newtonsoft.Json.Bson;
+
 public class Feeling
 {
     //Right now is only adapt for two needs
+    private ForeignObject _fellableObject = null;
     private float _foodSatisfactionChange = 0f;
     private float _healthChange = 0f;
     private float _totalHappinessChange = 0f;
@@ -17,6 +20,7 @@ public class Feeling
     public float GetDanger() { return _danger; }
     public float GetCurrentFoodResources() { return _currentFoodResources; }
     public float GetCurrentHealth() { return _currentHealth; }
+    public ForeignObject GetFeelableObject() { return _fellableObject; }
 
     public void SetHealthChange(float healthChange) { _healthChange = healthChange; }
     public void SetFoodChange(float foodSatisfactionChange) { _foodSatisfactionChange = foodSatisfactionChange; }
@@ -25,4 +29,5 @@ public class Feeling
     public void SetDanger(float  danger) { _danger = danger;}
     public void SetCurrentFoodResources(float food) { _currentFoodResources = food; }
     public void SetCurrentHealth(float health) { _currentHealth = health; }
+    public void SetFeelableObject(ForeignObject foreignObject) { _fellableObject = foreignObject; }
 }

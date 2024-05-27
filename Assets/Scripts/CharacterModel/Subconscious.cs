@@ -56,6 +56,7 @@ public class Subconscious : MonoBehaviour
         _feelingAboutObject.SetMostNeedSatisfaction(mostSeveralNeed.PredictSatisfactionChange(foreignObject));
         _feelingAboutObject.SetCurrentHealth(_physicalStatus.GetHealth());
         _feelingAboutObject.SetCurrentFoodResources(_physicalStatus.GetCurrentFoodResources());
+        _feelingAboutObject.SetFeelableObject(foreignObject);
 
         return _feelingAboutObject;
     }

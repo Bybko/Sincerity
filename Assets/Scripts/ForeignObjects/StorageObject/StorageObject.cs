@@ -26,11 +26,13 @@ public class StorageObject : ForeignObject
         gameObject.SetActive(false);
 
         _events.OnEpisodeEnd.Invoke();
+        Debug.Log("Storage is broken");
     }
 
 
     public override void ObjectReset()
     {
+        _objectHP = 1000f;
         gameObject.SetActive(true);
     }
 
@@ -39,7 +41,7 @@ public class StorageObject : ForeignObject
     {
         if (hpValue < 0)
         {
-            _objectHP = Mathf.Clamp(_objectHP + hpValue, 0f, 100f);
+            _objectHP = Mathf.Clamp(_objectHP + hpValue, 0f, 1000f);
         }
 
         if (_objectHP == 0f)
@@ -100,12 +102,24 @@ public class StorageObject : ForeignObject
             {
                 if (cell.GetStoredObject().GetFoodValue() > 50 || cell.GetStoredObject().GetDamageValue() > 50)
                 {
-                    generalAward += 1f;
+                    generalAward += 1f; 
                 }
             }
         }
 
         return generalAward;
+    }
+
+
+    public int NumOfOccupiedCells()
+    {
+        int num = 0;
+        foreach (StorageCell cell in _cells)
+        {
+            if (cell.IsOccupied()) { num += 1; }
+        }
+
+        return num;
     }
 
 

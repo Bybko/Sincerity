@@ -93,6 +93,23 @@ public class Receptors : MonoBehaviour
     }
 
 
+    public void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.TryGetComponent<FoodObject>(out FoodObject goal))
+        {
+            SetCurrentInteractObject(goal);
+
+            _brain.TellAboutReachingObject(goal);
+        }
+        else if (collision.gameObject.TryGetComponent<StorageObject>(out StorageObject storageGoal))
+        {
+            SetCurrentInteractObject(storageGoal);
+
+            _brain.TellAboutReachingObject(storageGoal);
+        }
+    }
+
+
     public void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.TryGetComponent<FoodObject>(out FoodObject goal))

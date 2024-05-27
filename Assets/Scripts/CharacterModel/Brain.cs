@@ -7,6 +7,7 @@ public class Brain : MonoBehaviour
 {
     public Action OnActionRemove;
 
+    [SerializeField] private Transform _characterTransform;
     [SerializeField] private Memory _memory;
     [SerializeField] private Subconscious _subconscious;
     [SerializeField] private PhysicalStatus _physicalStatus;
@@ -15,17 +16,19 @@ public class Brain : MonoBehaviour
 
     [Header("Agents")]
     [SerializeField] private InstinctBrainAgent _instincts;
+    [SerializeField] private InstinctActionAgent _instinctsAction;
     [SerializeField] private EmotionalBrainAgent _emotions;
     [SerializeField] private BrainAgent _brainDecision;
     [SerializeField] private BrainActionAgent _brainAction;
 
     private bool _isEmotionalDecisionReady = false;
     private bool _isInstinctDecisionReady = false;
+    private bool _isInstinctActionReady = false;
     private bool _isFinalDecisionReady = false;
     private bool _isFinalActionReady = false;
 
     private Vector3 _searchingPosition;
-    private float _distanceThreshold = 0.1f;
+    private float _distanceThreshold = 0.3f;
     private bool _isSearching = false;
 
     
@@ -47,22 +50,29 @@ public class Brain : MonoBehaviour
             Feeling feeling = _subconscious.FeelingFromTheObject(foreignObject);
             _instincts.SetFeeling(feeling);
             _emotions.SetFeeling(feeling);
+            _brainDecision.SetFeeling(feeling);
 
-            yield return StartCoroutine(RequestBrainDecision());
+            yield return StartCoroutine(RequestBrainDecision(foreignObject));
 
-            CreateReward(foreignObject);
-
-            if (rememberedObject == null)
+            if (_instinctsAction.GetAction() != null) { _instinctsAction.GetAction().Action(); }
+            else
             {
-                _memory.MemorizeObject(foreignObject, _instincts.GetInstinctDecision(),
-                    _emotions.GetEmotionalDecision(), _brainDecision.GetFinalDecision());
+                CreateReward(foreignObject);
+
+                if (rememberedObject == null)
+                {
+                    _memory.MemorizeObject(foreignObject, _instincts.GetInstinctDecision(),
+                        _emotions.GetEmotionalDecision(), _brainDecision.GetFinalDecision());
+                }
+                _memory.SetNewAction(foreignObject, _brainAction.GetAction());
             }
-            _memory.SetNewAction(foreignObject, _brainAction.GetAction());
         }
         else
         {
             yield return StartCoroutine(RequestBrainAction(rememberedObject));
-            _memory.SetNewAction(foreignObject, _brainAction.GetAction());
+
+            if (_instinctsAction.GetAction() != null) { _instinctsAction.GetAction().Action(); }
+            else { _memory.SetNewAction(foreignObject, _brainAction.GetAction()); }
         }
     }
 
@@ -85,43 +95,63 @@ public class Brain : MonoBehaviour
     }
 
 
-    private IEnumerator RequestBrainDecision()
+    private IEnumerator RequestBrainDecision(ForeignObject foreignObject)
     {
-        _instincts.RequestDecision();
-        _emotions.RequestDecision();
-
-        yield return new WaitUntil(() => _isEmotionalDecisionReady && _isInstinctDecisionReady);
-
-        //reset for next decision
-        IsEmotionalDecisionReady(false);
-        IsInstinctsDecisionReady(false);
-
-        _brainDecision.SetInputs(_instincts.GetInstinctDecision(), _emotions.GetEmotionalDecision());
-        _brainDecision.RequestDecision();
-
-        yield return new WaitUntil(() => _isFinalDecisionReady);
-
-        IsFinalDecisionReady(false);
-
-        _brainAction.SetInputs(_brainDecision.GetFinalDecision());
-        _brainAction.SetCurrentForeignObject(_physicalStatus.GetCurrentForeignObject());
+        _instinctsAction.SetCurrentForeignObject(foreignObject);
         _brainAction.RequestDecision();
 
-        yield return new WaitUntil(() => _isFinalActionReady);
+        yield return new WaitUntil(() => _isInstinctActionReady);
 
-        IsFinalActionReady(false);
+        if (_instinctsAction.GetAction() == null)
+        {
+            _instincts.RequestDecision();
+            _emotions.RequestDecision();
+
+            yield return new WaitUntil(() => _isEmotionalDecisionReady && _isInstinctDecisionReady);
+
+            //reset for next decision
+            IsEmotionalDecisionReady(false);
+            IsInstinctsDecisionReady(false);
+
+            _brainDecision.SetInputs(_instincts.GetInstinctDecision(), _emotions.GetEmotionalDecision());
+            _brainDecision.RequestDecision();
+
+            yield return new WaitUntil(() => _isFinalDecisionReady);
+
+            IsFinalDecisionReady(false);
+
+            _brainAction.SetInputs(_brainDecision.GetFinalDecision());
+            _brainAction.SetCurrentForeignObject(_physicalStatus.GetCurrentForeignObject());
+            _brainAction.RequestDecision();
+
+            yield return new WaitUntil(() => _isFinalActionReady);
+
+            IsFinalActionReady(false);
+        }
     }
 
 
     private IEnumerator RequestBrainAction(MemoryObject rememberedObject)
     {
-        _brainAction.SetInputs(rememberedObject.GetFinalDecision());
-        _brainAction.SetCurrentForeignObject(_physicalStatus.GetCurrentForeignObject());
+        _instinctsAction.SetCurrentForeignObject(rememberedObject.GetObjectImage());
         _brainAction.RequestDecision();
 
-        yield return new WaitUntil(() => _isFinalActionReady);
+        yield return new WaitUntil(() => _isInstinctActionReady);
 
-        IsFinalActionReady(false);
+        if (_instinctsAction.GetAction() == null)
+        {
+            IsInstinctsActionReady(false);
+
+            _brainAction.SetInputs(rememberedObject.GetFinalDecision());
+            _brainAction.SetCurrentForeignObject(_physicalStatus.GetCurrentForeignObject());
+            _brainAction.RequestDecision();
+
+            yield return new WaitUntil(() => _isFinalActionReady);
+
+            IsFinalActionReady(false);
+
+            _memory.SetNewAction(rememberedObject.GetObjectImage(), _brainAction.GetAction());
+        }
     }
 
 
@@ -142,7 +172,7 @@ public class Brain : MonoBehaviour
                 newGoal.GetAction().Action();
             }
             else if(_isSearching == false ||
-                Vector3.Distance(_searchingPosition, gameObject.transform.position) < _distanceThreshold) 
+                Vector3.Distance(_searchingPosition, _characterTransform.position) < _distanceThreshold) 
             {
                 Search(); 
             }
@@ -173,21 +203,31 @@ public class Brain : MonoBehaviour
         float searchRadius = 10f;
         float randomX = 0f;
         float randomZ = 0f;
-        Vector3 randomPosition = new Vector3(0f, 0f, 0f);
+        Vector3 randomPosition = _characterTransform.position;
 
         bool isNavMeshArea = false;
         while (!isNavMeshArea)
         {
-            randomX = transform.position.x + UnityEngine.Random.Range(-searchRadius, searchRadius);
-            randomZ = transform.position.z + UnityEngine.Random.Range(-searchRadius, searchRadius);
-            randomPosition = new Vector3(randomX, transform.position.y, randomZ);
+            randomX = _characterTransform.position.x + UnityEngine.Random.Range(-searchRadius, searchRadius);
+            randomZ = _characterTransform.position.z + UnityEngine.Random.Range(-searchRadius, searchRadius);
+            randomPosition = new Vector3(randomX, _characterTransform.position.y, randomZ);
 
             NavMeshHit hit;
             if (NavMesh.SamplePosition(randomPosition, out hit, searchRadius, NavMesh.AllAreas))
             {
                 randomPosition.x = hit.position.x;
                 randomPosition.z = hit.position.z;
-                isNavMeshArea = true;
+
+                Vector3 directionToTarget = randomPosition - _characterTransform.position;
+                float distanceToTarget = directionToTarget.magnitude;
+
+                Ray ray = new Ray(_characterTransform.position, directionToTarget);
+                RaycastHit raycastHit;
+
+                if (!Physics.Raycast(ray, out raycastHit, distanceToTarget))
+                {
+                    isNavMeshArea = true;
+                }
             }
         }
 
@@ -201,7 +241,13 @@ public class Brain : MonoBehaviour
         //Just only for food yet
         float damage = foreignObject.GetDamageValue();
         float foodValue = foreignObject.GetFoodValue();
-        if(damage <= 0 && foodValue < 0)
+        if (foreignObject is StorageObject) 
+        {
+            if (_instincts.GetInstinctDecision() > 0) { _instincts.SetReward(2f); } else { _instincts.SetReward(-2f); }
+            if (_emotions.GetEmotionalDecision() > 0) { _emotions.SetReward(2f); } else { _emotions.SetReward(-2f); }
+            if (_brainDecision.GetFinalDecision() > 0) { _brainDecision.SetReward(2f); } else { _brainDecision.SetReward(-2f); }
+        }
+        else if(damage <= 0 && foodValue < 0)
         {
             if (_instincts.GetInstinctDecision() > 0) { _instincts.SetReward(-1f); } else { _instincts.SetReward(1f); }
             if (_emotions.GetEmotionalDecision() > 0) { _emotions.SetReward(-1f); } else { _emotions.SetReward(1f); }
@@ -218,6 +264,7 @@ public class Brain : MonoBehaviour
 
     public void ResetSearchStatus() { _isSearching = false; }
     public void IsInstinctsDecisionReady(bool newStatus) { _isInstinctDecisionReady = newStatus; }
+    public void IsInstinctsActionReady(bool newStatus) { _isInstinctActionReady = newStatus; }
     public void IsEmotionalDecisionReady(bool newStatus) { _isEmotionalDecisionReady = newStatus; }
     public void IsFinalDecisionReady(bool newStatus) { _isFinalDecisionReady = newStatus; }
     public void IsFinalActionReady(bool newStatus) { _isFinalActionReady = newStatus; }

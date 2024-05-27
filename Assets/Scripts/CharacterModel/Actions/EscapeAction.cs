@@ -1,3 +1,5 @@
+using UnityEngine;
+using Unity.VisualScripting;
 using UnityEngine.AI;
 
 public class EscapeAction : ICharacterAction
@@ -6,6 +8,14 @@ public class EscapeAction : ICharacterAction
 
     private MemoryObject _connectedObject;
     private NavMeshAgent _navMesh;
+    private GameObject _character;
+
+
+    public EscapeAction(GameObject character)
+    {
+        _character = character;
+        _navMesh = character.GetComponent<NavMeshAgent>();
+    }
 
 
     public void Action()

@@ -26,7 +26,7 @@ public class MarkAction : ICharacterAction
             _character.GetComponent<CharacterAgents>().SetActionReward(0.1f);
             if (_connectedObject.GetObjectImage() is StorageObject) 
             { 
-                _character.GetComponent<CharacterAgents>().SetActionReward(0.5f); 
+                _character.GetComponent<CharacterAgents>().SetActionReward(0.4f); 
             }
 
             _connectedObject.GetObjectImage().SetObjectOwner(_character.GetComponent<CharacterObject>());

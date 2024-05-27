@@ -21,6 +21,8 @@ public class AttackAction : ICharacterAction
     {
         if (_status.GetCurrentForeignObject() == _connectedObject.GetObjectImage())
         {
+            if (_connectedObject.GetObjectImage() is StorageObject) 
+            { _character.GetComponent<CharacterAgents>().SetActionReward(-2f); }
             _connectedObject.GetObjectImage().ChangeHP(_status.GetPotentialDamage());
         }
 

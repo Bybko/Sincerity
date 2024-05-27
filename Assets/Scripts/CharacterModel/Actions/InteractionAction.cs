@@ -21,8 +21,7 @@ public class InteractionAction : ICharacterAction
         ForeignObject objectImage = _connectedObject.GetObjectImage();
         if (_status.GetCurrentForeignObject() == objectImage && _status.GetCurrentForeignObject().IsOwned())
         {
-            Debug.Log("Succesfully interact with object: " + objectImage.GetFoodValue());
-            _character.GetComponent<CharacterAgents>().SetActionReward(0.1f);
+            //_character.GetComponent<CharacterAgents>().SetActionReward(0.1f);
 
             if (objectImage is StorageObject) 
             {
@@ -32,7 +31,7 @@ public class InteractionAction : ICharacterAction
             }
             else { objectImage.Interact(); }
         }
-        else { _character.GetComponent<CharacterAgents>().SetActionReward(-0.1f); }
+        else { /*_character.GetComponent<CharacterAgents>().SetActionReward(-0.1f);*/ }
 
         SelfDelete();
     }

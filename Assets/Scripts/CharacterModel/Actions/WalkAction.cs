@@ -23,11 +23,13 @@ public class WalkAction : ICharacterAction
     public void Action()
     {
         if (_connectedObject.GetObjectImage() != null)
-        { 
+        {
             if (!_connectedObject.GetObjectImage().IsStored() || 
                 (_connectedObject.GetObjectImage().IsStored() && _character.GetComponent<CharacterObject>().IsInside()))
             {
-                _navMesh.SetDestination(_connectedObject.GetObjectPosition());
+                Vector3 setPosition = new Vector3(_connectedObject.GetObjectPosition().x, 
+                    _character.transform.position.y, _connectedObject.GetObjectPosition().z);
+                _navMesh.SetDestination(setPosition);
             }
             else { _character.GetComponent<CharacterAgents>().SetActionReward(-0.1f); }
         }

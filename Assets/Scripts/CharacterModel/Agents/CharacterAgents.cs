@@ -15,6 +15,7 @@ public class CharacterAgents : MonoBehaviour
     [SerializeField] private BrainAgent _rationalDecision;
     [SerializeField] private EmotionalBrainAgent _emotionalDecision;
     [SerializeField] private InstinctBrainAgent _instinctDecision;
+    [SerializeField] private InstinctActionAgent _instinctAction;
 
 
 
@@ -44,6 +45,12 @@ public class CharacterAgents : MonoBehaviour
     public void SetActionReward(float reward)
     {
         _rationalAction.SetReward(reward);
+    }
+
+
+    public void SetInstinctsActionReward(float reward)
+    {
+        _instinctAction.SetReward(reward);
     }
 
 

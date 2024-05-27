@@ -8,10 +8,12 @@ public class TrainingArea : MonoBehaviour
 
     //temp
     [SerializeField] private StorageObject _storageObject;
+    [SerializeField] private int _foreignObjectsNum;
 
 
     private void Start()
     {
+        _events.OnForeignObjectDestroy += DecreaseForeignObjectsNum;
         _events.OnEpisodeEnd += CheckTrainEpisode;
     }
 
@@ -19,6 +21,7 @@ public class TrainingArea : MonoBehaviour
     private void Update()
     {
         if (!_storageObject.IsFree()) { _events.OnEpisodeEnd.Invoke(); }
+        else if(_foreignObjectsNum - _storageObject.NumOfOccupiedCells() < 4) { _events.OnEpisodeEnd.Invoke(); }
     }
 
 
@@ -26,6 +29,7 @@ public class TrainingArea : MonoBehaviour
     {
         foreach (CharacterAgents agent in characterAgents)
         {
+            if (!_storageObject.gameObject.activeSelf) { agent.SetActionReward(-1f); }
             agent.SetActionReward(_storageObject.GetStoredAward());
 
             /*if (agent.GetAgentHealth() <= 0)
@@ -56,6 +60,10 @@ public class TrainingArea : MonoBehaviour
             agent.ResetAgent();
         }
 
+        _foreignObjectsNum = 4; //reset after testing
         _events.OnEpisodeReset.Invoke();
     }
+
+
+    private void DecreaseForeignObjectsNum() { _foreignObjectsNum -= 1; }
 }
