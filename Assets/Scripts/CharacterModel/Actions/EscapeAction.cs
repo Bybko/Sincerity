@@ -5,12 +5,14 @@ using UnityEngine.UIElements;
 
 public class EscapeAction : ICharacterAction
 {
-    public bool isActionFinished = false;
+    public bool isActionStarted = false;
+    public Vector3 escapingPosition;
 
-    private MemoryObject _connectedObject;
+    private ForeignObject _connectedObject;
     private Brain _brain;
     private NavMeshAgent _navMesh;
     private GameObject _character;
+    
 
 
     public EscapeAction(GameObject character)
@@ -24,7 +26,7 @@ public class EscapeAction : ICharacterAction
     public void Action()
     {
         float runDistance = 10f;
-        Vector3 directionToChaser = _character.transform.position - _connectedObject.GetObjectPosition();
+        Vector3 directionToChaser = _character.transform.position - _connectedObject.transform.position;
         directionToChaser.Normalize();
 
         float angle = 30f;
@@ -50,6 +52,9 @@ public class EscapeAction : ICharacterAction
 
                 if (!Physics.Raycast(ray, out raycastHit, distanceToTarget))
                 {
+                    _navMesh.SetDestination(randomRunTo);
+                    escapingPosition = randomRunTo;
+                    isActionStarted = true;
                     isNavMeshArea = true;
                 }
             }
@@ -63,6 +68,7 @@ public class EscapeAction : ICharacterAction
     }
 
 
-    public void ConnectWithObject(MemoryObject connectedObject) { _connectedObject = connectedObject; }
+    public void ConnectWithObject(MemoryObject connectedObject) { return; }
+    public void ConnectWithForeignObject(ForeignObject connectedObject) { _connectedObject = connectedObject; }
     public void SetNavMeshAgent(NavMeshAgent agent) { _navMesh = agent; }
 }

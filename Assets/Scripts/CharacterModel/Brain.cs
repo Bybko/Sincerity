@@ -27,6 +27,7 @@ public class Brain : MonoBehaviour
     private bool _isFinalDecisionReady = false;
     private bool _isFinalActionReady = false;
 
+    private ICharacterAction _instinctAction = null;
     private Vector3 _searchingPosition;
     private float _distanceThreshold = 0.3f;
     private bool _isSearching = false;
@@ -51,10 +52,14 @@ public class Brain : MonoBehaviour
             _instincts.SetFeeling(feeling);
             _emotions.SetFeeling(feeling);
             _brainDecision.SetFeeling(feeling);
-
+            
             yield return StartCoroutine(RequestBrainDecision(foreignObject));
-
-            if (_instinctsAction.GetAction() != null) { _instinctsAction.GetAction().Action(); }
+            
+            if (_instinctsAction.GetAction() != null) 
+            {
+                _instinctAction = _instinctsAction.GetAction();
+                _instinctsAction.GetAction().Action(); 
+            }
             else
             {
                 CreateReward(foreignObject);
@@ -71,7 +76,11 @@ public class Brain : MonoBehaviour
         {
             yield return StartCoroutine(RequestBrainAction(rememberedObject));
 
-            if (_instinctsAction.GetAction() != null) { _instinctsAction.GetAction().Action(); }
+            if (_instinctsAction.GetAction() != null) 
+            {
+                _instinctAction = _instinctsAction.GetAction();
+                _instinctsAction.GetAction().Action(); 
+            }
             else { _memory.SetNewAction(foreignObject, _brainAction.GetAction()); }
         }
     }
@@ -98,10 +107,9 @@ public class Brain : MonoBehaviour
     private IEnumerator RequestBrainDecision(ForeignObject foreignObject)
     {
         _instinctsAction.SetCurrentForeignObject(foreignObject);
-        _brainAction.RequestDecision();
-
+        _instinctsAction.RequestDecision();
+        
         yield return new WaitUntil(() => _isInstinctActionReady);
-
         if (_instinctsAction.GetAction() == null)
         {
             _instincts.RequestDecision();
@@ -134,12 +142,13 @@ public class Brain : MonoBehaviour
     private IEnumerator RequestBrainAction(MemoryObject rememberedObject)
     {
         _instinctsAction.SetCurrentForeignObject(rememberedObject.GetObjectImage());
-        _brainAction.RequestDecision();
+        _instinctsAction.RequestDecision();
 
         yield return new WaitUntil(() => _isInstinctActionReady);
-
+        
         if (_instinctsAction.GetAction() == null)
         {
+            
             IsInstinctsActionReady(false);
 
             _brainAction.SetInputs(rememberedObject.GetFinalDecision());
@@ -160,6 +169,18 @@ public class Brain : MonoBehaviour
         if (_subconscious.IsWantToSleep() && !_subconscious.SleepingStatus())
         {
             StartCoroutine(Sleep());
+        }
+
+        if (_instinctAction != null && _instinctAction is EscapeAction)
+        {
+            EscapeAction escape = (EscapeAction)_instinctAction;
+            if (escape.isActionStarted &&
+                Vector3.Distance(escape.escapingPosition, _characterTransform.position) < _distanceThreshold)
+            {
+                escape.isActionStarted = false;
+                escape.SelfDelete();
+            }
+            return;
         }
 
         if (!_subconscious.SleepingStatus() && _receptors.IsCoroutinesQueueOver())
@@ -238,26 +259,23 @@ public class Brain : MonoBehaviour
 
     private void CreateReward(ForeignObject foreignObject)
     {
-        //Just only for food yet
         float damage = foreignObject.GetDamageValue();
         float foodValue = foreignObject.GetFoodValue();
         if (foreignObject is StorageObject) 
         {
-            if (_instincts.GetInstinctDecision() > 0) { _instincts.SetReward(2f); } else { _instincts.SetReward(-2f); }
-            if (_emotions.GetEmotionalDecision() > 0) { _emotions.SetReward(2f); } else { _emotions.SetReward(-2f); }
             if (_brainDecision.GetFinalDecision() > 0) { _brainDecision.SetReward(2f); } else { _brainDecision.SetReward(-2f); }
         }
-        else if(damage <= 0 && foodValue < 0)
+        else if(foodValue > 0)
         {
-            if (_instincts.GetInstinctDecision() > 0) { _instincts.SetReward(-1f); } else { _instincts.SetReward(1f); }
-            if (_emotions.GetEmotionalDecision() > 0) { _emotions.SetReward(-1f); } else { _emotions.SetReward(1f); }
-            if (_brainDecision.GetFinalDecision() > 0) { _brainDecision.SetReward(-1f); } else { _brainDecision.SetReward(1f); }
-        }
-        else if (damage > 50 || foodValue > 50) 
-        {
-            if (_instincts.GetInstinctDecision() > 0) { _instincts.SetReward(1f); } else {  _instincts.SetReward(-1f);}
+            if (_instincts.GetInstinctDecision() > 0) { _instincts.SetReward(1f); } else { _instincts.SetReward(-1f); }
             if (_emotions.GetEmotionalDecision() > 0) { _emotions.SetReward(1f); } else { _emotions.SetReward(-1f); }
             if (_brainDecision.GetFinalDecision() > 0) { _brainDecision.SetReward(1f); } else { _brainDecision.SetReward(-1f); }
+        }
+        else if (damage < _physicalStatus.GetPotentialDamage()) 
+        {
+            if (_instincts.GetInstinctDecision() > 0) { _instincts.SetReward(-1f); } else {  _instincts.SetReward(1f);}
+            if (_emotions.GetEmotionalDecision() > 0) { _emotions.SetReward(-1f); } else { _emotions.SetReward(1f); }
+            if (_brainDecision.GetFinalDecision() > 0) { _brainDecision.SetReward(-1f); } else { _brainDecision.SetReward(1f); }
         }
     }
 

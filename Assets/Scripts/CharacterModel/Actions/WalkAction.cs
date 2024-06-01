@@ -27,6 +27,7 @@ public class WalkAction : ICharacterAction
             if (!_connectedObject.GetObjectImage().IsStored() || 
                 (_connectedObject.GetObjectImage().IsStored() && _character.GetComponent<CharacterObject>().IsInside()))
             {
+                _character.GetComponent<CharacterAgents>().SetActionReward(0.1f);
                 Vector3 setPosition = new Vector3(_connectedObject.GetObjectPosition().x, 
                     _character.transform.position.y, _connectedObject.GetObjectPosition().z);
                 _navMesh.SetDestination(setPosition);

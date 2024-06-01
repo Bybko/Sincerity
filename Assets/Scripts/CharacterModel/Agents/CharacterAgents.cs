@@ -60,6 +60,7 @@ public class CharacterAgents : MonoBehaviour
         _rationalDecision.EndEpisode();
         _emotionalDecision.EndEpisode();
         _instinctDecision.EndEpisode();
+        _instinctAction.EndEpisode();
     }
 
 

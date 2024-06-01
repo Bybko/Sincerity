@@ -1,5 +1,10 @@
+using System;
+using UnityEngine;
+
 public class CharacterObject : ForeignObject
 {
+    [SerializeField] private CharacterAgents _characterAgents;
+
     private PhysicalStatus _physicalStatus;
     private bool _isInsideStorage = false;
 
@@ -36,9 +41,11 @@ public class CharacterObject : ForeignObject
 
     public override void SelfDestroy()
     {
-        //gameObject.SetActive(false);
+        _characterAgents.SetActionReward(-1f);
+        _characterAgents.TotalEndEpisode();
+        gameObject.SetActive(false);
         _events.OnForeignObjectDestroy.Invoke();
-        _events.OnEpisodeEnd.Invoke();
+        _events.OnCharacterDestroy.Invoke();
     }
 
 

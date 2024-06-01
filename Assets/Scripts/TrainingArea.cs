@@ -4,66 +4,38 @@ using System.Collections.Generic;
 public class TrainingArea : MonoBehaviour
 {
     [SerializeField] private EventHandler _events;    
-    [SerializeField] private List<CharacterAgents> characterAgents = new List<CharacterAgents>();
-
-    //temp
-    [SerializeField] private StorageObject _storageObject;
-    [SerializeField] private int _foreignObjectsNum;
+    [SerializeField] private List<CharacterAgents> _characterAgents = new List<CharacterAgents>();
 
 
     private void Start()
     {
-        _events.OnForeignObjectDestroy += DecreaseForeignObjectsNum;
-        _events.OnEpisodeEnd += CheckTrainEpisode;
-    }
-
-
-    private void Update()
-    {
-        if (!_storageObject.IsFree()) { _events.OnEpisodeEnd.Invoke(); }
-        else if(_foreignObjectsNum - _storageObject.NumOfOccupiedCells() < 4) { _events.OnEpisodeEnd.Invoke(); }
-    }
-
-
-    public void CheckTrainEpisode()
-    {
-        foreach (CharacterAgents agent in characterAgents)
-        {
-            if (!_storageObject.gameObject.activeSelf) { agent.SetActionReward(-1f); }
-            agent.SetActionReward(_storageObject.GetStoredAward());
-
-            /*if (agent.GetAgentHealth() <= 0)
-            {
-                agent.SetActionReward(-1f);
-            }
-
-            if (agent.GetAgentHealth() == 100)
-            {
-                agent.SetActionReward(1f);
-            }
-
-            if (agent.GetAgentFoodResources() == 100)
-            {
-                agent.SetActionReward(0.8f);
-            }*/
-        }
-
-        EpisodeReset();
+        _events.OnCharacterDestroy += CharactersAnalize;
     }
 
 
     private void EpisodeReset()
     {
-        foreach (CharacterAgents agent in characterAgents)
+        foreach (CharacterAgents agent in _characterAgents)
         {
-            agent.TotalEndEpisode();
+            if (agent.gameObject.activeSelf) { agent.TotalEndEpisode(); }
             agent.ResetAgent();
         }
 
-        _foreignObjectsNum = 4; //reset after testing
         _events.OnEpisodeReset.Invoke();
     }
 
 
-    private void DecreaseForeignObjectsNum() { _foreignObjectsNum -= 1; }
+    private void CharactersAnalize()
+    {
+        int numOfAlives = 0;
+        foreach (CharacterAgents agent in _characterAgents)
+        {
+            if (agent.gameObject.activeSelf) 
+            {
+                agent.SetActionReward(1f);
+                numOfAlives++;
+            }
+        }
+        if (numOfAlives <= 0) { EpisodeReset(); }
+    }
 }

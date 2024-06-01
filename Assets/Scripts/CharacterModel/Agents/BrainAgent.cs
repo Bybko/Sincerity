@@ -16,10 +16,10 @@ public class BrainAgent : Agent
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        float isFreeStorageObject = 0f;
-        if (_feeling.GetFeelableObject() is StorageObject && !_feeling.GetFeelableObject().IsOwned()) 
+        float isStorageObject = 0f;
+        if (_feeling.GetFeelableObject() is StorageObject) 
         { 
-            isFreeStorageObject = 1f; 
+            isStorageObject = 1f; 
         }
 
         float ownerDamage = 0f;
@@ -35,7 +35,7 @@ public class BrainAgent : Agent
 
         sensor.AddObservation(_instinctDecision);
         sensor.AddObservation(_emotionalDecision);
-        sensor.AddObservation(isFreeStorageObject);
+        sensor.AddObservation(isStorageObject);
         sensor.AddObservation(ownerDamage);
     }
 

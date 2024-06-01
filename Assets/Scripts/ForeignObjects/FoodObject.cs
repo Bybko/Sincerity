@@ -6,6 +6,7 @@ public class FoodObject : ForeignObject
 
     private void Start()
     {
+        _spawnPoint = gameObject.transform.localPosition;
         _events.OnEpisodeReset += ObjectReset;
     }
 
@@ -49,6 +50,5 @@ public class FoodObject : ForeignObject
     {
         gameObject.SetActive(false);
         _events.OnForeignObjectDestroy.Invoke();
-        //_events.OnEpisodeEnd.Invoke();
     }
 }

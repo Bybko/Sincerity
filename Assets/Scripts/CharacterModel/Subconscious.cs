@@ -150,7 +150,7 @@ public class Subconscious : MonoBehaviour
 
     public void FallAsleep()
     {
-        _navmesh.isStopped = true; //it works strange, test it later
+        //_navmesh.isStopped = true; //it works strange, test it later
         _physicalStatus.SetSleepingStatus(true);
     }
 
@@ -167,7 +167,7 @@ public class Subconscious : MonoBehaviour
 
     public void WakeUp() 
     {
-        _navmesh.isStopped = false;
+        //_navmesh.isStopped = false;
         _physicalStatus.SetSleepingStatus(false); 
     }
 

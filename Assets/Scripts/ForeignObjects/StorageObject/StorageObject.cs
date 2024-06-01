@@ -123,5 +123,20 @@ public class StorageObject : ForeignObject
     }
 
 
+    public float GetFood()
+    {
+        foreach (StorageCell cell in _cells)
+        {
+            if (cell.IsOccupied())
+            {
+                float foodValue = cell.GetStoredObject().GetFoodValue();
+                cell.DestroyStoredObject();
+                return foodValue;
+            }
+        }
+        return 0f;
+    }
+
+
     public void SetVisitor(CharacterObject newVisitor) { _visitor = newVisitor; }
 }

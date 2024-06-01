@@ -21,8 +21,10 @@ public class HealAction : ICharacterAction
     {
         if (_status.GetCurrentForeignObject() == _connectedObject.GetObjectImage())
         {
+            _character.GetComponent<CharacterAgents>().SetActionReward(0.1f);
             _connectedObject.GetObjectImage().ChangeHP(_status.GetPotentialHeal());
         }
+        else { _character.GetComponent<CharacterAgents>().SetActionReward(-0.1f); }
 
         SelfDelete();
     }

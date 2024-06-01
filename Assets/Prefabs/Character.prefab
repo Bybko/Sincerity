@@ -276,12 +276,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 6
+    VectorObservationSize: 7
     NumStackedVectorObservations: 1
     m_ActionSpec:
-      m_NumContinuousActions: 8
+      m_NumContinuousActions: 7
       BranchSizes: 
-    VectorActionSize: 08000000
+    VectorActionSize: 07000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
@@ -676,6 +676,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _receptors: {fileID: 8357072715137929753}
+  _memory: {fileID: 5258457269634650442}
   _health: 100
   _foodEnergySpending: 5
   _requestedFoodResources: 100
@@ -740,6 +741,7 @@ MonoBehaviour:
   _objectHP: 0
   _size: 1
   _isMoving: 1
+  _characterAgents: {fileID: 5944489186702489868}
 --- !u!114 &5944489186702489868
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -49,6 +49,7 @@ public class BrainActionAgent : Agent
         sensor.AddObservation(objectStoredStatus);
         sensor.AddObservation(selfInsideStatus);
         sensor.AddObservation(readyForStorage);
+        sensor.AddObservation(_physicalStatus.GetCurrentFoodResources());
     }
 
 
@@ -67,6 +68,8 @@ public class BrainActionAgent : Agent
         {
             case 0:
                 _decidedAction = null;
+                if (_currentForeignObject != null && _currentForeignObject is StorageObject &&
+                    _currentForeignObject.IsOwned()) { SetReward(0.4f); }
                 SetReward(0.1f);
                 break;
             case 1:
@@ -88,10 +91,12 @@ public class BrainActionAgent : Agent
             case 5:
                 _decidedAction = new InteractionAction(_character);
                 if (_finalDecision > 0) { SetReward(0.1f); } else { SetReward(-0.1f); }
+                if (_physicalStatus.GetCurrentFoodResources() < 50f) { SetReward(0.4f); }
                 break;
             case 6:
                 _decidedAction = new StorageAction(_character);
-                if (_finalDecision > 0) { SetReward(0.2f); } else { SetReward(-0.1f); }
+                if (_finalDecision > 0) { SetReward(0.1f); } else { SetReward(-0.1f); }
+                if (_physicalStatus.GetCurrentFoodResources() > 50f) { SetReward(0.4f); }
                 break;
         }
 

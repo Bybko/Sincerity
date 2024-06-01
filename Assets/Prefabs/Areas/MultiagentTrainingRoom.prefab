@@ -148,7 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
   _foodValue: 50
-  _damageValue: -70
+  _damageValue: 0
   _objectHP: 100
   _size: 12
   _isMoving: 0
@@ -300,8 +300,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
-  _foodValue: 0
-  _damageValue: 100
+  _foodValue: 70
+  _damageValue: 0
   _objectHP: 100
   _size: 8
   _isMoving: 0
@@ -607,7 +607,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
   _foodValue: 0
-  _damageValue: 100
+  _damageValue: 0
   _objectHP: 100
   _size: 8
   _isMoving: 0
@@ -760,7 +760,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
   _foodValue: -10
-  _damageValue: -70
+  _damageValue: 0
   _objectHP: 100
   _size: 8
   _isMoving: 0
@@ -912,8 +912,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
-  _foodValue: 0
-  _damageValue: 100
+  _foodValue: 70
+  _damageValue: 0
   _objectHP: 100
   _size: 8
   _isMoving: 0
@@ -1066,7 +1066,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
   _foodValue: 50
-  _damageValue: -70
+  _damageValue: 0
   _objectHP: 100
   _size: 12
   _isMoving: 0
@@ -1778,8 +1778,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
-  _foodValue: 0
-  _damageValue: 100
+  _foodValue: 70
+  _damageValue: 0
   _objectHP: 100
   _size: 8
   _isMoving: 0
@@ -2085,11 +2085,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
   _foodValue: -10
-  _damageValue: -70
+  _damageValue: 0
   _objectHP: 100
   _size: 8
   _isMoving: 0
-  _spawnPoint: {x: 0, y: 0, z: 0}
+  _spawnPoint: {x: 1.400007, y: 1.5, z: 81.7}
 --- !u!1 &1460633783286728552
 GameObject:
   m_ObjectHideFlags: 0
@@ -2724,7 +2724,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
   _foodValue: -10
-  _damageValue: -70
+  _damageValue: 0
   _objectHP: 100
   _size: 8
   _isMoving: 0
@@ -3109,7 +3109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
   _foodValue: -10
-  _damageValue: -70
+  _damageValue: 0
   _objectHP: 100
   _size: 8
   _isMoving: 0
@@ -3411,7 +3411,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
   _foodValue: 50
-  _damageValue: -70
+  _damageValue: 0
   _objectHP: 100
   _size: 12
   _isMoving: 0
@@ -3564,7 +3564,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
   _foodValue: 50
-  _damageValue: -70
+  _damageValue: 0
   _objectHP: 100
   _size: 12
   _isMoving: 0
@@ -3870,7 +3870,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
   _foodValue: -10
-  _damageValue: -70
+  _damageValue: 0
   _objectHP: 100
   _size: 8
   _isMoving: 0
@@ -4863,7 +4863,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
   _foodValue: 0
-  _damageValue: 100
+  _damageValue: 0
   _objectHP: 100
   _size: 8
   _isMoving: 0
@@ -5352,7 +5352,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
   _foodValue: 50
-  _damageValue: -70
+  _damageValue: 0
   _objectHP: 100
   _size: 12
   _isMoving: 0
@@ -5505,7 +5505,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
   _foodValue: -10
-  _damageValue: -70
+  _damageValue: 0
   _objectHP: 100
   _size: 8
   _isMoving: 0
@@ -5658,7 +5658,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
   _foodValue: -10
-  _damageValue: -70
+  _damageValue: 0
   _objectHP: 100
   _size: 8
   _isMoving: 0
@@ -5915,8 +5915,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
-  _foodValue: 0
-  _damageValue: 100
+  _foodValue: 70
+  _damageValue: 0
   _objectHP: 100
   _size: 8
   _isMoving: 0
@@ -6069,7 +6069,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
   _foodValue: 50
-  _damageValue: -70
+  _damageValue: 0
   _objectHP: 100
   _size: 12
   _isMoving: 0
@@ -6221,8 +6221,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
-  _foodValue: 0
-  _damageValue: 100
+  _foodValue: 70
+  _damageValue: 0
   _objectHP: 100
   _size: 8
   _isMoving: 0
@@ -6375,7 +6375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
   _foodValue: 50
-  _damageValue: -70
+  _damageValue: 0
   _objectHP: 100
   _size: 12
   _isMoving: 0
@@ -6527,8 +6527,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
-  _foodValue: 0
-  _damageValue: 100
+  _foodValue: 70
+  _damageValue: 0
   _objectHP: 100
   _size: 8
   _isMoving: 0
@@ -6807,8 +6807,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
-  _foodValue: 0
-  _damageValue: 100
+  _foodValue: 70
+  _damageValue: 0
   _objectHP: 100
   _size: 8
   _isMoving: 0
@@ -7240,8 +7240,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
-  _foodValue: 0
-  _damageValue: 100
+  _foodValue: 70
+  _damageValue: 0
   _objectHP: 100
   _size: 8
   _isMoving: 0
@@ -7521,11 +7521,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
   _foodValue: 50
-  _damageValue: -70
+  _damageValue: 0
   _objectHP: 100
   _size: 12
   _isMoving: 0
-  _spawnPoint: {x: 0, y: 0, z: 0}
+  _spawnPoint: {x: -10.9, y: 2, z: 94.3}
 --- !u!1 &5382458127925114651
 GameObject:
   m_ObjectHideFlags: 0
@@ -8054,12 +8054,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
-  _foodValue: 0
-  _damageValue: 100
+  _foodValue: 70
+  _damageValue: 0
   _objectHP: 100
   _size: 8
   _isMoving: 0
-  _spawnPoint: {x: 0, y: 0, z: 0}
+  _spawnPoint: {x: -10.99999, y: 1.5, z: 81.5}
 --- !u!1 &5688754928969786051
 GameObject:
   m_ObjectHideFlags: 0
@@ -8488,7 +8488,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
   _foodValue: 50
-  _damageValue: -70
+  _damageValue: 0
   _objectHP: 100
   _size: 12
   _isMoving: 0
@@ -8640,8 +8640,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
-  _foodValue: 0
-  _damageValue: 100
+  _foodValue: 70
+  _damageValue: 0
   _objectHP: 100
   _size: 8
   _isMoving: 0
@@ -8794,7 +8794,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
   _foodValue: -10
-  _damageValue: -70
+  _damageValue: 0
   _objectHP: 100
   _size: 8
   _isMoving: 0
@@ -8947,7 +8947,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
   _foodValue: 50
-  _damageValue: -70
+  _damageValue: 0
   _objectHP: 100
   _size: 12
   _isMoving: 0
@@ -9252,8 +9252,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
-  _foodValue: 0
-  _damageValue: 100
+  _foodValue: 70
+  _damageValue: 0
   _objectHP: 100
   _size: 8
   _isMoving: 0
@@ -9533,7 +9533,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
   _foodValue: 50
-  _damageValue: -70
+  _damageValue: 0
   _objectHP: 100
   _size: 12
   _isMoving: 0
@@ -9686,7 +9686,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
   _foodValue: -10
-  _damageValue: -70
+  _damageValue: 0
   _objectHP: 100
   _size: 8
   _isMoving: 0
@@ -10144,8 +10144,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
-  _foodValue: 0
-  _damageValue: 100
+  _foodValue: 70
+  _damageValue: 0
   _objectHP: 100
   _size: 8
   _isMoving: 0
@@ -10604,7 +10604,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
   _foodValue: -10
-  _damageValue: -70
+  _damageValue: 0
   _objectHP: 100
   _size: 8
   _isMoving: 0
@@ -10728,8 +10728,9 @@ MonoBehaviour:
   _events: {fileID: 7591525259537756819}
   characterAgents:
   - {fileID: 4161343511775424948}
-  _storageObject: {fileID: 0}
-  _foreignObjectsNum: 0
+  - {fileID: 4931282613832859317}
+  - {fileID: 3728416200036891606}
+  - {fileID: 7315351628926191906}
 --- !u!1 &7419987871489277177
 GameObject:
   m_ObjectHideFlags: 0
@@ -10878,7 +10879,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
   _foodValue: 50
-  _damageValue: -70
+  _damageValue: 0
   _objectHP: 100
   _size: 12
   _isMoving: 0
@@ -11135,8 +11136,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
-  _foodValue: 0
-  _damageValue: 100
+  _foodValue: 70
+  _damageValue: 0
   _objectHP: 100
   _size: 8
   _isMoving: 0
@@ -11288,8 +11289,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
-  _foodValue: 0
-  _damageValue: 100
+  _foodValue: 70
+  _damageValue: 0
   _objectHP: 100
   _size: 8
   _isMoving: 0
@@ -11595,7 +11596,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
   _foodValue: -10
-  _damageValue: -70
+  _damageValue: 0
   _objectHP: 100
   _size: 8
   _isMoving: 0
@@ -11748,7 +11749,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
   _foodValue: -10
-  _damageValue: -70
+  _damageValue: 0
   _objectHP: 100
   _size: 8
   _isMoving: 0
@@ -11905,7 +11906,7 @@ MonoBehaviour:
   _objectHP: 100
   _size: 2
   _isMoving: 0
-  _spawnPoint: {x: 0, y: 0, z: 0}
+  _spawnPoint: {x: 1.700003, y: 1, z: 96}
 --- !u!1 &8500671007915629578
 GameObject:
   m_ObjectHideFlags: 0
@@ -12053,8 +12054,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
-  _foodValue: 0
-  _damageValue: 100
+  _foodValue: 70
+  _damageValue: 0
   _objectHP: 100
   _size: 8
   _isMoving: 0
@@ -12206,8 +12207,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
-  _foodValue: 0
-  _damageValue: 100
+  _foodValue: 70
+  _damageValue: 0
   _objectHP: 100
   _size: 8
   _isMoving: 0
@@ -12639,8 +12640,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
-  _foodValue: 0
-  _damageValue: 100
+  _foodValue: 70
+  _damageValue: 0
   _objectHP: 100
   _size: 8
   _isMoving: 0
@@ -12820,14 +12821,62 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 924626705179400963, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+      propertyPath: m_BehaviorName
+      value: InstinctDecision1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1948268671068941027, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+      propertyPath: m_BehaviorName
+      value: EmotionalDecision1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576233337599285858, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+      propertyPath: _events
+      value: 
+      objectReference: {fileID: 7591525259537756819}
+    - target: {fileID: 3964850022777351328, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+      propertyPath: m_BehaviorName
+      value: InstinctAction1
+      objectReference: {fileID: 0}
     - target: {fileID: 4835971087726663963, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: m_Name
       value: Character (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258457269634650442, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+      propertyPath: _events
+      value: 
+      objectReference: {fileID: 7591525259537756819}
+    - target: {fileID: 5944489186702489868, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+      propertyPath: _events
+      value: 
+      objectReference: {fileID: 7591525259537756819}
+    - target: {fileID: 5944489186702489868, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+      propertyPath: _startPosition.x
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5944489186702489868, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+      propertyPath: _startPosition.y
+      value: 1.500008
+      objectReference: {fileID: 0}
+    - target: {fileID: 5944489186702489868, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+      propertyPath: _startPosition.z
+      value: -37.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987993593529079097, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+      propertyPath: m_BehaviorName
+      value: RationalAction1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7804868499271878799, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+      propertyPath: m_BehaviorName
+      value: RationalDecision1
       objectReference: {fileID: 0}
     - target: {fileID: 8153972317270326488, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: _damagePotential
       value: -30
       objectReference: {fileID: 0}
+    - target: {fileID: 8357072715137929753, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+      propertyPath: _events
+      value: 
+      objectReference: {fileID: 7591525259537756819}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12838,6 +12887,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 146576520272705360, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
   m_PrefabInstance: {fileID: 1589909217867483065}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4931282613832859317 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5944489186702489868, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+  m_PrefabInstance: {fileID: 1589909217867483065}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f05a879a9f9c5248980e7321d5af651, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4033616576890925102
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12886,14 +12946,62 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 924626705179400963, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+      propertyPath: m_BehaviorName
+      value: InstinctDecision3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1948268671068941027, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+      propertyPath: m_BehaviorName
+      value: EmotionalDecision3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576233337599285858, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+      propertyPath: _events
+      value: 
+      objectReference: {fileID: 7591525259537756819}
+    - target: {fileID: 3964850022777351328, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+      propertyPath: m_BehaviorName
+      value: InstinctAction3
+      objectReference: {fileID: 0}
     - target: {fileID: 4835971087726663963, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: m_Name
       value: Character (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258457269634650442, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+      propertyPath: _events
+      value: 
+      objectReference: {fileID: 7591525259537756819}
+    - target: {fileID: 5944489186702489868, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+      propertyPath: _events
+      value: 
+      objectReference: {fileID: 7591525259537756819}
+    - target: {fileID: 5944489186702489868, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+      propertyPath: _startPosition.x
+      value: 42.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5944489186702489868, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+      propertyPath: _startPosition.y
+      value: 1.500008
+      objectReference: {fileID: 0}
+    - target: {fileID: 5944489186702489868, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+      propertyPath: _startPosition.z
+      value: 88
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987993593529079097, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+      propertyPath: m_BehaviorName
+      value: RationalAction3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7804868499271878799, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+      propertyPath: m_BehaviorName
+      value: RationalDecision3
       objectReference: {fileID: 0}
     - target: {fileID: 8153972317270326488, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: _damagePotential
       value: -50
       objectReference: {fileID: 0}
+    - target: {fileID: 8357072715137929753, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+      propertyPath: _events
+      value: 
+      objectReference: {fileID: 7591525259537756819}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12904,6 +13012,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 146576520272705360, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
   m_PrefabInstance: {fileID: 4033616576890925102}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7315351628926191906 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5944489186702489868, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+  m_PrefabInstance: {fileID: 4033616576890925102}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f05a879a9f9c5248980e7321d5af651, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6788153584735751636
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12956,6 +13075,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StorageObject (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8195962840611293014, guid: adee869ce9a0be2499013e994642bc67, type: 3}
+      propertyPath: _events
+      value: 
+      objectReference: {fileID: 7591525259537756819}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13014,19 +13137,78 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 924626705179400963, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+      propertyPath: m_BehaviorName
+      value: InstinctDecision2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1948268671068941027, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+      propertyPath: m_BehaviorName
+      value: EmotionalDecision2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576233337599285858, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+      propertyPath: _events
+      value: 
+      objectReference: {fileID: 7591525259537756819}
+    - target: {fileID: 3964850022777351328, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+      propertyPath: m_BehaviorName
+      value: InstinctAction2
+      objectReference: {fileID: 0}
     - target: {fileID: 4835971087726663963, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: m_Name
       value: Character (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258457269634650442, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+      propertyPath: _events
+      value: 
+      objectReference: {fileID: 7591525259537756819}
+    - target: {fileID: 5944489186702489868, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+      propertyPath: _events
+      value: 
+      objectReference: {fileID: 7591525259537756819}
+    - target: {fileID: 5944489186702489868, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+      propertyPath: _startPosition.x
+      value: -9.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5944489186702489868, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+      propertyPath: _startPosition.y
+      value: 1.500008
+      objectReference: {fileID: 0}
+    - target: {fileID: 5944489186702489868, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+      propertyPath: _startPosition.z
+      value: 87.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987993593529079097, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+      propertyPath: m_BehaviorName
+      value: RationalAction2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7804868499271878799, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+      propertyPath: m_BehaviorName
+      value: RationalDecision2
       objectReference: {fileID: 0}
     - target: {fileID: 8153972317270326488, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: _damagePotential
       value: -40
       objectReference: {fileID: 0}
+    - target: {fileID: 8357072715137929753, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+      propertyPath: _events
+      value: 
+      objectReference: {fileID: 7591525259537756819}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+--- !u!114 &3728416200036891606 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5944489186702489868, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+  m_PrefabInstance: {fileID: 7044456289754137306}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f05a879a9f9c5248980e7321d5af651, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7190649080401081738 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 146576520272705360, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
@@ -13084,6 +13266,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StorageObject
       objectReference: {fileID: 0}
+    - target: {fileID: 8195962840611293014, guid: adee869ce9a0be2499013e994642bc67, type: 3}
+      propertyPath: _events
+      value: 
+      objectReference: {fileID: 7591525259537756819}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13146,6 +13332,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StorageObject (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8195962840611293014, guid: adee869ce9a0be2499013e994642bc67, type: 3}
+      propertyPath: _events
+      value: 
+      objectReference: {fileID: 7591525259537756819}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13220,6 +13410,14 @@ PrefabInstance:
       propertyPath: _events
       value: 
       objectReference: {fileID: 7591525259537756819}
+    - target: {fileID: 5944489186702489868, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+      propertyPath: _startPosition.x
+      value: 40.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5944489186702489868, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+      propertyPath: _startPosition.z
+      value: -38.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8153972317270326488, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: _damagePotential
       value: -20
@@ -13301,6 +13499,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StorageObject (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8195962840611293014, guid: adee869ce9a0be2499013e994642bc67, type: 3}
+      propertyPath: _events
+      value: 
+      objectReference: {fileID: 7591525259537756819}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

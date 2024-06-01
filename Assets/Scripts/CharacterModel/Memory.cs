@@ -182,6 +182,21 @@ public class Memory : MonoBehaviour
     }
 
 
+    //temp cringe
+    public float GetEat()
+    {
+        foreach (MemoryObject ownedObject in _ownedObjects)
+        {
+            if (ownedObject.GetObjectImage() is StorageObject)
+            {
+                StorageObject eatStorage = (StorageObject)ownedObject.GetObjectImage();
+                return eatStorage.GetFood();
+            }
+        }
+        return 0f;
+    }
+
+
     private void ListBrush()
     {
         MemoryObject deletableObject = null;

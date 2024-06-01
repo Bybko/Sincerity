@@ -4,6 +4,7 @@ using UnityEngine;
 public class PhysicalStatus : MonoBehaviour
 {
     [SerializeField] private Receptors _receptors;
+    [SerializeField] private Memory _memory; //temp for strogae objects get
     //rebalance this parameters for a long game after learning
     [SerializeField] private float _health = 100f;
     [SerializeField] private float _foodEnergySpending = 5f;
@@ -11,7 +12,7 @@ public class PhysicalStatus : MonoBehaviour
     [SerializeField] private float _energySpending = 0.1f;
     [SerializeField] private float _requestedEnergy = 100f;
     [SerializeField] private float _safetyTimer = 5f; //set 20f after
-    [SerializeField] private float _damagePotential = -100f; //set -20f after, не надо шоб с одного удара выносил
+    [SerializeField] private float _damagePotential = -100f;
     [SerializeField] private float _healPotential = 100f; //set 20f after
 
     private float _currentFoodResources;
@@ -48,7 +49,7 @@ public class PhysicalStatus : MonoBehaviour
 
 
     public void ChangeFoodResources(float foodValue) 
-    { _currentFoodResources = Mathf.Clamp(_currentFoodResources + foodValue, 0f, 100f); }
+    { _currentFoodResources = Mathf.Clamp(_currentFoodResources + foodValue, 0f, _requestedFoodResources); }
 
     public void ChangeEnergy(float energyValue) 
     {  _currentEnergy = Mathf.Clamp(_currentEnergy + energyValue, 0f, 100f); }
@@ -85,6 +86,11 @@ public class PhysicalStatus : MonoBehaviour
         if (_currentFoodResources > 90f)
         {
             _health = Mathf.Clamp(_health + hungerDamage, 0f, 100f);
+        }
+
+        if (_currentEnergy == 0f)
+        {
+            _memory.GetEat();
         }
     }
 
