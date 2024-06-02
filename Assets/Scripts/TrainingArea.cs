@@ -15,12 +15,12 @@ public class TrainingArea : MonoBehaviour
 
     private void EpisodeReset()
     {
+        Debug.Log(_characterAgents.Count);
         foreach (CharacterAgents agent in _characterAgents)
         {
-            if (agent.gameObject.activeSelf) { agent.TotalEndEpisode(); }
+            agent.TotalEndEpisode();
             agent.ResetAgent();
         }
-
         _events.OnEpisodeReset.Invoke();
     }
 
@@ -30,12 +30,12 @@ public class TrainingArea : MonoBehaviour
         int numOfAlives = 0;
         foreach (CharacterAgents agent in _characterAgents)
         {
-            if (agent.gameObject.activeSelf) 
+            if (agent.gameObject.GetComponent<PhysicalStatus>().GetHealth() > 0f) 
             {
                 agent.SetActionReward(1f);
                 numOfAlives++;
             }
         }
-        if (numOfAlives <= 0) { EpisodeReset(); }
+        if (numOfAlives <= 1) { EpisodeReset(); }
     }
 }

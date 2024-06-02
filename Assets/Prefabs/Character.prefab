@@ -238,6 +238,7 @@ MonoBehaviour:
   _physicalStatus: {fileID: 8153972317270326488}
   _navMesh: {fileID: 6342525843610706934}
   _receptors: {fileID: 8357072715137929753}
+  _characterObject: {fileID: 2576233337599285858}
   _instincts: {fileID: 8988904225246773718}
   _instinctsAction: {fileID: 7534962575402000290}
   _emotions: {fileID: 9097574363898271001}
@@ -741,6 +742,7 @@ MonoBehaviour:
   _objectHP: 0
   _size: 1
   _isMoving: 1
+  isDied: 0
   _characterAgents: {fileID: 5944489186702489868}
 --- !u!114 &5944489186702489868
 MonoBehaviour:

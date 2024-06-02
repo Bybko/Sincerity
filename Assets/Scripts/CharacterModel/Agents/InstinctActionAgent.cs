@@ -58,14 +58,14 @@ public class InstinctActionAgent : Agent
             case 1:
                 _decidedAction = null;
 
-                /*_decidedAction = new EscapeAction(_character);
+                _decidedAction = new EscapeAction(_character);
                 EscapeAction action = (EscapeAction)_decidedAction;
                 action.ConnectWithForeignObject(_currentForeignObject);
 
                 if (_currentForeignObject is CharacterObject && 
                     _currentForeignObject.GetDamageValue() <= _status.GetPotentialDamage()) { SetReward(1f); }
                 else { SetReward(-1f); }
-               */
+               
                 break;
         }
         _brain.IsInstinctsActionReady(true);

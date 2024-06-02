@@ -13,6 +13,7 @@ public class Brain : MonoBehaviour
     [SerializeField] private PhysicalStatus _physicalStatus;
     [SerializeField] private NavMeshAgent _navMesh;
     [SerializeField] private Receptors _receptors;
+    [SerializeField] private CharacterObject _characterObject;
 
     [Header("Agents")]
     [SerializeField] private InstinctBrainAgent _instincts;
@@ -36,7 +37,10 @@ public class Brain : MonoBehaviour
     private void Update()
     {
         //maybe too heavy for every frame update
-        AnalizeDecision();
+        if (!_characterObject.isDied) 
+        {
+            AnalizeDecision();
+        }
     }
 
 
@@ -55,13 +59,13 @@ public class Brain : MonoBehaviour
             
             yield return StartCoroutine(RequestBrainDecision(foreignObject));
             
-            if (_instinctsAction.GetAction() != null) 
+            /*if (_instinctsAction.GetAction() != null) 
             {
                 _instinctAction = _instinctsAction.GetAction();
                 _instinctsAction.GetAction().Action(); 
             }
             else
-            {
+            {*/
                 CreateReward(foreignObject);
 
                 if (rememberedObject == null)
@@ -70,18 +74,18 @@ public class Brain : MonoBehaviour
                         _emotions.GetEmotionalDecision(), _brainDecision.GetFinalDecision());
                 }
                 _memory.SetNewAction(foreignObject, _brainAction.GetAction());
-            }
+            //}
         }
         else
         {
             yield return StartCoroutine(RequestBrainAction(rememberedObject));
 
-            if (_instinctsAction.GetAction() != null) 
+            /*if (_instinctsAction.GetAction() != null) 
             {
                 _instinctAction = _instinctsAction.GetAction();
                 _instinctsAction.GetAction().Action(); 
             }
-            else { _memory.SetNewAction(foreignObject, _brainAction.GetAction()); }
+            else {*/ _memory.SetNewAction(foreignObject, _brainAction.GetAction()); //}
         }
     }
 
@@ -106,12 +110,12 @@ public class Brain : MonoBehaviour
 
     private IEnumerator RequestBrainDecision(ForeignObject foreignObject)
     {
-        _instinctsAction.SetCurrentForeignObject(foreignObject);
+        /*_instinctsAction.SetCurrentForeignObject(foreignObject);
         _instinctsAction.RequestDecision();
         
         yield return new WaitUntil(() => _isInstinctActionReady);
         if (_instinctsAction.GetAction() == null)
-        {
+        {*/
             _instincts.RequestDecision();
             _emotions.RequestDecision();
 
@@ -135,19 +139,19 @@ public class Brain : MonoBehaviour
             yield return new WaitUntil(() => _isFinalActionReady);
 
             IsFinalActionReady(false);
-        }
+        //}
     }
 
 
     private IEnumerator RequestBrainAction(MemoryObject rememberedObject)
     {
-        _instinctsAction.SetCurrentForeignObject(rememberedObject.GetObjectImage());
+        /*_instinctsAction.SetCurrentForeignObject(rememberedObject.GetObjectImage());
         _instinctsAction.RequestDecision();
 
         yield return new WaitUntil(() => _isInstinctActionReady);
         
         if (_instinctsAction.GetAction() == null)
-        {
+        {*/
             
             IsInstinctsActionReady(false);
 
@@ -160,16 +164,16 @@ public class Brain : MonoBehaviour
             IsFinalActionReady(false);
 
             _memory.SetNewAction(rememberedObject.GetObjectImage(), _brainAction.GetAction());
-        }
+        //}
     }
 
 
     private void AnalizeDecision()
     {
-        if (_subconscious.IsWantToSleep() && !_subconscious.SleepingStatus())
+        /*if (_subconscious.IsWantToSleep() && !_subconscious.SleepingStatus())
         {
             StartCoroutine(Sleep());
-        }
+        }*/
 
         if (_instinctAction != null && _instinctAction is EscapeAction)
         {

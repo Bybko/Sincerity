@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class CharacterObject : ForeignObject
 {
+    public bool isDied = false;
     [SerializeField] private CharacterAgents _characterAgents;
 
     private PhysicalStatus _physicalStatus;
@@ -23,7 +24,7 @@ public class CharacterObject : ForeignObject
     {
         _objectHP = _physicalStatus.GetHealth();
 
-        if (_objectHP == 0f) { SelfDestroy(); }
+        if (_objectHP == 0f && !isDied) { SelfDestroy(); }
     }
 
 
@@ -36,14 +37,15 @@ public class CharacterObject : ForeignObject
     public override void ObjectReset()
     {
         gameObject.SetActive(true);
+        isDied = false;
     }
 
 
     public override void SelfDestroy()
     {
         _characterAgents.SetActionReward(-1f);
-        _characterAgents.TotalEndEpisode();
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
+        isDied = true;
         _events.OnForeignObjectDestroy.Invoke();
         _events.OnCharacterDestroy.Invoke();
     }

@@ -10726,7 +10726,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
-  characterAgents:
+  _characterAgents:
   - {fileID: 4161343511775424948}
   - {fileID: 4931282613832859317}
   - {fileID: 3728416200036891606}
@@ -12783,7 +12783,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 146576520272705360, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10
+      value: -12.2
       objectReference: {fileID: 0}
     - target: {fileID: 146576520272705360, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -12823,11 +12823,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 924626705179400963, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: m_BehaviorName
-      value: InstinctDecision1
+      value: InstinctDecision
       objectReference: {fileID: 0}
     - target: {fileID: 1948268671068941027, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: m_BehaviorName
-      value: EmotionalDecision1
+      value: EmotionalDecision
       objectReference: {fileID: 0}
     - target: {fileID: 2576233337599285858, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: _events
@@ -12835,7 +12835,7 @@ PrefabInstance:
       objectReference: {fileID: 7591525259537756819}
     - target: {fileID: 3964850022777351328, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: m_BehaviorName
-      value: InstinctAction1
+      value: InstinctAction
       objectReference: {fileID: 0}
     - target: {fileID: 4835971087726663963, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: m_Name
@@ -12851,7 +12851,7 @@ PrefabInstance:
       objectReference: {fileID: 7591525259537756819}
     - target: {fileID: 5944489186702489868, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: _startPosition.x
-      value: -10
+      value: -12.2
       objectReference: {fileID: 0}
     - target: {fileID: 5944489186702489868, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: _startPosition.y
@@ -12863,11 +12863,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5987993593529079097, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: m_BehaviorName
-      value: RationalAction1
+      value: RationalAction
       objectReference: {fileID: 0}
     - target: {fileID: 7804868499271878799, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: m_BehaviorName
-      value: RationalDecision1
+      value: RationalDecision
       objectReference: {fileID: 0}
     - target: {fileID: 8153972317270326488, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: _damagePotential
@@ -12908,7 +12908,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 146576520272705360, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 42.1
+      value: 44.19
       objectReference: {fileID: 0}
     - target: {fileID: 146576520272705360, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -12948,11 +12948,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 924626705179400963, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: m_BehaviorName
-      value: InstinctDecision3
+      value: InstinctDecision
       objectReference: {fileID: 0}
     - target: {fileID: 1948268671068941027, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: m_BehaviorName
-      value: EmotionalDecision3
+      value: EmotionalDecision
       objectReference: {fileID: 0}
     - target: {fileID: 2576233337599285858, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: _events
@@ -12960,7 +12960,7 @@ PrefabInstance:
       objectReference: {fileID: 7591525259537756819}
     - target: {fileID: 3964850022777351328, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: m_BehaviorName
-      value: InstinctAction3
+      value: InstinctAction
       objectReference: {fileID: 0}
     - target: {fileID: 4835971087726663963, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: m_Name
@@ -12976,7 +12976,7 @@ PrefabInstance:
       objectReference: {fileID: 7591525259537756819}
     - target: {fileID: 5944489186702489868, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: _startPosition.x
-      value: 42.1
+      value: 44.19
       objectReference: {fileID: 0}
     - target: {fileID: 5944489186702489868, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: _startPosition.y
@@ -12988,11 +12988,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5987993593529079097, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: m_BehaviorName
-      value: RationalAction3
+      value: RationalAction
       objectReference: {fileID: 0}
     - target: {fileID: 7804868499271878799, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: m_BehaviorName
-      value: RationalDecision3
+      value: RationalDecision
       objectReference: {fileID: 0}
     - target: {fileID: 8153972317270326488, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: _damagePotential
@@ -13033,7 +13033,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1232299039520561425, guid: adee869ce9a0be2499013e994642bc67, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -17.9
+      value: -19.89
       objectReference: {fileID: 0}
     - target: {fileID: 1232299039520561425, guid: adee869ce9a0be2499013e994642bc67, type: 3}
       propertyPath: m_LocalPosition.y
@@ -13041,7 +13041,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1232299039520561425, guid: adee869ce9a0be2499013e994642bc67, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 87.9
+      value: 88.64
       objectReference: {fileID: 0}
     - target: {fileID: 1232299039520561425, guid: adee869ce9a0be2499013e994642bc67, type: 3}
       propertyPath: m_LocalRotation.w
@@ -13099,7 +13099,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 146576520272705360, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.6
+      value: -12.43
       objectReference: {fileID: 0}
     - target: {fileID: 146576520272705360, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -13139,11 +13139,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 924626705179400963, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: m_BehaviorName
-      value: InstinctDecision2
+      value: InstinctDecision
       objectReference: {fileID: 0}
     - target: {fileID: 1948268671068941027, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: m_BehaviorName
-      value: EmotionalDecision2
+      value: EmotionalDecision
       objectReference: {fileID: 0}
     - target: {fileID: 2576233337599285858, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: _events
@@ -13151,7 +13151,7 @@ PrefabInstance:
       objectReference: {fileID: 7591525259537756819}
     - target: {fileID: 3964850022777351328, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: m_BehaviorName
-      value: InstinctAction2
+      value: InstinctAction
       objectReference: {fileID: 0}
     - target: {fileID: 4835971087726663963, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: m_Name
@@ -13167,7 +13167,7 @@ PrefabInstance:
       objectReference: {fileID: 7591525259537756819}
     - target: {fileID: 5944489186702489868, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: _startPosition.x
-      value: -9.6
+      value: -12.43
       objectReference: {fileID: 0}
     - target: {fileID: 5944489186702489868, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: _startPosition.y
@@ -13179,11 +13179,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5987993593529079097, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: m_BehaviorName
-      value: RationalAction2
+      value: RationalAction
       objectReference: {fileID: 0}
     - target: {fileID: 7804868499271878799, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: m_BehaviorName
-      value: RationalDecision2
+      value: RationalDecision
       objectReference: {fileID: 0}
     - target: {fileID: 8153972317270326488, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: _damagePotential
@@ -13224,7 +13224,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1232299039520561425, guid: adee869ce9a0be2499013e994642bc67, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 49
+      value: 51.24
       objectReference: {fileID: 0}
     - target: {fileID: 1232299039520561425, guid: adee869ce9a0be2499013e994642bc67, type: 3}
       propertyPath: m_LocalPosition.y
@@ -13232,7 +13232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1232299039520561425, guid: adee869ce9a0be2499013e994642bc67, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -38.3
+      value: -39.69
       objectReference: {fileID: 0}
     - target: {fileID: 1232299039520561425, guid: adee869ce9a0be2499013e994642bc67, type: 3}
       propertyPath: m_LocalRotation.w
@@ -13290,7 +13290,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1232299039520561425, guid: adee869ce9a0be2499013e994642bc67, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -18.1
+      value: -20.27
       objectReference: {fileID: 0}
     - target: {fileID: 1232299039520561425, guid: adee869ce9a0be2499013e994642bc67, type: 3}
       propertyPath: m_LocalPosition.y
@@ -13298,7 +13298,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1232299039520561425, guid: adee869ce9a0be2499013e994642bc67, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -38.2
+      value: -40.05
       objectReference: {fileID: 0}
     - target: {fileID: 1232299039520561425, guid: adee869ce9a0be2499013e994642bc67, type: 3}
       propertyPath: m_LocalRotation.w
@@ -13356,7 +13356,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 146576520272705360, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 40.3
+      value: 43.66
       objectReference: {fileID: 0}
     - target: {fileID: 146576520272705360, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -13412,7 +13412,7 @@ PrefabInstance:
       objectReference: {fileID: 7591525259537756819}
     - target: {fileID: 5944489186702489868, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: _startPosition.x
-      value: 40.3
+      value: 43.66
       objectReference: {fileID: 0}
     - target: {fileID: 5944489186702489868, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: _startPosition.z
@@ -13457,7 +13457,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1232299039520561425, guid: adee869ce9a0be2499013e994642bc67, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 49.4
+      value: 50.85
       objectReference: {fileID: 0}
     - target: {fileID: 1232299039520561425, guid: adee869ce9a0be2499013e994642bc67, type: 3}
       propertyPath: m_LocalPosition.y
@@ -13465,7 +13465,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1232299039520561425, guid: adee869ce9a0be2499013e994642bc67, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 87.9
+      value: 89.03
       objectReference: {fileID: 0}
     - target: {fileID: 1232299039520561425, guid: adee869ce9a0be2499013e994642bc67, type: 3}
       propertyPath: m_LocalRotation.w

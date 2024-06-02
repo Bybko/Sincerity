@@ -27,6 +27,7 @@ public class CharacterAgents : MonoBehaviour
         _receptors.ResetCoroutinesQueue();
 
         _playerTransform.localPosition = _startPosition;
+        Debug.Log("RESETED!!!!!!");
         _physicalStatus.SetRandomValues();
 
         _subconscious.WakeUp();
@@ -60,7 +61,7 @@ public class CharacterAgents : MonoBehaviour
         _rationalDecision.EndEpisode();
         _emotionalDecision.EndEpisode();
         _instinctDecision.EndEpisode();
-        _instinctAction.EndEpisode();
+        //_instinctAction.EndEpisode();
     }
 
 
