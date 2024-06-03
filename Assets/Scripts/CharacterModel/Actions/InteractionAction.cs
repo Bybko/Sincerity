@@ -22,7 +22,7 @@ public class InteractionAction : ICharacterAction
         if (_status.GetCurrentForeignObject() == objectImage && _status.GetCurrentForeignObject().IsOwned())
         {
             _character.GetComponent<CharacterAgents>().SetActionReward(0.1f);
-
+            Debug.Log("Succesfully interact with object: " + objectImage.GetFoodValue());
             if (objectImage is StorageObject) 
             {
                 StorageObject objectStore = (StorageObject)objectImage;

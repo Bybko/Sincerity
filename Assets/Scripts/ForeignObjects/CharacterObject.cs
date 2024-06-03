@@ -47,7 +47,7 @@ public class CharacterObject : ForeignObject
         //gameObject.SetActive(false);
         isDied = true;
         _events.OnForeignObjectDestroy.Invoke();
-        _events.OnCharacterDestroy.Invoke();
+        //_events.OnCharacterDestroy.Invoke();
     }
 
 

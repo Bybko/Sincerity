@@ -70,7 +70,7 @@ public class BrainActionAgent : Agent
                 _decidedAction = null;
                 if (_currentForeignObject != null && _currentForeignObject is StorageObject &&
                     _currentForeignObject.IsOwned()) { SetReward(0.4f); }
-                SetReward(0.1f);
+                if (_finalDecision > 0) { SetReward(0.1f); } else { SetReward(-0.1f); }
                 break;
             case 1:
                 _decidedAction = new WalkAction(_character);

@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class CharacterAgents : MonoBehaviour
 {
+    public float prevHappiness;
+
     [SerializeField] private EventHandler _events;
     [SerializeField] private Receptors _receptors;
     [SerializeField] private PhysicalStatus _physicalStatus;
@@ -27,7 +29,6 @@ public class CharacterAgents : MonoBehaviour
         _receptors.ResetCoroutinesQueue();
 
         _playerTransform.localPosition = _startPosition;
-        Debug.Log("RESETED!!!!!!");
         _physicalStatus.SetRandomValues();
 
         _subconscious.WakeUp();
@@ -67,4 +68,5 @@ public class CharacterAgents : MonoBehaviour
 
     public float GetAgentFoodResources() { return _physicalStatus.GetCurrentFoodResources(); }
     public float GetAgentHealth() { return _physicalStatus.GetHealth(); }
+    public float GetCurrentHappiness() { return _subconscious.GetHappines(); }
 }

@@ -37,10 +37,10 @@ public class Brain : MonoBehaviour
     private void Update()
     {
         //maybe too heavy for every frame update
-        if (!_characterObject.isDied) 
-        {
+        //if (!_characterObject.isDied) 
+        //{
             AnalizeDecision();
-        }
+        //}
     }
 
 
@@ -196,11 +196,11 @@ public class Brain : MonoBehaviour
                 _memory.AddNewGoal(newGoal);
                 newGoal.GetAction().Action();
             }
-            else if(_isSearching == false ||
+            /*else if(_isSearching == false ||
                 Vector3.Distance(_searchingPosition, _characterTransform.position) < _distanceThreshold) 
             {
                 Search(); 
-            }
+            }*/
         }
     }
 
@@ -275,12 +275,12 @@ public class Brain : MonoBehaviour
             if (_emotions.GetEmotionalDecision() > 0) { _emotions.SetReward(1f); } else { _emotions.SetReward(-1f); }
             if (_brainDecision.GetFinalDecision() > 0) { _brainDecision.SetReward(1f); } else { _brainDecision.SetReward(-1f); }
         }
-        else if (damage < _physicalStatus.GetPotentialDamage()) 
+        /*else if (damage < _physicalStatus.GetPotentialDamage()) 
         {
             if (_instincts.GetInstinctDecision() > 0) { _instincts.SetReward(-1f); } else {  _instincts.SetReward(1f);}
             if (_emotions.GetEmotionalDecision() > 0) { _emotions.SetReward(-1f); } else { _emotions.SetReward(1f); }
             if (_brainDecision.GetFinalDecision() > 0) { _brainDecision.SetReward(-1f); } else { _brainDecision.SetReward(1f); }
-        }
+        }*/
     }
 
 

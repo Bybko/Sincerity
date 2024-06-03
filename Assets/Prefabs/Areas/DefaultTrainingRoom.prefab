@@ -424,7 +424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
   _foodValue: -10
-  _damageValue: -70
+  _damageValue: 0
   _objectHP: 100
   _size: 8
   _isMoving: 0
@@ -1019,8 +1019,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
-  _foodValue: 0
-  _damageValue: 100
+  _foodValue: 50
+  _damageValue: 0
   _objectHP: 100
   _size: 8
   _isMoving: 0
@@ -1204,7 +1204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
-  characterAgents:
+  _characterAgents:
   - {fileID: 2410278677963570024}
 --- !u!1 &7419987871489277177
 GameObject:
@@ -1353,8 +1353,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _events: {fileID: 7591525259537756819}
-  _foodValue: 50
-  _damageValue: -70
+  _foodValue: -50
+  _damageValue: 0
   _objectHP: 100
   _size: 12
   _isMoving: 0
@@ -1415,6 +1415,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character
       objectReference: {fileID: 0}
+    - target: {fileID: 5258457269634650442, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
+      propertyPath: _events
+      value: 
+      objectReference: {fileID: 7591525259537756819}
     - target: {fileID: 5944489186702489868, guid: aa6e730a41817054caf24d8d7975ffb4, type: 3}
       propertyPath: _events
       value: 
